@@ -8,10 +8,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 
-
-
-
-
 def index(request):
 
     if request.user.is_authenticated:
