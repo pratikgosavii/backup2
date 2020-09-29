@@ -1,0 +1,995 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+	
+ {% block content %}
+
+		<!-- End Search Popup -->
+        <!-- Start Slider area -->
+        <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
+        	<!-- Start Single Slide -->
+	        <div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
+	            <div class="container">
+	            	<div class="row">
+	            		<div class="col-lg-12">
+	            			<div class="slider__content">
+		            			<div class="contentbox">
+		            				<h2>Buy <span>your </span></h2>
+		            				<h2>favourite <span>Book </span></h2>
+		            				<h2>from <span>Here </span></h2>
+				                   	<a class="shopbtn" href="#">shop now</a>
+		            			</div>
+	            			</div>
+	            		</div>
+	            	</div>
+	            </div>
+            </div>
+            <!-- End Single Slide -->
+        	<!-- Start Single Slide -->
+	        <div class="slide animation__style10 bg-image--7 fullscreen align__center--left">
+	            <div class="container">
+	            	<div class="row">
+	            		<div class="col-lg-12">
+	            			<div class="slider__content">
+		            			<div class="contentbox">
+		            				<h2>Buy <span>your </span></h2>
+		            				<h2>favourite <span>Book </span></h2>
+		            				<h2>from <span>Here </span></h2>
+				                   	<a class="shopbtn" href="#">shop now</a>
+		            			</div>
+	            			</div>
+	            		</div>
+	            	</div>
+	            </div>
+            </div>
+            <!-- End Single Slide -->
+        </div>
+
+<br><br>
+<div class="container">
+    <div class="d-flex justify-content-center align-items-sm-center justify-content-md-center justify-content-sm-center justify-content-md-center">
+	
+		<div class="row">
+	        <form action="study_books/books_school" method="post">
+			{% csrf_token %}
+			
+			
+  				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-primary py-3 px-4" style=" margin-top: 10px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;background-color : #e59285;border:0px;" data-toggle="modal" data-target="#myModal">School Books</button>
+
+				  <!-- Modal -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog modal-lg">
+
+				  <!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+					
+									<h4 class="modal-title">select category</h4>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<div class="modal-body">
+				   
+									<div>		
+										<select id="standard" name="standard">
+											<option value="hide">-- Standard --</option>
+											<option value="All" rel="icon-temperature">All</option>
+											<option value="1st" rel="icon-temperature">1st</option>
+											<option value="2nd">2nd</option>
+											<option value="3rd">3rd</option>
+											<option value="4th">4th</option>
+											<option value="5th">5th</option>
+											<option value="6th">6th</option>
+											<option value="7th">7th</option>
+											<option value="8th">8th</option>
+											<option value="9th">9th</option>
+											<option value="10th">10th</option>
+											
+										</select>
+
+													
+										
+										<select id="pattern" name="pattern">
+											<option value="hide">-- Pattern --</option>
+											<option value="all" rel="icon-temperature">All</option>
+											<option value="MSBT">MSBT</option>
+											<option value="CBSC">CBSC</option>
+										</select> 
+
+										
+
+                                    <input id="category" name="category" type="hidden" value="books_school">
+									<input type="submit"  class="btn btn-outline-dark" value="submit" />
+
+
+									</div>
+					  
+								</div>
+					
+							</div>
+				  
+					    </div>
+				    </div>
+		   
+			</form>
+            <form action="study_books/books_college" method="post">
+			{% csrf_token %}
+			
+			  <!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-primary py-3 px-4" style=" margin-top: 10px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;background-color : #e59285;border:0px;" data-toggle="modal" data-target="#myModal1">College Books</button>
+
+			  <!-- Modal -->
+				<div class="modal fade" id="myModal1" role="dialog">
+					<div class="modal-dialog modal-lg">
+
+			  <!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+				
+								<h4 class="modal-title">select category</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+							<div class="modal-body">
+   
+								<div>		
+									<select id="standard" name="standard">
+										<option value="hide">-- Class --</option>
+										<option value="All" rel="icon-temperature">All</option>
+										<option value="11th" rel="icon-temperature">11th</option>	
+										<option value="12th">12th</option>
+									</select>
+
+												
+									
+									<select id="course" name="course">
+										<option value="hide">-- Course --</option>
+										<option value="all" rel="icon-temperature">All</option>
+										<option value="computerscience">Computer Science</option>
+										<option value="journalscience">Journal Science</option>
+										<option value="commerce">Commerce</option>
+										<option value="arts">Arts</option>
+										
+									</select> 		
+				
+									<input id="prodId" name="categorye" type="hidden" value="books_college">
+									<input type="submit" class="btn btn-outline-dark" value="submit" />
+
+								</div>
+				  
+							</div>
+	
+						</div>
+  
+					</div>
+				</div>
+		
+			</form>
+
+			<form action="study_books/books_eng" method="post">
+			{% csrf_token %}
+		 
+			
+  
+			   
+			  <!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-primary py-3 px-4" style=" margin-top: 10px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;background-color : #e59285;border:0px;" data-toggle="modal" data-target="#myModal2">Eng Books</button>
+
+			  <!-- Modal -->
+				<div class="modal fade" id="myModal2" role="dialog">
+					<div class="modal-dialog modal-lg">
+				
+				  <!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+							   <h4 class="modal-title">select category</h4>
+							  <button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+							<div class="modal-body">
+						 
+						 
+						 
+								<div>		
+									<select id="year" name="year" >
+										<option value="hide">-- Year --</option>
+										<option value="all" rel="icon-temperature">All</option>
+										<option value="1st" rel="icon-temperature">1st</option>
+										<option value="2nd">2nd</option>
+										<option value="3th">3th</option>
+										<option value="4th">4th</option>
+									</select>
+
+												
+									
+									<select id="field" name="field">
+										<option value="hide">-- Field --</option>
+										<option value="all" rel="icon-temperature">All</option>
+										<option value="informationtechnology">Information Technology</option>
+										<option value="computer">Computer</option>
+										<option value="civil">Civil</option>
+										<option value="mechanical">Mechanical</option>
+										<option value="electronic">Electronic</option>
+										<option value="electrical">Electrical</option>
+
+									</select> 
+
+								<input id="prodId" name="categorye" type="hidden" value="books_eng">
+								<input type="submit" class="btn btn-outline-dark" value="submit" />
+											
+								</div>
+						 
+							</div>
+					   
+						</div>
+				  
+					</div>
+				</div>
+			
+
+			</form>
+
+			<form action="study_books/books_medical" method="post">
+			{% csrf_token %}
+		 
+		 
+		 
+			<div class="">
+  
+  
+  
+			   
+			  <!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-primary py-3 px-4" style=" margin-top: 10px;margin-bottom: 10px;margin-right: 10px;margin-left: 10px;background-color : #e59285;border:0px;" data-toggle="modal" data-target="#myModal3">Medical Books</button>
+
+			  <!-- Modal -->
+				<div class="modal fade" id="myModal3" role="dialog">
+					<div class="modal-dialog modal-lg">
+				
+				  <!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">select category</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+					  
+							</div>
+							<div class="modal-body">
+				   
+								<div>		
+									<select id="class" name="class">
+										<option value="all" rel="icon-temperature">All</option>
+										<option value="1st" rel="icon-temperature">1st</option>
+										<option value="2nd">2nd</option>
+										<option value="3th">3th</option>
+										<option value="4th">4th</option>
+									</select>
+
+											
+									
+									<select id="subject" class="subject">
+										<option value="hide">-- Field --</option>
+										<option value="all" rel="icon-temperature">All</option>
+										<option value="MBBS">MBBS</option>
+										<option value="farmacy">Farmacy</option>
+										<option value="BDS">BDS</option>
+										<option value="veterinary">Veterinary</option>
+									</select>
+
+
+								<input id="prodId" name="categorye" type="hidden" value="books_medical">
+								<input type="submit" class="btn btn-outline-dark" value="submit" />
+
+									
+								</div>
+					 
+							</div>
+						</div>
+				  
+					</div>
+				</div>
+			</div>
+			</form>
+		</div>
+  
+  
+	</div>
+</div>
+
+
+        <!-- End Slider area -->
+		<!-- Start BEst Seller Area -->
+		<section class="wn__product__area brown--color pt--80  pb--30">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section__title text-center">
+							<h2 class="title__be--2">New <span class="color--theme">Books</span></h2>
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+						</div>
+					</div>
+				</div>
+				<!-- Start Single Tab Content -->
+				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
+					<!-- Start Single Product -->
+	
+					{% for dest in dests_popular %}
+
+					<div class="product product__style--3">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div class="product__thumb">
+								<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+								<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+								<div class="hot__box">
+									<span class="hot-label">BEST SALLER</span>
+								</div>
+							</div>
+							<div class="product__content content--center">
+								<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+								<ul class="prize d-flex">
+									<li>{{ dest.price }}</li>
+									<li class="old_prize">$35.00</li>
+								</ul>
+								<div class="action">
+									<div class="actions_inner">
+										<ul class="add_to_links">
+											<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+											<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="product__hover--content">
+									<ul class="rating d-flex">
+										<li class="on"><i class="fa fa-star-o"></i></li>
+										<li class="on"><i class="fa fa-star-o"></i></li>
+										<li class="on"><i class="fa fa-star-o"></i></li>
+										<li><i class="fa fa-star-o"></i></li>
+										<li><i class="fa fa-star-o"></i></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Start Single Product -->
+
+					{% endfor %}
+
+
+
+				</div>
+				<!-- End Single Tab Content -->
+			</div>
+		</section>
+		<!-- Start BEst Seller Area -->
+		<!-- Start NEwsletter Area -->
+		<section class="wn__newsletter__area bg-image--2">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 offset-lg-5 col-md-12 col-12 ptb--150">
+						<div class="section__title text-center">
+							<h2>want to sell your books?</h2>
+						</div>
+						<div class="newsletter__block text-center">
+							<p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
+							<form action="#">
+								<div class="newsletter__box">
+									<input type="email" placeholder="Enter your e-mail">
+									<button>Subscribe</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End NEwsletter Area -->
+
+		<!-- Start Best Seller Area -->
+		<section class="wn__bestseller__area bg--white pt--80  pb--30">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section__title text-center">
+							<h2 class="title__be--2">All <span class="color--theme">Products</span></h2>
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+						</div>
+					</div>
+				</div>
+				<div class="row mt--50">
+					<div class="col-md-12 col-lg-12 col-sm-12">
+						<div class="product__nav nav justify-content-center" role="tablist">
+                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-all" role="tab">ALL</a>
+                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-biographic" role="tab">BIOGRAPHIC</a>
+                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-adventure" role="tab">ADVENTURE</a>
+                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-children" role="tab">CHILDREN</a>
+                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-cook" role="tab">COOK</a>
+                        </div>
+					</div>
+				</div>
+					<div class="tab__container mt--60">
+					<!-- Start Single Tab Content -->
+					<div class="row single__tab tab-pane fade show active" id="nav-all" role="tabpanel">
+						<div class="product__indicator--4 arrows_style owl-carousel owl-theme">
+						
+						{% for dest in dests_categoryall %}
+						
+							<div class="single__product">
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALER</span>
+											</div>
+										</div>
+										<div class="product__content content--center content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest..bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALER</span>
+											</div>
+										</div>
+										<div class="product__content content--center content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$41.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+							</div>
+							
+						{% endfor %}
+
+						</div>
+					</div>
+					<!-- End Single Tab Content -->
+					<!-- Start Single Tab Content -->
+					<div class="row single__tab tab-pane fade" id="nav-biographic" role="tabpanel">
+						<div class="product__indicator--4 arrows_style owl-carousel owl-theme">
+						
+						{% for dest in dests_categorybiographic %}
+						
+							<div class="single__product">
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALLER</span>
+											</div>
+										</div>
+										<div class="product__content content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALLER</span>
+											</div>
+										</div>
+										<div class="product__content content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>						
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+							</div>
+							
+							{% endfor %}
+			
+						</div>
+					</div>
+					<!-- End Single Tab Content -->
+					<!-- Start Single Tab Content -->
+					<div class="row single__tab tab-pane fade" id="nav-adventure" role="tabpanel">
+						<div class="product__indicator--4 arrows_style owl-carousel owl-theme">
+						
+						{% for dest in dests_categoryadventure %}
+						
+							<div class="single__product">
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALLER</span>
+											</div>
+										</div>
+										<div class="product__content content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+										<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALLER</span>
+											</div>
+										</div>
+										<div class="product__content content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+							</div>
+							
+							{% endfor %}
+			
+						</div>
+					</div>
+					<!-- End Single Tab Content -->
+					<!-- Start Single Tab Content -->
+					<div class="row single__tab tab-pane fade" id="nav-children" role="tabpanel">
+						<div class="product__indicator--4 arrows_style owl-carousel owl-theme">
+						
+						{% for dest in dests_categorykids %}
+						
+							<div class="single__product">
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALLER</span>
+											</div>
+										</div>
+										<div class="product__content content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALLER</span>
+											</div>
+										</div>
+										<div class="product__content content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+							</div>
+							
+							{% endfor %}
+
+						</div>
+					</div>
+					<!-- End Single Tab Content -->
+					<!-- Start Single Tab Content -->
+					<div class="row single__tab tab-pane fade" id="nav-cook" role="tabpanel">
+						<div class="product__indicator--4 arrows_style owl-carousel owl-theme">
+						
+						{% for dest in dests_categorycook %}
+						
+							<div class="single__product">
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALLER</span>
+											</div>
+										</div>
+										<div class="product__content content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+								<!-- Start Single Product -->
+								<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+									<div class="product product__style--3">
+										<div class="product__thumb">
+											<a class="first__img" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+											<a class="second__img animation1" href="{% url 'single-product' dest.id %}"><img src="{{ dest.bookback_cover.url }}" alt="product image"></a>
+											<div class="hot__box">
+												<span class="hot-label">BEST SALLER</span>
+											</div>
+										</div>
+										<div class="product__content content--center">
+											<h4><a href="{% url 'single-product' dest.id %}">{{ dest.name }}</a></h4>
+											<ul class="prize d-flex">
+												<li>{{ dest.price }}</li>
+												<li class="old_prize">$35.00</li>
+											</ul>
+											<div class="action">
+												<div class="actions_inner">
+													<ul class="add_to_links">
+														<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+														<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Start Single Product -->
+							</div>
+							
+							{% endfor %}
+
+						</div>
+					</div>
+					<!-- End Single Tab Content -->
+				</div>
+			</div>
+
+		</section>
+		<!-- Start BEst Seller Area -->
+		<!-- Start Recent Post Area -->
+		<section class="wn__recent__post bg--gray ptb--80">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section__title text-center">
+							<h2 class="title__be--2">Our <span class="color--theme">Blog</span></h2>
+		
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+						</div>
+					</div>
+				</div>
+				<div class="row mt--50">
+					<div class="col-md-6 col-lg-4 col-sm-12">
+						<div class="post__itam">
+							<div class="content">
+								<h3><a href="blog-details.html">International activities of the Frankfurt Book </a></h3>
+								<p>We are proud to announce the very first the edition of the frankfurt news.We are proud to announce the very first of  edition of the fault frankfurt news for us.</p>
+								<div class="post__time">
+									<span class="day">Dec 06, 18</span>
+									<div class="post-meta">
+										<ul>
+											<li><a href="#"><i class="bi bi-love"></i>72</a></li>
+											<li><a href="#"><i class="bi bi-chat-bubble"></i>27</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-sm-12">
+						<div class="post__itam">
+							<div class="content">
+								<h3><a href="blog-details.html">Reading has a signficant info  number of benefits</a></h3>
+								<p>Find all the information you need to ensure your experience.Find all the information you need to ensure your experience . Find all the information you of.</p>
+								<div class="post__time">
+									<span class="day">Mar 08, 18</span>
+									<div class="post-meta">
+										<ul>
+											<li><a href="#"><i class="bi bi-love"></i>72</a></li>
+											<li><a href="#"><i class="bi bi-chat-bubble"></i>27</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4 col-sm-12">
+						<div class="post__itam">
+							<div class="content">
+								<h3><a href="blog-details.html">The London Book Fair is to be packed with exciting </a></h3>
+								<p>The London Book Fair is the global area inon marketplace for rights negotiation.The year  London Book Fair is the global area inon forg marketplace for rights.</p>
+								<div class="post__time">
+									<span class="day">Nov 11, 18</span>
+									<div class="post-meta">
+										<ul>
+											<li><a href="#"><i class="bi bi-love"></i>72</a></li>
+											<li><a href="#"><i class="bi bi-chat-bubble"></i>27</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Recent Post Area -->
+		<!-- Best Sale Area -->
+		<section class="best-seel-area pt--80 pb--60">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section__title text-center pb--50">
+							<h2 class="title__be--2">Best <span class="color--theme">Seller </span></h2>
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="slider center">
+
+				{% for dest in dest_relevant %}
+
+				<!-- Single product start -->
+				<div class="product product__style--3">
+					<div class="product__thumb">
+						<a class="first__img" href="{% url 'user_cart_addproduct' %}"><img src="{{ dest.bookfront_cover.url }}" alt="product image"></a>
+					</div>
+					<div class="product__content content--center">
+						<div class="action">
+							<div class="actions_inner">
+								<ul class="add_to_links">
+									<li><a class="cart" href="{% url 'user_cart_addproduct_byid' dest.id %}"><i class="bi bi-shopping-bag4"></i></a></li>
+									<li><a class="wishlist" href="{% url 'user_wishlist_addproduct' dest.id %}"><i class="bi bi-shopping-cart-full"></i></a></li>
+									<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+									<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{ dest.id }}"><i class="bi bi-search"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="product__hover--content">
+							<ul class="rating d-flex">
+								<li class="on"><i class="fa fa-star-o"></i></li>
+								<li class="on"><i class="fa fa-star-o"></i></li>
+								<li class="on"><i class="fa fa-star-o"></i></li>
+								<li><i class="fa fa-star-o"></i></li>
+								<li><i class="fa fa-star-o"></i></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Single product end -->
+				
+				{% endfor %}
+
+				<!-- Single product end -->
+			</div>
+		</section>
+		<!-- Best Sale Area Area -->
+
+	
+	{% endblock %}
