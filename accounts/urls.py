@@ -23,7 +23,9 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('login', views.login, name='login'),
     path('login_signup_home', views.loginsignuphome, name='login_signup_home'),
-    path('home', views.home, name='home'),
     path('logout', views.logout, name='logout'),
-  
+    path('login_firebase', views.login_firebase, name='login_firebase'),
+    path('home', views.home, name='home'),
+    path('firebase_login_save', views.firebase_login_save, name='firebase_login_save'),
+
 ]
