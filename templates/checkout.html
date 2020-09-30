@@ -88,181 +88,181 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<form action="placeorder" method="post" class="p-3 p-md-none row">
-				{% csrf_token %}
-				<div class="col-lg-6 col-12">
+		<!-- <div class=""> -->
+		<form action="placeorder" method="post" class="p-3 p-md-none row" id="billing-form">
+			{% csrf_token %}
+			<div class="col-lg-6 col-12">
 
-					<div class="customer_details">
+				<div class="customer_details">
 
-						<h3>Billing details</h3>
-						<div class="customar__field">
-							<div class="margin_between">
-								<div class="input_box space_between">
+					<h3>Billing details</h3>
+					<div class="customar__field">
+						<div class="row">
+							<div class="input_box col-md-6 col-sm-12">
 
-									<input type="text" name="name" placeholder="Name">
-								</div>
-								<div class="input_box space_between">
-
-									<input type="text" name="mobilenumber" placeholder="Mobile number">
-								</div>
+								<input type="text" name="name" placeholder="Name">
 							</div>
-							<div class="margin_between">
-								<div class="input_box space_between">
+							<div class="input_box col-md-6 col-sm-12">
 
-									<input type="text" name="pincode" placeholder="Pincode">
-								</div>
-								<!-- -->
-								<div class="input_box space_between">
-
-									<input type="text" value="Akola" readonly>
-								</div>
+								<input type="text" name="mobilenumber" placeholder="Mobile number">
 							</div>
+						</div>
+						<div class="row">
+							<div class="input_box col-md-6 col-sm-12">
 
-							<div class="input_box ">
-
-								<textarea rows="3" cols="50" placeholder="sdsd" style="border: 1px solid #e1e1e1;"
-									name="fulladdress" placeholder="Address (Area and Street)"> </textarea>
+								<input type="text" name="pincode" placeholder="Pincode">
 							</div>
+							<div class="input_box col-md-6 col-sm-12">
 
-							<div class="margin_between">
+								<input type="text" value="Akola" readonly>
+							</div>
+						</div>
 
-								<div class="input_box space_between">
-									<input type="text" name="landmark" placeholder="Landmark (optional)">
-								</div>
+						<div class="input_box d-flex">
 
+							<textarea rows="3" cols="50" placeholder="sdsd" style="border: 1px solid #e1e1e1;"
+								name="fulladdress" placeholder="Address (Area and Street)"> </textarea>
+						</div>
 
-								<div class="input_box space_between">
-									<input type="text" name="addresstype" placeholder="addres type">
-								</div>
+						<div class="row">
 
-								<div class="input_box space_between">
-									<input type="text" name="address_number1" placeholder="number">
-								</div>
-
+							<div class="input_box col-md-4 col-sm-12">
+								<input type="text" name="landmark" placeholder="Landmark (optional)">
 							</div>
 
+
+							<div class="input_box col-md-4 col-sm-12">
+								<input type="text" name="addresstype" placeholder="addres type">
+							</div>
+
+							<div class="input_box col-md-4 col-sm-12">
+								<input type="text" name="address_number1" placeholder="number">
+							</div>
 
 						</div>
 
+
 					</div>
-					<div class="margin_between">
-						<div class="container-fluid" style="padding-left:0px;">
-							<div class="row">
-								<div class="col-12 mt-3">
-									{% for dest in dests %}
-									<div class="card">
-										<div class="card-horizontal">
-											<div style="float:left;">
-												<img class="imageincart" width="50px" style="margin-left:10px;"
-													src="{{ dest.product_id.bookfront_cover.url }}"
-													alt="Card image cap">
-											</div>
-											<div class="card-body">
-												<h4 class="card-title">{{ dest.product_id.name }}</h4>
-												<p class="card-text">
-													<!-- {{price}} --> {{ dest.product_id.standard }}
-													{{ dest.product_id.pattern }}</p>
-												<p class="card-text">
-													<!-- {{price}} -->{{ dest.product_id.price }} ₹</p><br>
-											</div>
+
+				</div>
+				<div class="margin_between">
+					<div class="container-fluid" style="padding-left:0px;">
+						<div class="row">
+							<div class="col-12 mt-3">
+								{% for dest in dests %}
+								<div class="card mb-3">
+									<div class="card-horizontal">
+										<div style="float:left;">
+											<img class="imageincart" width="50px" style="margin-left:10px;"
+												src="{{ dest.product_id.bookfront_cover.url }}" alt="Card image cap">
 										</div>
-										<div class="removebutton">save for latter</div>
-										<div class="removebutton">remove</div>
+										<div class="card-body">
+											<h4 class="card-title">{{ dest.product_id.name }}</h4>
+											<p class="card-text">
+												<!-- {{price}} --> {{ dest.product_id.standard }}
+												{{ dest.product_id.pattern }}</p>
+											<p class="card-text">
+												<!-- {{price}} -->{{ dest.product_id.price }} ₹</p><br>
+										</div>
 									</div>
-									{% endfor %}
+									<div class="my-3">
+										<div class="btn mx-2 btn-primary">save for latter</div>
+										<div class="btn mx-2 btn-danger">remove</div>
+									</div>
 								</div>
+								{% endfor %}
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+			<div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
 
-					<div class="wn__order__box">
-						<h3 class="onder__title">Price Details</h3>
+				<div class="wn__order__box">
+					<h3 class="onder__title">Price Details</h3>
 
-						<ul class="order_product">
-
-
-
-							<li> Price ({{ cart_count }} Items) <span> {{ cart_total }} </span></li>
-							<!-- if coupen apply -->
-							<li>Coupon {% if coupon_applied %} Applied {{ coupon_name }} {% endif %} <span>
-									{% if discount_amount %} - {{ discount_amount }} {% else %} - 00 {% endif %} </span>
-							</li>
-							<li>Delivery Charges <span> 00 </span></li>
+					<ul class="order_product">
 
 
 
-						</ul>
-
-						<ul class="total__amount">
-							<li>Total Amount <span>{{ cart_total_afterdiscount }}</span></li>
-						</ul>
-					</div>
-					<div id="accordion" class="checkout_accordion mt--30" role="tablist">
-						<div class="payment">
-							<div class="che__header" role="tab" id="headingOne">
-								<a class="checkout__title" data-toggle="collapse" href="#collapseOne"
-									aria-expanded="true" aria-controls="collapseOne">
-									<span>Direct Bank Transfer</span>
-								</a>
-							</div>
-							<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
-								data-parent="#accordion">
-								<div class="payment-body">Make your payment directly into our bank account. Please use
-									your Order ID as the payment reference. Your order won’t be shipped until the funds
-									have cleared in our account.</div>
-							</div>
-						</div>
-						<div class="payment">
-							<div class="che__header" role="tab" id="headingTwo">
-								<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseTwo"
-									aria-expanded="false" aria-controls="collapseTwo">
-									<span>Cheque Payment</span>
-								</a>
-							</div>
-							<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
-								data-parent="#accordion">
-								<div class="payment-body">Please send your cheque to Store Name, Store Street, Store
-									Town, Store State / County, Store Postcode.</div>
-							</div>
-						</div>
-						<div class="payment">
-							<div class="che__header" role="tab" id="headingThree">
-								<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseThree"
-									aria-expanded="false" aria-controls="collapseThree">
-									<span>Cash on Delivery</span>
-								</a>
-							</div>
-							<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
-								data-parent="#accordion">
-								<div class="payment-body">Pay with cash upon delivery.</div>
-							</div>
-						</div>
-						<div class="payment">
-							<div class="che__header" role="tab" id="headingFour">
-								<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseFour"
-									aria-expanded="false" aria-controls="collapseFour">
-									<span>PayPal <img src="{% static 'images/icons/payment.png' %}"
-											alt="payment images"> </span>
-								</a>
-							</div>
-							<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
-								data-parent="#accordion">
-								<div class="payment-body">Pay with cash upon delivery.</div>
-							</div>
-						</div>
-					</div><br><br><br><br>
+						<li> Price ({{ cart_count }} Items) <span> {{ cart_total }} </span></li>
+						<!-- if coupen apply -->
+						<li>Coupon {% if coupon_applied %} Applied {{ coupon_name }} {% endif %} <span>
+								{% if discount_amount %} - {{ discount_amount }} {% else %} - 00 {% endif %} </span>
+						</li>
+						<li>Delivery Charges <span> 00 </span></li>
 
 
-					<input type="submit" id="submit" name="submit" value="checkout"
-						style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
 
+					</ul>
+
+					<ul class="total__amount">
+						<li>Total Amount <span>{{ cart_total_afterdiscount }}</span></li>
+					</ul>
 				</div>
-			</form>
-		</div>
+				<div id="accordion" class="checkout_accordion mt--30" role="tablist">
+					<div class="payment">
+						<div class="che__header" role="tab" id="headingOne">
+							<a class="checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+								aria-controls="collapseOne">
+								<span>Direct Bank Transfer</span>
+							</a>
+						</div>
+						<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
+							data-parent="#accordion">
+							<div class="payment-body">Make your payment directly into our bank account. Please use
+								your Order ID as the payment reference. Your order won’t be shipped until the funds
+								have cleared in our account.</div>
+						</div>
+					</div>
+					<div class="payment">
+						<div class="che__header" role="tab" id="headingTwo">
+							<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseTwo"
+								aria-expanded="false" aria-controls="collapseTwo">
+								<span>Cheque Payment</span>
+							</a>
+						</div>
+						<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+							data-parent="#accordion">
+							<div class="payment-body">Please send your cheque to Store Name, Store Street, Store
+								Town, Store State / County, Store Postcode.</div>
+						</div>
+					</div>
+					<div class="payment">
+						<div class="che__header" role="tab" id="headingThree">
+							<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseThree"
+								aria-expanded="false" aria-controls="collapseThree">
+								<span>Cash on Delivery</span>
+							</a>
+						</div>
+						<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
+							data-parent="#accordion">
+							<div class="payment-body">Pay with cash upon delivery.</div>
+						</div>
+					</div>
+					<div class="payment">
+						<div class="che__header" role="tab" id="headingFour">
+							<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseFour"
+								aria-expanded="false" aria-controls="collapseFour">
+								<span>PayPal <img src="{% static 'images/icons/payment.png' %}" alt="payment images">
+								</span>
+							</a>
+						</div>
+						<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
+							data-parent="#accordion">
+							<div class="payment-body">Pay with cash upon delivery.</div>
+						</div>
+					</div>
+				</div><br><br><br><br>
+
+
+				<input type="submit" id="submit" name="submit" value="checkout"
+					style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
+
+			</div>
+		</form>
+		<!-- </div> -->
 	</div>
 </section>
 <!-- End Checkout Area -->
