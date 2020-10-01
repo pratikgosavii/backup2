@@ -71,7 +71,7 @@
 					</div>
 					<div class="checkout_info">
 						<span>Have a coupon? </span>
-						<a class="showcoupon" href="#">Click here to enter your code</a>
+						<a class="showcoupon" href="#">Click here</a>
 					</div>
 					<div class="checkout_coupon">
 
@@ -89,34 +89,63 @@
 			</div>
 		</div>
 		<!-- <div class=""> -->
-		<form action="placeorder" method="post" class="p-3 p-md-none row" id="billing-form">
+		<form action="placeorder" method="post"  class="p-3 p-md-none row" id="billing-form">
 			{% csrf_token %}
 
 			
 		
 
-			<div class="col-lg-6 col-12">
-
+			<div class="col-lg-6 col-12" style="padding-left: 0px;">
+			
+			
+			<!--  saved address code       -->
 			<div>
 				<div class="checkout_info">
-					<span>Have a coupon? </span>
-					<a class="showaddress"  href="#">Click here to enter your code</a>
+					<span>Delivery address. </span>
+					<a class="showaddress"  href="#">Click here</a>
 				</div>
 				
 				<div class="checkout_address">
 
 					<div class="form__coupon">
-						<form action="{% url 'apply_coupon' %}" method="post">
-							{% csrf_token %}
-							<input type="text" name="code" placeholder="Coupon code">
-							<input type="submit" id="submit" name="submit" value="Apply coupon"
-								style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
-						</form>
+						<!-- code inside -->
+						<div class="container-fluid" >
+							<div class="row">
+								<div class="col-12 mt-3" style="padding: 0px 0px;">
+									{% for dest in saved_user_address %}
+									<div class="card mb-3">
+										<div class="card-horizontal">
+											<div style="float:left;">
+												<input type="radio" id="male" name="gender" value="male">
+											</div>
+											<div class="card-body">
+												<h4 class="card-title">{{ dest.product_id.name }}</h4>
+												<p class="card-text">
+													<!-- {{price}} --> {{ dest.product_id.standard }}
+													{{ dest.product_id.pattern }}</p>
+												<p class="card-text">
+													<!-- {{price}} -->{{ dest.product_id.price }} ₹</p><br>
+											</div>
+										</div>
+										<div class="my-3">
+											<div class="btn mx-2 btn-primary">save for latter</div>
+											<div class="btn mx-2 btn-danger">remove</div>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+
+						<!-- code inside close -->
+
 					</div>
 
 				</div>
 
 			</div>
+
+			<!-- saved address code close-->
 		
 				<div class="customer_details">
 
@@ -167,10 +196,10 @@
 
 				</div>
 				<div class="margin_between">
-					<div class="container-fluid" style="padding-left:0px;">
+					<div class="container-fluid" >
 						<div class="row">
 							<div class="col-12 mt-3" style="padding: 0px 0px;">
-								{% for dest in dests %}
+								{% for dest in dests_checkout_products %}
 								<div class="card mb-3">
 									<div class="card-horizontal">
 										<div style="float:left;">
@@ -227,14 +256,14 @@
 						<div class="che__header" role="tab" id="headingOne">
 							<a class="checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="true"
 								aria-controls="collapseOne">
-								<span>Direct Bank Transfer</span>
+								<span>Online Payment</span>
 							</a>
 						</div>
 						<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
 							data-parent="#accordion">
-							<div class="payment-body">Make your payment directly into our bank account. Please use
-								your Order ID as the payment reference. Your order won’t be shipped until the funds
-								have cleared in our account.</div>
+							<div class="payment-body">Make your payment directly into our PhonePay/GooglePay account. Please Make payment when the delivery guy came for delivery.
+								
+							</div>
 						</div>
 					</div>
 					<div class="payment">
@@ -246,8 +275,9 @@
 						</div>
 						<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
 							data-parent="#accordion">
-							<div class="payment-body">Please send your cheque to Store Name, Store Street, Store
-								Town, Store State / County, Store Postcode.</div>
+							<div class="payment-body">
+								You can write check and hand it over to our delivey boy.
+							</div>
 						</div>
 					</div>
 					<div class="payment">
