@@ -7704,7 +7704,8 @@ h3.widget-title-modal {
   ----------------------------*/
 
 .checkout_login,
-.checkout_coupon {
+.checkout_coupon,
+.checkout_address {
     display: none;
 }
 
@@ -7734,6 +7735,12 @@ h3.widget-title-modal {
 
 .checkout_info a.showlogin,
 .checkout_info a.showcoupon {
+    color: #e59285;
+    font-size: 12px;
+}
+
+.checkout_info a.checkoutAddress,
+.checkout_info a.showaddress {
     color: #e59285;
     font-size: 12px;
 }
@@ -7815,7 +7822,24 @@ h3.widget-title-modal {
     text-align: left;
 }
 
+.checkout_address {
+    border: 1px solid #d3ced2;
+    border-radius: 5px;
+    margin: 2em 0;
+    padding: 20px;
+    text-align: left;
+}
+
 .checkout_coupon .form__coupon input {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 0;
+    height: 40px;
+    max-width: 100%;
+    padding: 0 0 0 10px;
+}
+
+.checkout_address .form__coupon input {
     background: #fff none repeat scroll 0 0;
     border: 1px solid #e1e1e1;
     border-radius: 0;
@@ -7839,7 +7863,26 @@ h3.widget-title-modal {
     border: 0 none;
 }
 
+.checkout_address .form__coupon button {
+    background: #2e2e2e none repeat scroll 0 0;
+    border-radius: 0;
+    color: #fff;
+    margin-left: 6px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 34px;
+    padding: 2px 20px 0;
+    text-transform: uppercase;
+    transition: all 0.4s ease 0s;
+    border: 0 none;
+}
+
 .checkout_coupon .form__coupon button:hover {
+    color: #e59285;
+}
+
+.checkout_address .form__coupon button:hover {
     color: #e59285;
 }
 

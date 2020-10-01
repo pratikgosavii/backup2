@@ -91,8 +91,30 @@
 		<!-- <div class=""> -->
 		<form action="placeorder" method="post" class="p-3 p-md-none row" id="billing-form">
 			{% csrf_token %}
+
+			
+		
+
 			<div class="col-lg-6 col-12">
 
+				<div class="checkout_info">
+					<span>Have a coupon? </span>
+					<a class="showaddress"  href="#">Click here to enter your code</a>
+				</div>
+				
+				<div class="checkout_address">
+
+					<div class="form__coupon">
+						<form action="{% url 'apply_coupon' %}" method="post">
+							{% csrf_token %}
+							<input type="text" name="code" placeholder="Coupon code">
+							<input type="submit" id="submit" name="submit" value="Apply coupon"
+								style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
+						</form>
+					</div>
+
+				</div>
+		
 				<div class="customer_details">
 
 					<h3>Billing details</h3>

@@ -467,6 +467,18 @@
         });
     }
     checkoutCoupon();
+
+    function checkoutAddress() {
+        var showLogin = $('.showaddress');
+        var form = $('.checkout_address');
+        showLogin.on('click', function(e) {
+            e.preventDefault();
+            form.slideToggle();
+            form.remove('style');
+        });
+    }
+    checkoutAddress();
+
     $('.wn__accountbox').on('click', function() {
         $('.account__field').slideToggle().remove('style');
     });
