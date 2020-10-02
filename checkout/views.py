@@ -156,7 +156,7 @@ def place_order(request):
                 order_place.save()
                 print('and now here')
 
-            delete_usercart_data = cart.objects.filter(buyer = request.user).delete()
+            cart.objects.filter(buyer = request.user).delete()
 
             return HttpResponseRedirect(reverse('index'))
                 
