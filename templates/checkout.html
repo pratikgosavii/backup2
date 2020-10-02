@@ -74,7 +74,7 @@
 						<a class="showcoupon" href="#">Click here</a>
 					</div>
 					<div class="checkout_coupon">
-
+						<h1>hc</h1>
 						<div class="form__coupon">
 							<form action="{% url 'apply_coupon' %}" method="post">
 								{% csrf_token %}
@@ -105,96 +105,128 @@
 					<a class="showaddress"  href="#">Click here</a>
 				</div>
 				
-				<div class="checkout_address">
+				<div class="checkout_address" style="border:0px;">
+					<div class="saved_address" style="margin: 0 0;">
 
-					<div class="form__coupon">
-						<!-- code inside -->
-						<div class="container-fluid" >
-							<div class="row">
-								<div class="col-12 mt-3" style="padding: 0px 0px;">
-									{% for dest in saved_user_address %}
-									<div class="card mb-3">
-										<div class="card-horizontal">
-											<div style="float:left;">
-												<input type="radio" id="male" name="gender" value="male">
-											</div>
-											<div class="card-body">
-												<h4 class="card-title">{{ dest.product_id.name }}</h4>
-												<p class="card-text">
-													<!-- {{price}} --> {{ dest.product_id.standard }}
-													{{ dest.product_id.pattern }}</p>
-												<p class="card-text">
-													<!-- {{price}} -->{{ dest.product_id.price }} ₹</p><br>
-											</div>
-										</div>
-										<div class="my-3">
-											<div class="btn mx-2 btn-primary">save for latter</div>
-											<div class="btn mx-2 btn-danger">remove</div>
-										</div>
+						<div class="form__coupon">
+							<!-- code inside -->
+							
+							<div class="margin_between">
+							<div class="container-fluid" >
+								<div class="row">
+									<div class="col-12 mt-3" style="padding: 0px 0px;border:0px;">
+										{% if saved_user_address %}
+											{% for dest in saved_user_address %}
+												<div class="card mb-3" style="border:0px;">
+													<div class="card-horizontal">
+														<div>
+															<input type="radio" class="radio_button" name="address_number1" value="{{ dest.id }}">
+														</div>
+														<div class="card-body">
+															<h4 class="card-title">{{ dest.name }} {{ dest.mobilenumber }} </h4>
+															<p class="card-text">
+																<!-- {{price}} --> {{ dest.address_full }}, Akola
+																{{ dest.pincode }}</p>
+														
+														</div>
+													</div>
+													<div class="my-3" style="margin-left:37px;">
+														<a class="showaddress" style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;" href="#">Deliver here</a>
+													</div>
+												</div>
+												<hr>
+											{% endfor %}
+										{% else %}
+
+										<h1>dgsudgsgdugsd</h1>
+
+										{% endif %}
 									</div>
-									{% endfor %}
 								</div>
 							</div>
-						</div>
+							</div>
 
-						<!-- code inside close -->
+							<!-- code inside close -->
+
+						</div>
 
 					</div>
 
-				</div>
+					<!-- add new address code  -->
 
+					<div class="checkout_info" style="margin-top:20px;">
+						<span>Delivery address. </span>
+						<a class="showaddaddress"  href="#">Click here</a>
+					</div>
+
+					<!-- code inside add address -->
+					<div class="checkout_addaddress">
+						
+						<div class="form__coupon">
+							
+							<div class="customer_details">
+
+					
+								<div class="customar__field">
+									<div class="row">
+										<div class="input_box col-6">
+
+											<input type="text" name="name" placeholder="Name">
+										</div>
+										<div class="input_box col-6">
+
+											<input type="text" name="mobilenumber" placeholder="Mobile number">
+										</div>
+									</div>
+									<div class="row">
+										<div class="input_box col-6">
+
+											<input type="text" name="pincode" placeholder="Pincode">
+										</div>
+										<div class="input_box col-6">
+
+											<input type="text" value="Akola" readonly>
+										</div>
+									</div>
+
+									<div class="input_box d-flex">
+
+										Full address<textarea rows="3" cols="50" placeholder="sdsd" style="border: 1px solid #e1e1e1;"
+											name="fulladdress" placeholder="Address (Area and Street)"> </textarea>
+									</div>
+
+									<div class="row">
+
+										<div class="input_box col-6">
+											<input type="text" name="landmark" placeholder="Landmark (optional)">
+										</div>
+
+
+										<div class="input_box col-6">
+											<input type="text" name="addresstype" placeholder="addres type">
+										</div>
+
+										<a class="showaddaddress" style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;float:right;" href="#">Deliver Here</a>
+										
+									</div>
+
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<!-- code inside add address close -->
+
+				</div>
 			</div>
 
 			<!-- saved address code close-->
 		
-				<div class="customer_details">
-
-					<h3>Billing details</h3>
-					<div class="customar__field">
-						<div class="row">
-							<div class="input_box col-6">
-
-								<input type="text" name="name" placeholder="Name">
-							</div>
-							<div class="input_box col-6">
-
-								<input type="text" name="mobilenumber" placeholder="Mobile number">
-							</div>
-						</div>
-						<div class="row">
-							<div class="input_box col-6">
-
-								<input type="text" name="pincode" placeholder="Pincode">
-							</div>
-							<div class="input_box col-6">
-
-								<input type="text" value="Akola" readonly>
-							</div>
-						</div>
-
-						<div class="input_box d-flex">
-
-							<textarea rows="3" cols="50" placeholder="sdsd" style="border: 1px solid #e1e1e1;"
-								name="fulladdress" placeholder="Address (Area and Street)"> </textarea>
-						</div>
-
-						<div class="row">
-
-							<div class="input_box col-6">
-								<input type="text" name="landmark" placeholder="Landmark (optional)">
-							</div>
-
-
-							<div class="input_box col-6">
-								<input type="text" name="addresstype" placeholder="addres type">
-							</div>
-
-						</div>
-
-
-					</div>
-
-				</div>
+				
 				<div class="margin_between">
 					<div class="container-fluid" >
 						<div class="row">

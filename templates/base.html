@@ -535,10 +535,10 @@
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<li class="shop_search"><a class="search__active" href="#"></a></li>
 							<li class="wishlist"><a href="{% url 'user_wishlist' %}"></a></li>
-							<li class="shopcart"><a class="cartbox_active"><span class="product_qun">{% if cart_count is not None %}{{ cart_count }}{% else %}0{% endif %}</span></a>
+							<li class="shopcart"><a class="cartbox_active"><span class="product_qun">{% if cart_count_home is not None %}{{ cart_count_home }}{% else %}0{% endif %}</span></a>
 							{% if user.is_authenticated %}
 							
-								{% if dests_usercart %}
+								{% if dests_usercart_home %}
 
 								<!-- Start Shopping Cart -->
 								<div class="block-minicart minicart__active">
@@ -550,7 +550,7 @@
 										
 
 										<div class="items-total d-flex justify-content-between">
-											<span>{{ cart_count }} items</span>
+											<span>{{ cart_count_home }} items</span>
 											<span>Cart Subtotal</span>
 										</div>
 										<div class="total_amount text-right">
@@ -562,7 +562,7 @@
 										<div class="single__items">
 											<div class="miniproduct" style="margin-top:-10px;height:253px;overflow-y:scroll;">
 
-												{% for dest_usercart in dests_usercart %}
+												{% for dest_usercart in dests_usercart_home %}
 
 													<div class="item01 d-flex mt--20">
 														<div class="thumb">

@@ -21,7 +21,8 @@ import pyrebase
 def checkout_page(request):
 
     if request.user.is_authenticated:
-        dests = cart.objects.filter(buyer = request.user)
+
+        dests_checkout_products = cart.objects.filter(buyer = request.user)
         now = datetime.datetime.now()
         print('000000000000------------------------000000000')
         print(now)
@@ -30,7 +31,7 @@ def checkout_page(request):
 
         cart_total = 0
 
-        for dest in dests:
+        for dest in dests_checkout_products:
 
             cart_total = cart_total + int(dest.product_id.price)
         print('cart total')
@@ -50,16 +51,20 @@ def checkout_page(request):
             coupon_name = None
             coupon_applied = None
 
+        saved_user_address = user_address_detail.objects.filter(buyer = request.user)
+        print(saved_user_address)
+
         
         context= {
 
-            'dests' : dests,
+            'dests_checkout_products' : dests_checkout_products,
             'cart_count' : cart_count,
             'cart_total' : cart_total,
             'discount_amount' : discount_amount,
             'cart_total_afterdiscount' : cart_total_afterdiscount,
             'coupon_name' : coupon_name,
-            'coupon_applied' : coupon_applied
+            'coupon_applied' : coupon_applied,
+            'saved_user_address' : saved_user_address
             }
 
         return render(request, 'checkout.html', context)
@@ -88,7 +93,7 @@ def place_order(request):
             
 
             if address_number:
-                address_data = user_address_detail.objects.get(id = address_number)
+                pass
             
             else:
 
@@ -118,9 +123,9 @@ def place_order(request):
                 address_data_1 = user_address_detail.objects.filter(buyer = request.user)
                 
                 for x in address_data_1:
-                    address_data_id = address_data_1.id
+                    address_data_id = x.id
                 
-                address_data = user_address_detail.objects.get(id = address_data_1)
+                address_data = user_address_detail.objects.get(id = address_data_id)
 
             book_data = cart.objects.filter(buyer = request.user)
             
@@ -150,7 +155,7 @@ def place_order(request):
                 order_place = placedorder_book.objects.create(buyer = request.user, placedorder_book = placedorder_book_data, address = address, coupon = coupon_data, order_status = order_status, date_time = date_time)
                 order_place.save()
                 print('and now here')
-                return HttpResponseRedirect(reverse('login_signup_home'))
+            return HttpResponseRedirect(reverse('login_signup_home'))
                 
 
         else:

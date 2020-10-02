@@ -10,35 +10,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def index(request):
 
-    if request.user.is_authenticated:
-
-        dests_usercart = cart.objects.filter(buyer=request.user)
-
-        cart_count = cart.objects.filter(buyer = request.user).count()
-    
-        if cart_count == 0:
-            cart_count = None
-            subtotal = 0
-
-            print('i am in dumass')
-
-        
-
-        else:
-
-            subtotal = 0
-
-            for dest in dests_usercart:
-                subtotal = subtotal + int(dest.product_id.price)
-
-           
-           
-
-    else:
-        dests_usercart = None
-        cart_count = None
-        subtotal = 0
-
 
     #categories on homescreen view
 
@@ -59,10 +30,7 @@ def index(request):
 
     context= {
 
-        'cart_count' : cart_count,
         'dests_categoryall_count' : dests_categoryall_count,
-        'dests_usercart' : dests_usercart,
-        'totalprice' : subtotal,
         'dests_categoryall' :  dests_categoryall,
         'dests_categorybiographic' : dests_categorybiographic,
         'dests_categoryadventure' : dests_categoryadventure,
