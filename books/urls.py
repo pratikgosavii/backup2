@@ -22,9 +22,9 @@ from . import views
 
 
 urlpatterns = [
-
     path('',include('home.urls')),
     path('coupons/', include('coupons.urls')),
+    path('my-orders', include('myorders.urls')),
     path('checkout/', include('checkout.urls')),
     path('social-auth/', include('social_django.urls')),
     path('checkout/',include('checkout.urls')),
