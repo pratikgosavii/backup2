@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}MY ACCOUNT{% endblock %}
+
+{% block styles %} 
+    <style>
+        a.card {
+            cursor: pointer;
+            transition: all .347s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card:hover {
+            background: #f2f2f2;
+        }
+       .card-img {
+           background: #ccc;
+           height: 91px;
+       }
+    </style>
+{% endblock %}
+{% block content %}
+<section class="wn__product__area brown--color pt--80  pb--30">
+    <div class="container">
+        <h2 class="my-3">Your Account</h2>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <a href="{% url 'my-orders' %}" class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <div class="card-img">
+                                <!-- <i class="fa fa-car fa-5x mx-auto text-white"></i> -->
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title mb-0">Your orders</h4>
+                                <p class="card-text">track, return, or buy again</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-md-4 col-sm-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <div class="card-img"></div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title mb-0">Login & Security</h4>
+                                <p class="card-text">Manage account, change password</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <div class="card-img"></div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title mb-0">Your ASddress</h4>
+                                <p class="card-text">Change addresses for orders & gifts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+</section>
+{% endblock %}
