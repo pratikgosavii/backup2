@@ -155,7 +155,10 @@ def place_order(request):
                 order_place = placedorder_book.objects.create(buyer = request.user, placedorder_book = placedorder_book_data, address = address, coupon = coupon_data, order_status = order_status, date_time = date_time)
                 order_place.save()
                 print('and now here')
-            return HttpResponseRedirect(reverse('login_signup_home'))
+
+            delete_usercart_data = cart.objects.filter(buyer = request.user).delete()
+
+            return HttpResponseRedirect(reverse('index'))
                 
 
         else:
