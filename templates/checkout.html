@@ -155,7 +155,7 @@
 					<!-- add new address code  -->
 
 					<div class="checkout_info" style="margin-top:20px;">
-						<span>Delivery address. </span>
+						<span>Add new address. </span>
 						<a class="showaddaddress"  href="#">Click here</a>
 					</div>
 
@@ -206,7 +206,9 @@
 											<input type="text" name="addresstype" placeholder="addres type">
 										</div>
 
-										<a class="showaddaddress" style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;float:right;" href="#">Deliver Here</a>
+										<div class="my-3" style="margin-left:37px;">
+											<a class="showaddress showaddaddress" style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;" href="#">Deliver here</a>
+										</div>
 										
 									</div>
 
@@ -231,28 +233,56 @@
 					<div class="container-fluid" >
 						<div class="row">
 							<div class="col-12 mt-3" style="padding: 0px 0px;">
-								{% for dest in dests_checkout_products %}
-								<div class="card mb-3">
-									<div class="card-horizontal">
-										<div style="float:left;">
-											<img class="imageincart" width="50px" style="margin-left:10px;"
-												src="{{ dest.product_id.bookfront_cover.url }}" alt="Card image cap">
+								{% if productid%}
+									
+									<div class="card mb-3">
+										<div class="card-horizontal">
+											<div style="float:left;">
+												<img class="imageincart" width="50px" style="margin-left:10px;"
+													src="{{ dests_checkout_products.bookfront_cover.url }}" alt="Card image cap">
+											</div>
+											<div class="card-body">
+												<h4 class="card-title">{{ dests_checkout_products.name }}</h4>
+												<p class="card-text">
+													<!-- {{price}} --> {{ dests_checkout_products.standard }}
+													{{ dests_checkout_products.pattern }}</p>
+												<p class="card-text">
+													<!-- {{price}} -->{{dests_checkout_products.price }} ₹</p><br>
+											</div>
 										</div>
-										<div class="card-body">
-											<h4 class="card-title">{{ dest.product_id.name }}</h4>
-											<p class="card-text">
-												<!-- {{price}} --> {{ dest.product_id.standard }}
-												{{ dest.product_id.pattern }}</p>
-											<p class="card-text">
-												<!-- {{price}} -->{{ dest.product_id.price }} ₹</p><br>
+										<div class="my-3">
+											<div class="btn mx-2 btn-primary">save for latter</div>
+											<div class="btn mx-2 btn-danger">remove</div>
 										</div>
 									</div>
-									<div class="my-3">
-										<div class="btn mx-2 btn-primary">save for latter</div>
-										<div class="btn mx-2 btn-danger">remove</div>
+
+								{% else %}
+
+									{% for dest in dests_checkout_products %}
+									<div class="card mb-3">
+										<div class="card-horizontal">
+											<div style="float:left;">
+												<img class="imageincart" width="50px" style="margin-left:10px;"
+													src="{{ dest.product_id.bookfront_cover.url }}" alt="Card image cap">
+											</div>
+											<div class="card-body">
+												<h4 class="card-title">{{ dest.product_id.name }}</h4>
+												<p class="card-text">
+													<!-- {{price}} --> {{ dest.product_id.standard }}
+													{{ dest.product_id.pattern }}</p>
+												<p class="card-text">
+													<!-- {{price}} -->{{ dest.product_id.price }} ₹</p><br>
+											</div>
+										</div>
+										<div class="my-3">
+											<div class="btn mx-2 btn-primary">save for latter</div>
+											<div class="btn mx-2 btn-danger">remove</div>
+										</div>
 									</div>
-								</div>
-								{% endfor %}
+									{% endfor %}
+
+								{% endif %}
+
 							</div>
 						</div>
 					</div>
@@ -268,7 +298,7 @@
 
 
 
-						<li> Price ({{ cart_count }} Items) <span> {{ cart_total }} </span></li>
+						<li> Price ( {% if cart_count %} {{ cart_count }} {% else %} 1 {% endif %} Items) <span> {{ cart_total }} </span></li>
 						<!-- if coupen apply -->
 						<li>Coupon {% if coupon_applied %} Applied {{ coupon_name }} {% endif %} <span>
 								{% if discount_amount %} - {{ discount_amount }} {% else %} - 00 {% endif %} </span>
@@ -339,7 +369,9 @@
 					</div>
 				</div><br><br><br><br>
 
-
+				{% if productid %}
+					<input id="bookid" name="bookid" type="hidden" value="{{ dests_checkout_products.id }}">
+				{% endif %}
 				<input type="submit" id="submit" name="submit" value="checkout"
 					style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
 

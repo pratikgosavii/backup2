@@ -67,14 +67,20 @@
         								<div class="box-tocart d-flex">
         									<span>Qty</span>
         									<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
-											<form action="{% url 'user_cart_addproduct' %}" method="post">
-											{% csrf_token %}
-												<div class="addtocart__actions">
-													<input id="prodId" name="bookid" type="hidden" value="{{ dest.id }}">
-													<button class="tocart" type="submit" title="Add to Cart">Add to Cart</button>
-												</div>
-											</form>
 											
+												<div class="addtocart__actions" >
+												<form action="{% url 'user_cart_addproduct' %}" method="post">
+												{% csrf_token %}
+													<input id="prodId" name="bookid" type="hidden" value="{{ dest.id }}">
+													<button class="tocart" type="submit" style="margin-bottom:20px;" title="Add to Cart">Add to Cart</button>
+												</form>
+												<form action="{% url 'placeorder_single' %}" method="post">
+												{% csrf_token %}
+													<input id="prodId" name="bookid" type="hidden" value="{{ dest.id }}">
+													<button class="tocart" type="submit" style="margin-bottom:20px;" title="Add to Cart">Buy Now</button>
+												</form>
+												</div>
+					
         								</div>			
         								<div class="product-addto-links clearfix">
         									<a class="wishlist" href="Wishlist_addproduct{{dest.id}}"></a>

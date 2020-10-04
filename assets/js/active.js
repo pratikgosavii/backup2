@@ -479,6 +479,17 @@
     }
     checkoutAddress();
 
+    function checkoutAddaddress() {
+        var showLogin = $('.showaddaddress');
+        var form = $('.checkout_addaddress');
+        showLogin.on('click', function(e) {
+            e.preventDefault();
+            form.slideToggle();
+            form.remove('style');
+        });
+    }
+    checkoutAddaddress();
+
     $('.wn__accountbox').on('click', function() {
         $('.account__field').slideToggle().remove('style');
     });

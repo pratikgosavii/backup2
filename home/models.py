@@ -26,6 +26,7 @@ class books(models.Model):
     trending = models.BooleanField(default= False)
     bestseller = models.BooleanField(default= False)
     new = models.BooleanField(default= False)
+    InStock = models.BooleanField(default= True)
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     dec = models.CharField(max_length=50)
