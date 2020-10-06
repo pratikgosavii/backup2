@@ -17,8 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
-
-
 urlpatterns = [
     path('register', views.register, name='register'),
     path('login', views.login, name='login'),
@@ -27,5 +25,5 @@ urlpatterns = [
     path('login_firebase', views.login_firebase, name='login_firebase'),
     path('home', views.home, name='home'),
     path('firebase_login_save', views.firebase_login_save, name='firebase_login_save'),
-
+    path('', include('myorders.urls')),
 ]
