@@ -17,8 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
-
-
 urlpatterns = [
     path('register', views.register, name='register'),
     path('login', views.login, name='login'),
@@ -29,4 +27,5 @@ urlpatterns = [
     path('firebase_login_save', views.firebase_login_save, name='firebase_login_save'),
     path('subscribe', views.subscibers_view, name='subscibers_view'),
 
+    path('', include('myorders.urls')),
 ]

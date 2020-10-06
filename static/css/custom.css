@@ -6,3 +6,71 @@
 	Note: This is custom css. All custom styles (user styles) declare here.
 
 **********************************************************************************/
+
+.sidenav {
+	height: 100%;
+	width: 250px;
+	position: absolute;
+	z-index: 1;
+	border-right: 2px solid #333;
+	overflow-x: hidden;
+	padding-top: 20px;
+	transition: all .3s ease;
+}
+
+.sidenav a {
+	line-height: 2em;
+	margin: 5px;
+	padding: 6px 6px 6px 32px;
+	text-decoration: none;
+	display: block;
+}
+
+.sidenav a:hover {
+	color: #333;
+	background-color: #f2f2f2;
+}
+
+.main {
+	margin-left: 266px;
+	/* Same as the width of the sidenav */
+}
+
+.sidenav-active {
+	transform: translateX(-250px);
+}
+
+@media screen and (max-width: 768px) {
+	.sidenav {
+		padding-top: 15px;
+
+		background-color: #fff;
+		transform: translateX(-250px);
+	}
+
+	.sidenav.sidenav-active {
+		position: fixed;
+		height: 100vh;
+		top: 0;
+		bottom: 0;
+		z-index: 999;
+		border-right: none;
+		width: 100vw;
+		transform: translateX(0px);
+		box-sizing: 3px 5px 2px 2px #333;
+	}
+
+	.main {
+		margin-left: 16px;
+		/* Same as the width of the sidenav */
+	}
+
+	/* .main.sidenav-active {
+		background: yellow;
+		Same as the width of the sidenav
+	} */
+
+	.sidenav a {
+		font-size: 18px;
+	}
+}
