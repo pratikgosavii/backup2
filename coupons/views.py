@@ -22,8 +22,10 @@ def applycoupon(request):
         if form.is_valid():
             print('3')
             code = form.cleaned_data['code']
+            print(code)
 
             couponcheck = coupon.objects.get(code__iexact=code, valid_from__lte=now, valid_to__gte=now, active=True)
+            print(couponcheck)
 
             dests = cart.objects.filter(buyer = request.user)
 
@@ -44,15 +46,17 @@ def applycoupon(request):
                 print(discount_amount)
                 request.session['coupon_name'] = code
                 request.session['discount_amount'] = discount_amount
-                request.session['couon_aplied'] = 'yes'
+                request.session['coupon_applied'] = 'yes'
+                print('yy')
 
 
                 return HttpResponseRedirect(reverse('checkout'))
 
             else:
-
+                
+                print('nono')
                 request.session['discount_amount'] = None
-                request.session['coupon_aplied'] = None
+                request.session['coupon_applied'] = None
 
 
 

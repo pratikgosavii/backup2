@@ -21,7 +21,9 @@ import pyrebase
 def checkout_page(request):
 
     if request.user.is_authenticated:
-        dests = cart.objects.filter(buyer = request.user)
+
+
+        dests_checkout_products = cart.objects.filter(buyer = request.user)
         now = datetime.datetime.now()
         print('000000000000------------------------000000000')
         print(now)
@@ -30,13 +32,15 @@ def checkout_page(request):
 
         cart_total = 0
 
-        for dest in dests:
+        for dest in dests_checkout_products:
 
             cart_total = cart_total + int(dest.product_id.price)
         print('cart total')
         print(cart_total)
 
         if request.session.get('coupon_applied', None) != None:
+
+            print('coupon applid')
 
             coupon_name = request.session.get('coupon_name')
             discount_amount = request.session.get('discount_amount')
@@ -45,28 +49,97 @@ def checkout_page(request):
             cart_total_afterdiscount = cart_total - discount_amount
         
         else: 
+
+            print('coupon not applid')
             cart_total_afterdiscount = cart_total
             discount_amount = None
             coupon_name = None
             coupon_applied = None
 
+        saved_user_address = user_address_detail.objects.filter(buyer = request.user)
+        print(saved_user_address)
+
         
         context= {
 
-            'dests' : dests,
+            'dests_checkout_products' : dests_checkout_products,
             'cart_count' : cart_count,
             'cart_total' : cart_total,
             'discount_amount' : discount_amount,
             'cart_total_afterdiscount' : cart_total_afterdiscount,
             'coupon_name' : coupon_name,
-            'coupon_applied' : coupon_applied
+            'coupon_applied' : coupon_applied,
+            'saved_user_address' : saved_user_address
             }
 
         return render(request, 'checkout.html', context)
+            
+    else:
+
+        return HttpResponseRedirect(reverse('login_signup_home'))
+
+
+
+def checkout_single_product(request):
+
+    if request.user.is_authenticated:
+
+        if request.method == 'POST':
+
+        
+            productid = request.POST['bookid']
+           
+            dests_checkout_products = books.objects.get(id=productid)
+            print(dests_checkout_products)
+            print(dests_checkout_products.price)
+            cart_total = dests_checkout_products.price
+            cart_count = 1
+            
+            if request.session.get('coupon_applied', None) != None:
+                
+                print('coupon applid')
+                coupon_name = request.session.get('coupon_name')
+                discount_amount = request.session.get('discount_amount')
+                coupon_applied = request.session.get('coupon_applied')
+                discount_amount = math.ceil(discount_amount)
+                print('------------')
+                print(discount_amount)
+                cart_total_afterdiscount = int(cart_total) - int(discount_amount)
+            
+            else: 
+                print('coupon not applied')
+                cart_total_afterdiscount = cart_total
+                discount_amount = None
+                coupon_name = None
+                coupon_applied = None
+
+            saved_user_address = user_address_detail.objects.filter(buyer = request.user)
+
+
+            context= {
+
+                    'dests_checkout_products' : dests_checkout_products,
+                    'cart_total' : cart_total,
+                    'cart_count' : cart_count,
+                    'discount_amount' : discount_amount,
+                    'cart_total_afterdiscount' : cart_total_afterdiscount,
+                    'coupon_name' : coupon_name,
+                    'coupon_applied' : coupon_applied,
+                    'saved_user_address' : saved_user_address,
+                    'productid': productid
+                    }
+
+            return render(request, 'checkout.html', context)
+
+        print('something wents worng')
+        return HttpResponseRedirect(reverse('index'))
+
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_signup_home'))
+
+
 
 
 
@@ -88,7 +161,7 @@ def place_order(request):
             
 
             if address_number:
-                address_data = user_address_detail.objects.get(id = address_number)
+                pass
             
             else:
 
@@ -118,39 +191,60 @@ def place_order(request):
                 address_data_1 = user_address_detail.objects.filter(buyer = request.user)
                 
                 for x in address_data_1:
-                    address_data_id = address_data_1.id
+                    address_data_id = x.id
                 
-                address_data = user_address_detail.objects.get(id = address_data_1)
+                address_data = user_address_detail.objects.get(id = address_data_id)
 
             book_data = cart.objects.filter(buyer = request.user)
-            
 
-            for x in book_data:
-                
-                data_in =  x.id
-                print(data_in)
-                placedorder_book_data1 = cart.objects.get(id = data_in)
-                placedorder_book_data2 =  placedorder_book_data1.product_id.id
-                placedorder_book_data = books.objects.get(id = placedorder_book_data2)
+            #coupon code
+            if request.session.get('coupon_applied', None) != None:
+
+                coupon1 = request.session.get('coupon_name')
+                coupon_data = coupon.objects.get(code = coupon1)
+
+            else:
+
+                coupon_data = coupon.objects.get(code = 'none') 
+            bookid = request.POST['bookid']
+            #coupon code end
+
+            if bookid == None:
+                print('none')
+                for x in book_data:
+                    
+                    data_in =  x.id
+                    print(data_in)
+                    placedorder_book_data1 = cart.objects.get(id = data_in)
+                    placedorder_book_data2 =  placedorder_book_data1.product_id.id
+                    placedorder_book_data = books.objects.get(id = placedorder_book_data2)
+                    address = address_data
+
+                    order_status = 1
+                    date_time = datetime.datetime.now()
+                    print('now i am here')
+                    order_place = placedorder_book.objects.create(buyer = request.user, placedorder_book = placedorder_book_data, address = address, coupon = coupon_data, order_status = order_status, date_time = date_time)
+                    order_place.save()
+                    print('and now here')
+                cart.objects.filter(buyer = request.user).delete()
+
+
+            else:
+                single_book_data = books.objects.get(id= bookid)
                 address = address_data
-
-                if request.session.get('coupon_applied', None) != None:
-
-                    coupon1 = request.session.get('coupon_name')
-                    coupon_data = coupon.objects.get(code = coupon1)
-
-                else:
-
-                    coupon_data = coupon.objects.get(code = 'none') 
-
-
+                print('-----------')
+                print(single_book_data)
+                
                 order_status = 1
                 date_time = datetime.datetime.now()
-                print('now i am here')
-                order_place = placedorder_book.objects.create(buyer = request.user, placedorder_book = placedorder_book_data, address = address, coupon = coupon_data, order_status = order_status, date_time = date_time)
+                print('saving single atom')
+
+                order_place = placedorder_book.objects.create(buyer = request.user, placedorder_book = single_book_data, address = address, coupon = coupon_data, order_status = order_status, date_time = date_time)
                 order_place.save()
-                print('and now here')
-                return HttpResponseRedirect(reverse('login_signup_home'))
+
+
+
+            return HttpResponseRedirect(reverse('index'))
                 
 
         else:

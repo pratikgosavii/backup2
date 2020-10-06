@@ -106,6 +106,7 @@ def firebase_login_save(request):
                     data=proceedToLogin(request,email, username, token, provider)
                     return HttpResponse(data)
                 else:
+                    print('print somethings went wrong')
                     return HttpResponse("Invalid Login Request")
             else:
                 if email==user_one["email"]:
@@ -114,12 +115,15 @@ def firebase_login_save(request):
                         data=proceedToLogin(request,email,username,token,provider)
                         return HttpResponse(data)
                     else:
+                        print('Please Verify Your Email to Get Login')
                         return HttpResponse("Please Verify Your Email to Get Login")
                 else:
+                    print('email not found')
                     return HttpResponse("Unknown Email User")
         else:
             return HttpResponse("Invalid Request User Not Found")
     else:
+        print('user with this credential does not exists')  
         return HttpResponse("Bad Request")
 
 
