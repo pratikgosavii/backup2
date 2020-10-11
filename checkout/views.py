@@ -11,6 +11,7 @@ from .forms import user_address_detail_form
 from home.models import books
 import datetime
 from .models import user_address_detail, placedorder_book
+from django.contrib import messages
 from coupons.models import coupon
 import pyrebase
 
@@ -265,3 +266,13 @@ def place_order(request):
 
 
 
+
+
+
+
+
+
+#messages.info(request, 'This is the info message!')
+#messages.error(request, 'ERROR! ERROR!')
+#messages.success(request, 'You registered succesfully')
+#messages.warning(request, 'Be careful!')

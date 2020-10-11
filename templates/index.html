@@ -45,6 +45,80 @@
             <!-- End Single Slide -->
         </div>
 
+
+	{% if messages %}
+		{% for message in messages %}
+			
+			<div class="alert_wrapper">
+				<div class="alert_backdrop"></div>
+				<div class="alert_inner">
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+						<div class="alert_item alert_info">
+							<div class="icon data_icon">
+								<i class="fas fa-info-circle"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Info:</span>
+									User action pending
+								</p>
+								<p class="sub">Lorem ipsum dolor sit amet.</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
+						</div>
+
+					{% endif %}
+
+					<div class="alert_item alert_warning">
+						<div class="icon data_icon">
+							<i class="fas fa-exclamation-triangle"></i>
+						</div>
+						<div class="data">
+							<p class="title"><span>Warning:</span>
+								User action warning
+							</p>
+							<p class="sub">Lorem ipsum dolor sit amet.</p>
+						</div>
+						<div class="icon close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+					<div class="alert_item alert_error">
+						<div class="icon data_icon">
+							<i class="fas fa-bomb"></i>
+						</div>
+						<div class="data">
+							<p class="title"><span>Error:</span>
+								User action error
+							</p>
+							<p class="sub">Lorem ipsum dolor sit amet.</p>
+						</div>
+						<div class="icon close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+					<div class="alert_item alert_success">
+						<div class="icon data_icon">
+							<i class="fas fa-check-circle"></i>
+						</div>
+						<div class="data">
+							<p class="title"><span>Success:</span>
+								User action success
+							</p>
+							<p class="sub">Lorem ipsum dolor sit amet.</p>
+						</div>
+						<div class="icon close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{% endif %}
+    	{% endfor %}
+    {% endif %}
+	
 <br><br>
 <div class="container">
     <div class="d-flex justify-content-center align-items-sm-center justify-content-md-center justify-content-sm-center justify-content-md-center">
@@ -370,10 +444,30 @@
 						</div>
 						<div class="newsletter__block text-center">
 							<p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
-							<form action="#">
+							<form action="{% url 'subscibers_view' %}">
 								<div class="newsletter__box">
-									<input type="email" placeholder="Enter your e-mail">
-									<button>Subscribe</button>
+									<input type="email" name = "data" placeholder="Enter your e-mail">
+									<input type="submit" style="background: transparent none repeat scroll 0 0;
+																border: medium none;
+																color: #333;
+																display: inline-block;
+																font-size: 14px;
+																font-weight: 700;
+																height: 50px;
+																letter-spacing: 0.025em;
+																line-height: 36px;
+																padding: 0 15px 0 35px;
+																position: absolute;
+																right: 0;
+																text-align: center;
+																text-transform: uppercase;
+																top: 0;
+																font-family: Poppins;
+																transition: all 300ms ease-in 0s;-webkit-writing-mode: horizontal-tb !important;
+																text-rendering: auto;word-spacing: normal;text-indent: 0px;
+																text-shadow: none;align-items: flex-start;font: 400 13.3333px Arial;margin: 0;
+																max-width: 100%;
+																vertical-align: baseline;" value="Subscribe">
 								</div>
 							</form>
 						</div>
