@@ -842,32 +842,10 @@
 		</div>
 
 
-
-
-		{% block content %}
 		<section class="wn__product__area brown--color pt--80  pb--30">
-
-			<button class="btn sidenavBtn d-md-none my-2">menu</button>
-			<div class="sidenav">
-				<button class="btn sidenavCloseBtn d-md-none">close</button>
-				<a href="#">My orders</a>
-				<a href="#">Manage Address</a>
-				<a href="#">Account Setting</a>
-				<a href="#">Logout</a>
-			</div>
-
-			<div class="my-5">
-			{% block sidenav-content %}
+			{% block content %}
 			{% endblock %}
-			</div>
 		</section>
-
-
-		{% endblock %}
-
-
-
-
 
 		<!-- Footer Area -->
 		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
@@ -1020,21 +998,6 @@
 	<script src="{% static 'js/plugins.js' %}"></script>
 	<script src="{% static 'js/active.js' %}"></script>
 	<script src="{% static 'js/custom.js' %}"></script>
-	<script>
-		const sidenav = document.querySelector('.sidenav');
-		const sidenavBtn = document.querySelector('.sidenavBtn');
-		const sidenavCloseBtn = document.querySelector('.sidenavCloseBtn');
-	
-		sidenavBtn.addEventListener('click', () => {
-			sidenav.classList.toggle('sidenav-active');
-			document.querySelector('.main').classList.toggle('sidenav-active');
-		});
-	
-		sidenavCloseBtn.addEventListener('click', () => {
-			sidenav.classList.toggle('sidenav-active');
-			document.querySelector('.main').classList.toggle('sidenav-active');
-		});
-	</script>
 
 	{% block script %}
 	{% endblock %}
