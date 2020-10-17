@@ -3,6 +3,7 @@ from cart.models import cart
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
 from .models import books
+from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
@@ -41,6 +42,7 @@ def index(request):
         
     }
 
+
     return render(request, 'index.html', context)
 
 
@@ -61,6 +63,8 @@ def trending(request):
 
 
     posts = books.objects.filter(trending = True)
+
+    #yaha e agar koi book na mile toh message dikhana hai scrren ke uper alert ma nhi
 
    
     page = request.GET.get('page',1)

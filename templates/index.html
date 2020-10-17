@@ -61,7 +61,7 @@
 								<p class="title"><span>Info:</span>
 									User action pending
 								</p>
-								<p class="sub">Lorem ipsum dolor sit amet.</p>
+								<p class="sub">  {{ message }}</p>
 							</div>
 							<div class="icon close">
 								<i class="fas fa-times"></i>
@@ -70,52 +70,67 @@
 
 					{% endif %}
 
-					<div class="alert_item alert_warning">
-						<div class="icon data_icon">
-							<i class="fas fa-exclamation-triangle"></i>
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+
+						<div class="alert_item alert_warning">
+							<div class="icon data_icon">
+								<i class="fas fa-exclamation-triangle"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Warning:</span>
+									User action warning
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
 						</div>
-						<div class="data">
-							<p class="title"><span>Warning:</span>
-								User action warning
-							</p>
-							<p class="sub">Lorem ipsum dolor sit amet.</p>
+
+					{% endif %}
+
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+
+						<div class="alert_item alert_error">
+							<div class="icon data_icon">
+								<i class="fas fa-bomb"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Error:</span>
+									User action error
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
 						</div>
-						<div class="icon close">
-							<i class="fas fa-times"></i>
-						</div>
-					</div>
-					<div class="alert_item alert_error">
-						<div class="icon data_icon">
-							<i class="fas fa-bomb"></i>
-						</div>
-						<div class="data">
-							<p class="title"><span>Error:</span>
-								User action error
-							</p>
-							<p class="sub">Lorem ipsum dolor sit amet.</p>
-						</div>
-						<div class="icon close">
-							<i class="fas fa-times"></i>
-						</div>
-					</div>
-					<div class="alert_item alert_success">
-						<div class="icon data_icon">
-							<i class="fas fa-check-circle"></i>
-						</div>
-						<div class="data">
-							<p class="title"><span>Success:</span>
-								User action success
-							</p>
-							<p class="sub">Lorem ipsum dolor sit amet.</p>
-						</div>
-						<div class="icon close">
-							<i class="fas fa-times"></i>
-						</div>
+
+					{% endif %}
+
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+						<div class="alert_item alert_success">
+							<div class="icon data_icon">
+								<i class="fas fa-check-circle"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Success:</span>
+									User action success
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
+
+					{% endif %}
+
 					</div>
 				</div>
 			</div>
 
-			{% endif %}
+			
     	{% endfor %}
     {% endif %}
 	

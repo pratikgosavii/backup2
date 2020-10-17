@@ -17,7 +17,9 @@ class user_address_detail_form(forms.ModelForm):
         fields = ['name', 'mobilenumber', 'pincode', 'address_full', 'landmark', 'addresstype']
 
 
+class CouponApplyForm(forms.Form):
 
+    code = forms.CharField()
 
     
     

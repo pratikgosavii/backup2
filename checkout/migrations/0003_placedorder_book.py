@@ -9,7 +9,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('coupons', '0001_initial'),
+       
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('checkout', '0002_auto_20200928_0032'),
     ]

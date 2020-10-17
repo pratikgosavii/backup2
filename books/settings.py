@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'coupons.apps.CouponsConfig',
     'checkout.apps.CheckoutConfig',
     'home.apps.HomeConfig',
     'cart.apps.CartConfig',

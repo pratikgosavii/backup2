@@ -1,4 +1,4 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% static 'images' as baseUrl %}
 
@@ -76,9 +76,10 @@
 					<div class="checkout_coupon">
 						<div class="form__coupon">
 						
-							<form action="{% url 'checkout' %}" method="post">
+							<form action="{% url 'checkout_single' productid  %}" method="post">
 								{% csrf_token %}
 								<input type="text" name="couponcheck" placeholder="Coupon code">
+								<input id="bookid" name="bookid" type="hidden" value="0">
 								<input type="submit" id="submit" name="submit" value="Apply coupon"
 									style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
 							</form>
@@ -252,31 +253,6 @@
 										</div>
 									</div>
 
-								{% else %}
-
-									{% for dest in dests_checkout_products %}
-									<div class="card mb-3">
-										<div class="card-horizontal">
-											<div style="float:left;">
-												<img class="imageincart" width="50px" style="margin-left:10px;"
-													src="{{ dest.product_id.bookfront_cover.url }}" alt="Card image cap">
-											</div>
-											<div class="card-body">
-												<h4 class="card-title">{{ dest.product_id.name }}</h4>
-												<p class="card-text">
-													<!-- {{price}} --> {{ dest.product_id.standard }}
-													{{ dest.product_id.pattern }}</p>
-												<p class="card-text">
-													<!-- {{price}} -->{{ dest.product_id.price }} ₹</p><br>
-											</div>
-										</div>
-										<div class="my-3">
-											<div class="btn mx-2 btn-primary">save for latter</div>
-											<div class="btn mx-2 btn-danger">remove</div>
-										</div>
-									</div>
-									{% endfor %}
-
 								{% endif %}
 
 							</div>
@@ -365,13 +341,14 @@
 					</div>
 				</div><br><br><br><br>
 
-				
+				{% if productid %}
 
-				<input id="bookid" name="bookid" type="hidden" value="cart_checkout">
+					<input id="bookid" name="bookid" type="hidden" value="{{ productid }}">
 
-				<input type="submit" id="submit" name="submit" value="checkout"
+
+				    <input type="submit" id="submit" name="submit" value="checkout"
 					style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
-
+                {% endif %}
 			</div>
 		</form>
 		<!-- </div> -->

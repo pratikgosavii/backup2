@@ -36,6 +36,7 @@
 
 	<!-- Modernizer js -->
 	<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
 	{% block styles %}{% endblock %}
 	<style>
@@ -604,10 +605,10 @@
 							<li class="shop_search"><a class="search__active" href="#"></a></li>
 							<li class="wishlist"><a href="{% url 'user_wishlist' %}"></a></li>
 							<li class="shopcart"><a class="cartbox_active"><span
-										class="product_qun">{% if cart_count is not None %}{{ cart_count }}{% else %}0{% endif %}</span></a>
+										class="product_qun">{% if cart_count_home is not None %}{{ cart_count_home }}{% else %}0{% endif %}</span></a>
 								{% if user.is_authenticated %}
 
-								{% if dests_usercart %}
+								{% if dests_usercart_home %}
 
 								<!-- Start Shopping Cart -->
 								<div class="block-minicart minicart__active">
@@ -636,9 +637,7 @@
 
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="{% url 'single-product' dest_usercart.id %}"><img
-																src="{{ dest_usercart.product_id.bookfront_cover.url }}"
-																alt="product images"></a>
+														<a href="{% url 'single-product' dest_usercart.id %}"><img src="{{ dest_usercart.product_id.bookfront_cover.url }}" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a
@@ -647,11 +646,8 @@
 														<span class="prize">{{ dest_usercart.product_id.price }}</span>
 														<div class="product_prize d-flex justify-content-between">
 															<span class="qun">Qty: 03</span>
-															<ul class="d-flex justify-content-end"
-																style="margin-right:10px;">
-																<li><a
-																		href="{% url 'remove_cartbook_byid' dest_usercart.id %}"><i
-																			class="zmdi zmdi-delete"></i></a></li>
+															<ul class="d-flex justify-content-end" style="margin-right:10px;">
+																<li><a href="{% url 'remove_cartbook_byid' dest_usercart.id %}"><i class="zmdi zmdi-delete"></i></a></li>
 															</ul>
 														</div>
 													</div>
@@ -845,23 +841,25 @@
 
 
 		{% block content %}
-		<section class="wn__product__area brown--color pt--80  pb--30">
+			<section class="wn__product__area brown--color pt--80  pb--30">
 
-			<button class="btn sidenavBtn d-md-none my-2">menu</button>
-			<div class="sidenav">
-				<button class="btn sidenavCloseBtn d-md-none">close</button>
-				<a href="#">My orders</a>
-				<a href="#">Manage Address</a>
-				<a href="#">Account Setting</a>
-				<a href="#">Logout</a>
-			</div>
+				<button class="btn sidenavBtn d-md-none my-2">menu</button>
+				<div class="sidenav">
+					<button class="btn sidenavCloseBtn d-md-none">close</button>
+					<a href="#">My orders</a>
+					<a href="#">Manage Address</a>
+					<a href="#">Account Setting</a>
+					<a href="#">Logout</a>
+				</div>
 
-			<div class="my-5">
-			{% block sidenav-content %}
-			{% endblock %}
-			</div>
-		</section>
+				<div class="my-5">
+				{% block sidenav-content %}
 
+				
+
+				{% endblock %}
+				</div>
+			</section>
 
 		{% endblock %}
 
