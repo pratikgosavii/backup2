@@ -25,7 +25,7 @@ urlpatterns = [
     path('login_firebase', views.login_firebase, name='login_firebase'),
     path('home', views.home, name='home'),
     path('firebase_login_save', views.firebase_login_save, name='firebase_login_save'),
+    path('', views.myaccount, name="my-account"),
     path('subscribe', views.subscibers_view, name='subscibers_view'),
-
     path('', include('myorders.urls')),
 ]
