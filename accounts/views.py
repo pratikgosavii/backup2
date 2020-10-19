@@ -191,5 +191,3 @@ def subscibers_view(request):
 
     return HttpResponseRedirect(reverse('index'))
     
-    
->>>>>>> 926cbba0157713e24d804a1496fac10acd60b449
