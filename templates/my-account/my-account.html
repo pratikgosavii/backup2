@@ -32,24 +32,24 @@
 <div class="container">
     <div class="row pt-4">
         <div class="nav col-3 flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-                aria-controls="v-pills-home" aria-selected="true">My Acoount</a>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                aria-controls="v-pills-profile" aria-selected="false">My Orders</a>
+            <a class="nav-link {{accounts}}" id="v-pills-accounts-tab" data-toggle="pill" href="#v-pills-accounts" role="tab"
+                aria-controls="v-pills-accounts" aria-selected="{% if accounts == 'active' %}true{%else%}false{%endif%}">My Acoount</a>
+            <a class="nav-link {{myorders}}" id="v-pills-myorders-tab" data-toggle="pill" href="#v-pills-myorders" role="tab"
+                aria-controls="v-pills-myorders" aria-selected="{% if myorders == 'active' %}true{%else%}false{%endif%}">My Orders</a>
             <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
                 aria-controls="v-pills-messages" aria-selected="false">Manange Address</a>
             <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
                 aria-controls="v-pills-settings" aria-selected="false">Logout</a>
         </div>
         <div class="tab-content col-9" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="tab-pane fade {% if accounts == 'active' %}active show{%endif%}" id="v-pills-accounts" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab rem in amet esse. Facilis tempora suscipit
                 excepturi quod, doloremque eum qui repellendus facere doloribus magnam amet odit fugiat exercitationem
                 vitae.Vitae error autem provident quibusdam quasi illum accusamus dolorem consectetur ullam nulla itaque
                 corrupti ipsam perspiciatis fugiat pariatur minus dolor obcaecati id, rem quidem suscipit eveniet?
                 Perspiciatis numquam consequatur et!
             </div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade {% if myorders == 'active' %}active show{%endif%}" id="v-pills-myorders" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <div class="h2">Your Orders</div>
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -123,4 +123,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

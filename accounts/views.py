@@ -167,4 +167,13 @@ def home(request):
     return HttpResponseRedirect(reverse('index'))
 
 def myaccount(request):
-    return render(request, 'my-account/my-account.html', context={})
+    context = {
+        "accounts": "active",
+    }
+    return render(request, 'my-account/my-account.html', context)
+
+def myorders(request):
+    context = {
+        "myorders": "active",
+    }
+    return render(request, 'my-account/my-account.html', context)
