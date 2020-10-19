@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from requests import request
 from home.models import books
+from .models import subscibers
 import json
 # Create your views here.
 
@@ -177,3 +178,18 @@ def myorders(request):
         "myorders": "active",
     }
     return render(request, 'my-account/my-account.html', context)
+
+
+
+def subscibers_view(request):
+
+    data = request.POST['subscibers_data']
+
+    instance = subscibers.objects.create(data=data)
+
+    instance.save()
+
+    return HttpResponseRedirect(reverse('index'))
+    
+    
+>>>>>>> 926cbba0157713e24d804a1496fac10acd60b449
