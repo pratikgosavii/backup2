@@ -686,7 +686,7 @@
 													<div class="minicart-content-wrapper">
 
 														<div class="mini_action cart">
-															<a class="cart__btn" href="{% url 'login' %}">Login to View
+															<a class="cart__btn" href="{% url 'login_signup_home' %}">Login to View
 																your cart</a>
 														</div>
 
@@ -747,7 +747,7 @@
 														{% if user.is_authenticated %}
 														<span><a href="{% url 'logout' %}">Logout</a></span>
 														{% else %}
-														<span><a href="{% url 'login' %}">Login In</a></span>
+														<span><a href="{% url 'login_signup_home' %}">Login In</a></span>
 														{% endif %}
 														<span><a href="{% url 'login_signup_home' %}">Create An
 																Account</a></span>
@@ -824,11 +824,12 @@
 		<!-- //Header -->
 		<!-- Start Search Popup -->
 		<div class="brown--color box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
+			<form id="search_mini_form" class="minisearch" action="">
 				<div class="field__search">
 					<input type="text" placeholder="Search entire store here...">
+					
 					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
+						<a href="{% url 'search' %}"><i class="zmdi zmdi-search"></i></a>
 					</div>
 				</div>
 			</form>
@@ -854,8 +855,7 @@
 									<a href="index.html">
 										<img src="{% static 'images/logo/3.png' %}" alt="logo">
 									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority
-										have suffered duskam alteration variations of passages</p>
+									<p>Books are the source of Knowledege, it can be use for bad purpose as wekk as good puropse its depand upon you you want to concure the world or develope the world :- Pratik Gosavi</p>
 								</div>
 								<div class="footer__content">
 									<ul class="social__net social__net--2 d-flex justify-content-center">
@@ -885,7 +885,7 @@
 						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="copyright">
 								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="#">Boose.</a> All Rights
+									<p>Copyright <i class="fa fa-copyright"></i> <a href="#">Boighor.</a> All Rights
 										Reserved</p>
 								</div>
 							</div>

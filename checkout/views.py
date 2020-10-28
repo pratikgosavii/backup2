@@ -18,6 +18,7 @@ from .models import coupon_here
 import pyrebase
 
 
+
 # Create your views here.
 
 
@@ -49,8 +50,9 @@ def checkout_page(request):
 
             #check of coupon session
             if request.session.get('coupon_applied', None) != None:
-            
+                print('kai kru')
                 coupon_name = request.session.get('coupon_name')
+                print(coupon_name)
                 couponcheck = coupon_here.objects.get(code__iexact=coupon_name, valid_from__lte=now, valid_to__gte=now, active=True)
 
                 if couponcheck:
@@ -259,7 +261,7 @@ def place_order(request):
 
             #step1 table1 
             #code for saving address (new address) 
-            
+          
             address_number = request.POST['address_number1']
             
             if address_number:
@@ -312,7 +314,7 @@ def place_order(request):
 
             else:
 
-                coupon_data = None
+                coupon_data = coupon_here.objects.get(id = 1)
             book_id = request.POST['bookid']
             print(book_id)
             #coupon code end

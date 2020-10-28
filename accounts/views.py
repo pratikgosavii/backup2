@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from requests import request
 from home.models import books
+from checkout.models import user_address_detail, placedorder_book
 from .models import subscibers
 import json
 # Create your views here.
@@ -32,9 +33,9 @@ def login(request):
             return render(request, 'loginsignup.html')
 
     else:
+        return render(request, 'index.html')
         messages.warning(request, 'Somethings went wrong, contact us')
-        return render(request, 'loginsignup.html')
-
+        
 
 
 def loginsignuphome(request):
@@ -180,4 +181,24 @@ def subscibers_view(request):
 
     return HttpResponseRedirect(reverse('index'))
     
+
+
+
+def myaccount(request):
+    
+    saved_user_addresses = user_address_detail.objects.filter(buyer= request.user)
+    user_orders_open = placedorder_book.objects.filter(buyer = request.user, order_status = 2)
+    user_orders_cancled = placedorder_book.objects.filter(buyer = request.user, order_status = 7).order_by('date_time')
+    user_orders_all = placedorder_book.objects.filter(buyer = request.user).order_by('date_time')
+
+    context= {
+        
+        'saved_user_addresses' : saved_user_addresses,
+        'user_orders_open': user_orders_open,
+        'user_orders_open_cancled': user_orders_cancled,
+        'user_orders_all': user_orders_all
+    }
+
+
+    return render(request, 'my-account/my-account.html', context)
     
