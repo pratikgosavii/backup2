@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from home.models import books
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def index():
+def index(request):
     if request.user.is_authenticated:
         dests_usercart = cart.objects.filter(buyer=request.user)
         cart_count = cart.objects.filter(buyer = request.user).count()

@@ -74,9 +74,9 @@
 													<input id="prodId" name="bookid" type="hidden" value="{{ dest.id }}">
 													<button class="tocart" type="submit" style="margin-bottom:20px;" title="Add to Cart">Add to Cart</button>
 												</form>
-												<form action="{% url 'placeorder_single' %}" method="post">
-												{% csrf_token %}
-													<input id="prodId" name="bookid" type="hidden" value="{{ dest.id }}">
+												<form action="{% url 'checkout_single' dest.id  %}">
+											
+													
 													<button class="tocart" type="submit" style="margin-bottom:20px;" title="Add to Cart">Buy Now</button>
 												</form>
 												</div>

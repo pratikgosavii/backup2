@@ -36,6 +36,7 @@
 
 	<!-- Modernizer js -->
 	<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
 	{% block styles %}{% endblock %}
 	<style>
@@ -604,10 +605,10 @@
 							<li class="shop_search"><a class="search__active" href="#"></a></li>
 							<li class="wishlist"><a href="{% url 'user_wishlist' %}"></a></li>
 							<li class="shopcart"><a class="cartbox_active"><span
-										class="product_qun">{% if cart_count is not None %}{{ cart_count }}{% else %}0{% endif %}</span></a>
+										class="product_qun">{% if cart_count_home is not None %}{{ cart_count_home }}{% else %}0{% endif %}</span></a>
 								{% if user.is_authenticated %}
 
-								{% if dests_usercart %}
+								{% if dests_usercart_home %}
 
 								<!-- Start Shopping Cart -->
 								<div class="block-minicart minicart__active">
@@ -636,9 +637,7 @@
 
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="{% url 'single-product' dest_usercart.id %}"><img
-																src="{{ dest_usercart.product_id.bookfront_cover.url }}"
-																alt="product images"></a>
+														<a href="{% url 'single-product' dest_usercart.id %}"><img src="{{ dest_usercart.product_id.bookfront_cover.url }}" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a
@@ -647,11 +646,8 @@
 														<span class="prize">{{ dest_usercart.product_id.price }}</span>
 														<div class="product_prize d-flex justify-content-between">
 															<span class="qun">Qty: 03</span>
-															<ul class="d-flex justify-content-end"
-																style="margin-right:10px;">
-																<li><a
-																		href="{% url 'remove_cartbook_byid' dest_usercart.id %}"><i
-																			class="zmdi zmdi-delete"></i></a></li>
+															<ul class="d-flex justify-content-end" style="margin-right:10px;">
+																<li><a href="{% url 'remove_cartbook_byid' dest_usercart.id %}"><i class="zmdi zmdi-delete"></i></a></li>
 															</ul>
 														</div>
 													</div>
@@ -690,7 +686,7 @@
 													<div class="minicart-content-wrapper">
 
 														<div class="mini_action cart">
-															<a class="cart__btn" href="{% url 'login' %}">Login to View
+															<a class="cart__btn" href="{% url 'login_signup_home' %}">Login to View
 																your cart</a>
 														</div>
 
@@ -751,7 +747,7 @@
 														{% if user.is_authenticated %}
 														<span><a href="{% url 'logout' %}">Logout</a></span>
 														{% else %}
-														<span><a href="{% url 'login' %}">Login In</a></span>
+														<span><a href="{% url 'login_signup_home' %}">Login In</a></span>
 														{% endif %}
 														<span><a href="{% url 'login_signup_home' %}">Create An
 																Account</a></span>
@@ -828,11 +824,12 @@
 		<!-- //Header -->
 		<!-- Start Search Popup -->
 		<div class="brown--color box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
+			<form id="search_mini_form" class="minisearch" action="">
 				<div class="field__search">
 					<input type="text" placeholder="Search entire store here...">
+					
 					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
+						<a href="{% url 'search' %}"><i class="zmdi zmdi-search"></i></a>
 					</div>
 				</div>
 			</form>
@@ -858,8 +855,7 @@
 									<a href="index.html">
 										<img src="{% static 'images/logo/3.png' %}" alt="logo">
 									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority
-										have suffered duskam alteration variations of passages</p>
+									<p>Books are the source of Knowledege, it can be use for bad purpose as wekk as good puropse its depand upon you you want to concure the world or develope the world :- Pratik Gosavi</p>
 								</div>
 								<div class="footer__content">
 									<ul class="social__net social__net--2 d-flex justify-content-center">
@@ -889,7 +885,7 @@
 						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="copyright">
 								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="#">Boose.</a> All Rights
+									<p>Copyright <i class="fa fa-copyright"></i> <a href="#">Boighor.</a> All Rights
 										Reserved</p>
 								</div>
 							</div>

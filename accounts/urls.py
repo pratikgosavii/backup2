@@ -28,5 +28,6 @@ urlpatterns = [
     path('', views.myaccount, name="my-account"),
     path('myorders', views.myorders, name="my-orders"),
     path('subscribe', views.subscibers_view, name='subscibers_view'),
+    path('test', views.testview, name='test_view'),
     # path('', include('myorders.urls')),
 ]

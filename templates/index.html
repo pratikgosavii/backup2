@@ -61,7 +61,7 @@
 								<p class="title"><span>Info:</span>
 									User action pending
 								</p>
-								<p class="sub">Lorem ipsum dolor sit amet.</p>
+								<p class="sub">  {{ message }}</p>
 							</div>
 							<div class="icon close">
 								<i class="fas fa-times"></i>
@@ -70,52 +70,67 @@
 
 					{% endif %}
 
-					<div class="alert_item alert_warning">
-						<div class="icon data_icon">
-							<i class="fas fa-exclamation-triangle"></i>
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+
+						<div class="alert_item alert_warning">
+							<div class="icon data_icon">
+								<i class="fas fa-exclamation-triangle"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Warning:</span>
+									User action warning
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
 						</div>
-						<div class="data">
-							<p class="title"><span>Warning:</span>
-								User action warning
-							</p>
-							<p class="sub">Lorem ipsum dolor sit amet.</p>
+
+					{% endif %}
+
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+
+						<div class="alert_item alert_error">
+							<div class="icon data_icon">
+								<i class="fas fa-bomb"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Error:</span>
+									User action error
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
 						</div>
-						<div class="icon close">
-							<i class="fas fa-times"></i>
-						</div>
-					</div>
-					<div class="alert_item alert_error">
-						<div class="icon data_icon">
-							<i class="fas fa-bomb"></i>
-						</div>
-						<div class="data">
-							<p class="title"><span>Error:</span>
-								User action error
-							</p>
-							<p class="sub">Lorem ipsum dolor sit amet.</p>
-						</div>
-						<div class="icon close">
-							<i class="fas fa-times"></i>
-						</div>
-					</div>
-					<div class="alert_item alert_success">
-						<div class="icon data_icon">
-							<i class="fas fa-check-circle"></i>
-						</div>
-						<div class="data">
-							<p class="title"><span>Success:</span>
-								User action success
-							</p>
-							<p class="sub">Lorem ipsum dolor sit amet.</p>
-						</div>
-						<div class="icon close">
-							<i class="fas fa-times"></i>
-						</div>
+
+					{% endif %}
+
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+						<div class="alert_item alert_success">
+							<div class="icon data_icon">
+								<i class="fas fa-check-circle"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Success:</span>
+									User action success
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
+
+					{% endif %}
+
 					</div>
 				</div>
 			</div>
 
-			{% endif %}
+			
     	{% endfor %}
     {% endif %}
 	
@@ -376,7 +391,7 @@
 					<div class="col-lg-12">
 						<div class="section__title text-center">
 							<h2 class="title__be--2">New <span class="color--theme">Books</span></h2>
-							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+							<p>There are many number of books, here are some famous and demanding books</p>
 						</div>
 					</div>
 				</div>
@@ -973,7 +988,7 @@
 						<div class="section__title text-center">
 							<h2 class="title__be--2">Our <span class="color--theme">Blog</span></h2>
 		
-							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered lebmid alteration in some ledmid form</p>
+							<p>You can also write a blog for us. send us the link we will add it here. Thank you</p>
 						</div>
 					</div>
 				</div>

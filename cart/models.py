@@ -16,4 +16,3 @@ class wishlist(models.Model):
 
     product_id =models.ForeignKey(books, related_name='bookswishlist', on_delete=models.CASCADE, default=1)
     buyer = models.ForeignKey(User, related_name='buyerwishlist', on_delete=models.CASCADE, default=1)
-

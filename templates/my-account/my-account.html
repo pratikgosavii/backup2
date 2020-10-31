@@ -42,27 +42,75 @@
                 aria-controls="v-pills-settings" aria-selected="false">Logout</a>
         </div>
         <div class="tab-content col-9" id="v-pills-tabContent">
-            <div class="tab-pane fade {% if accounts == 'active' %}active show{%endif%}" id="v-pills-accounts" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab rem in amet esse. Facilis tempora suscipit
-                excepturi quod, doloremque eum qui repellendus facere doloribus magnam amet odit fugiat exercitationem
-                vitae.Vitae error autem provident quibusdam quasi illum accusamus dolorem consectetur ullam nulla itaque
-                corrupti ipsam perspiciatis fugiat pariatur minus dolor obcaecati id, rem quidem suscipit eveniet?
-                Perspiciatis numquam consequatur et!
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+               
+
+               <div class="form__coupon">
+							
+							<div class="customer_details">
+
+					
+								<div class="customar__field">
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable> Mobile Number</lable>
+											<input type="text" name="name" placeholder="" value="8237377298" readonly>
+										</div>
+										<div class="input_box col-6">
+                                            <lable>Name</lable>
+											<input type="text" name="mobilenumber" value = "pratik gosavi" readonly>
+										</div>
+									</div>
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable>Email</lable>
+											<input type="text" name="pincode" placeholder="Pincode" value = "pratikgosavi654@gmail.com" readonly>
+										</div>
+										<div class="input_box col-6">
+                                             <lable>Location</lable>
+											<input type="text" value="Akola" readonly>
+										</div>
+									</div>
+
+								
+
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable>Birthdate</lable>
+											<input type="text" name="pincode" placeholder="Pincode" value = "19-8-2000" readonly>
+										</div>
+										<div class="input_box col-6">
+                                             <lable>Alternate mobile</lable>
+											<input type="text" value="8830265487" readonly>
+										</div>
+									</div>
+
+
+								</div>
+
+							</div>
+
+						</div>
+               
             </div>
             <div class="tab-pane fade {% if myorders == 'active' %}active show{%endif%}" id="v-pills-myorders" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 <div class="h2">Your Orders</div>
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
-                            role="tab" aria-controls="nav-home" aria-selected="true">Orders</a>
+              
+                            role="tab" aria-controls="nav-home" aria-selected="true">Open Orders</a>
                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                            role="tab" aria-controls="nav-profile" aria-selected="false">Open Orders</a>
+                            role="tab" aria-controls="nav-profile" aria-selected="false">Cancle Orders</a>
                         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-                            role="tab" aria-controls="nav-contact" aria-selected="false">Cancel Orders</a>
+                            role="tab" aria-controls="nav-contact" aria-selected="false">All Orders</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                        {% for dest in user_orders_open %}
+
                         <div class="card my-3">
                             <div class="card-header">
                                 <div class="row px-2">
@@ -70,7 +118,7 @@
                                         <small>
                                             ORDER PLACED
                                         </small><br>
-                                        5 Aug 2020
+                                        {{ dest.date_time }}
                                     </div>
 
                                     <div class="col-3 col-md-6 col-sm-4">
@@ -88,30 +136,155 @@
                                     </div>
                                 </div>
                             </div>
+
+                           
+
                             <div class="card-body row">
                                 <div class="mx-4 col-3 card-img"></div>
                                 <div class="col-7 offset-right-2">
-                                    <h4 class="">Special title treatment</h4>
-                                    <p class="card-text mb-3">With supporting text below as a natural lead-in to
-                                        additional
-                                        content.</p>
-                                    <a href="#" class="btn-sm btn-primary mt-2">Buy Again</a>
+                                    <h4 class=""> {{ dest.placedorder_book.name }} </h4><br>
+                                    <p class="card-text mb-6"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
+                                    <p class="card-text mb-6"> {{ dest.placedorder_book.price }} </p>
+                                    <p class="card-text mb-6"> quantity </p>
+
+                                    <a href="#" class="btn-sm btn-primary mt-2" style="float:right;background-color:#e59285;">Buy Again</a>
+                                    <a href="#" class="btn-sm btn-primary mt-2" style="float:right;background-color:#e59285;">Help</a>
+
                                 </div>
                             </div>
+
                         </div>
+                        <hr>
+                        {% endfor %}
+
                     </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                          {% for dest in user_orders_cancled %}
+
+                        <div class="card my-3">
+                            <div class="card-header">
+                                <div class="row px-2">
+                                    <div class="col-3 col-md-3 col-sm-3">
+                                        <small>
+                                            ORDER PLACED
+                                        </small><br>
+                                        {{ dest.date_time }}
+                                    </div>
+
+                                    <div class="col-3 col-md-6 col-sm-4">
+                                        <small>
+                                            TOTAL
+                                        </small><br>
+                                        5,000
+                                    </div>
+
+                                    <div class="col-6 col-3 col-md-3 col-sm-4">
+                                        <small>
+                                            ORDER # 2131244234
+                                        </small><br>
+                                        <a href="#">Details</a> | <a href="#">Invoice</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+
+                            <div class="card-body row">
+                                <div class="mx-4 col-3 card-img"></div>
+                                <div class="col-7 offset-right-2">
+                                    <h4 class=""> {{ dest.placedorder_book.name }} </h4>
+                                    <p class="card-text mb-3"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
+                                    <p class="card-text mb-3"> {{ dest.placedorder_book.price }} </p>
+                                    <p class="card-text mb-3"> quantity </p>
+
+                                    <a href="#" class="btn-sm btn-primary mt-2">Buy Again</a>
+                                    <a href="#" class="btn-sm btn-primary mt-2" style="float:right;background-color:#e59285;">Help</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+                        {% endfor %}
+
                     </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                          {% for dest in user_orders_all %}
+
+                        <div class="card my-3">
+                            <div class="card-header">
+                                <div class="row px-2">
+                                    <div class="col-3 col-md-3 col-sm-3">
+                                        <small>
+                                            ORDER PLACED
+                                        </small><br>
+                                        {{ dest.date_time }}
+                                    </div>
+
+                                    <div class="col-3 col-md-6 col-sm-4">
+                                        <small>
+                                            TOTAL
+                                        </small><br>
+                                        5,000
+                                    </div>
+
+                                    <div class="col-6 col-3 col-md-3 col-sm-4">
+                                        <small>
+                                            ORDER # 2131244234
+                                        </small><br>
+                                        <a href="#">Details</a> | <a href="#">Invoice</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+
+                            <div class="card-body row">
+                                <div class="mx-4 col-3 card-img"></div>
+                                <div class="col-7 offset-right-2">
+                                    <h4 class=""> {{ dest.placedorder_book.name }} </h4>
+                                    <p class="card-text mb-3"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
+                                    <p class="card-text mb-3"> {{ dest.placedorder_book.price }} </p>
+                                    <p class="card-text mb-3"> quantity </p>
+
+                                    <a href="#" class="btn-sm btn-primary mt-2">Buy Again</a>
+                                    <a href="#" class="btn-sm btn-primary mt-2" style="float:right;background-color:#e59285;">Help</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab rem in amet esse. Facilis tempora suscipit
-                excepturi quod, doloremque eum qui repellendus facere doloribus magnam amet odit fugiat exercitationem
-                vitae.Vitae error autem provident quibusdam quasi illum accusamus dolorem consectetur ullam nulla itaque
-                corrupti ipsam perspiciatis fugiat pariatur minus dolor obcaecati id, rem quidem suscipit eveniet?
-                Perspiciatis numquam consequatur et!
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+
+               {% for dest in saved_user_addresses  %}
+
+                <div class="card my-3">
+                   
+                    <div class="card-body row">
+                       
+                        <div class="col-7 offset-right-2" style="margin-left:10px;">
+                            <div style="color:#585858;font-weight:400;">
+                            <h6 style="color:#707070;margin-top:5px;"> {{ dest.name }} </h6><br>
+                                <p class="card-text mb-6"> {{  dest.address_full }} </p>
+                                <p class="card-text mb-6"> {{ landmaark }} </p>
+                                <p class="card-text mb-6"> Akola - {{ dest.pincode }} </p>
+                                <p class="card-text mb-6"> {{ dest.mobilenumber }} </p>  {% if dest.alternate_mobilenumber %} <p class="card-text mb-6"> if alternate mobile number </p> {% endif %}
+                            </div> <br>
+                            <a href="#" class="btn-sm btn-primary mt-2">edit address</a>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                {% endfor %}
             </div>
             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab rem in amet esse. Facilis tempora suscipit

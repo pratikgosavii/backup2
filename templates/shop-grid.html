@@ -139,8 +139,8 @@
 		        					<div class="col-lg-4 col-md-4 col-sm-6 col-6">
 			        					<div class="product">
 			        						<div class="product__thumb">
-			        							<a class="first__img" href="single-product{{ post.id }}"><img src="{{ post.bookfront_cover.url }}" alt="product image"></a>
-			        							<a class="second__img animation1" href="single-product{{ post.id }}"><img src="{{ post.bookback_cover.url }}" alt="product image"></a>
+			        							<a class="first__img" href="{% url 'single-product' post.id %}"><img src="{{ post.bookfront_cover.url }}" alt="product image"></a>
+			        							<a class="second__img animation1" href="{% url 'single-product' post.id %}"><img src="{{ post.bookback_cover.url }}" alt="product image"></a>
 			        							<div class="new__box">
 			        								<span class="new-label">Hot</span>
 			        							</div>
@@ -161,7 +161,7 @@
 			        							</div>
 			        						</div>
 			        						<div class="product__content">
-			        							<h4><a href="single-product{{ post.id }}">{{ post.name }}</a></h4>
+			        							<h4><a href="{% url 'single-product' post.id %}">{{ post.name }}</a></h4>
 			        							<ul class="rating d-flex">
 			        								<li class="on"><i class="fa fa-star-o"></i></li>
 			        								<li class="on"><i class="fa fa-star-o"></i></li>

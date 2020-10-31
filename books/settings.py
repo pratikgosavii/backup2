@@ -30,19 +30,25 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'coupons.apps.CouponsConfig',
-    'checkout.apps.CheckoutConfig',
-    'home.apps.HomeConfig',
-    'cart.apps.CartConfig',
-    'accounts.apps.AccountsConfig',
-    'study_books.apps.StudyBooksConfig',
+    # 'checkout.apps.CheckoutConfig',
+    # 'home.apps.HomeConfig',
+    # 'cart.apps.CartConfig',
+    # 'accounts.apps.AccountsConfig',
+    # 'study_books.apps.StudyBooksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myorders'
+    'accounts',
+    'cart',
+    'categorybooks',
+    'checkout',
+    'coupons',
+    'home',
+    'myorders',
+    'study_books'
 ]
 
 MIDDLEWARE = [
@@ -78,6 +84,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'books.wsgi.application'
 
+
+
+
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -106,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

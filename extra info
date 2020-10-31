@@ -1,0 +1,19 @@
+# 1 step status
+status 1 order is open 
+status 2 order is accepted 
+status 3 order is packing 
+status 4 outfor shipping 
+status 5 out for delivery 
+status 6 delivered
+status 7 order cancled
+
+#second step status
+
+status 8 complaint raise
+status 9 raise return 
+status 10 return accepted
+status 11 return in progress (delivery man is coming )
+status 12 order picked up
+status 13 order recieved
+ststus 14 return payment is in process
+status 15 payment done
