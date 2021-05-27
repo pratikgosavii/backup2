@@ -1,0 +1,806 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+	
+ {% block content %}
+
+ <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<style>
+
+.drop_mobile{
+
+
+	justify-content: flex-end;
+}
+
+
+
+
+
+@media screen and (max-width: 400px) {
+  .drop_mobile{
+
+	justify-content: space-around;
+	
+	
+
+	}
+
+	
+}
+
+
+
+
+.select {
+    
+    width: 171px;
+}
+
+
+
+div.card_shadow {
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+
+}
+
+
+div.container_shadow {
+  padding: 10px;
+}
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background-color: yellow;
+  padding: 50px;
+  font-size: 20px;
+}
+
+
+
+
+</style>
+
+</head>
+ 
+										{% load mytemplatetags %}
+
+
+ <body onload="url_checkboxs()"
+
+        <!-- Start Bradcaump area -->
+        
+        <!-- End Bradcaump area -->
+        <!-- Start Shop Page -->
+        <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
+        	<div class="container">
+        		<div class="row">
+
+				
+        			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
+        				<div class="shop__sidebar">
+        					<aside class="wedget__categories poroduct--cat">
+        						<h3 class="wedget__title">Filters</h3>
+								<form method="get">
+								<h8> study books filters </h8>
+
+								
+
+								<div>
+
+									<select name="study_filter" id="study_filter">
+										<option value="booksschool">School Books</option>
+										<option value="bookscollege">College Books</option>
+										<option value="booksengineering">Engineering Books</option>
+										<option value="booksmedical">Medical Books</option>
+									</select><br><br>
+
+									<input type="submit">
+									<br><br>
+
+								</div>
+
+								{% comment %} <h8> Categories </h8><br>
+
+								
+
+								
+
+								
+								
+
+								<div>
+
+									<div class="Click-here">See more</div>        
+										<div class="custom-model-main">
+											<div class="custom-model-inner">        
+											<div class="close-btn">×</div>
+												<div class="custom-model-wrap">
+													<div class="pop-up-content-wrap">
+
+														<div class="row1">
+															<div class="column1">
+																<input type="checkbox" id="biographic" name="biographic" value="True">
+																<label for="male">biographic</label><br>
+																<input type="checkbox" id="other" name="other" value="other">
+																<label for="female">other</label><br>
+															</div>
+
+															<div class="column1">
+																<input type="checkbox" id="childern" name="childern" value="True">
+																<label for="male">childern</label><br>
+																<input type="checkbox" id="kids" name="kids" value="kids">
+																<label for="female">kids</label><br>
+															</div>
+
+															<div class="column1">
+																<input type="checkbox" id="cook" name="cook" value="True">
+																<label for="male">cook</label><br>
+															</div>
+
+															<input type="submit" value="See more" >
+
+														</div>
+													</div>
+												</div>  
+											</div>  
+										</div> 
+									</div> {% endcomment %}
+
+        					</aside>
+        					<aside class="wedget__categories pro--range">
+
+
+									
+									
+
+									
+
+
+        						<h3 class="wedget__title">Filter by price</h3>
+        						
+        						<div class="price-slider" style="width: fit-content;margin: 0px 0px;"><span style="">from
+									<input type="number" value="0" style="width: 68px;" name="price-min" id="price-min" min="0" max="3000">	to
+									<input type="number" value="500" style="width: 68px;" name="price-max" id="price-max" min="0" max="3000">
+								
+									
+									</span>
+									<input  name="price1"  value="0" id="price1" min="0" max="3000" step="200" type="range"/>
+									<input  name="price2"  value="500" id="price2" min="0" max="3000" step="200" type="range"/>
+									<svg width="100%" height="24">
+										<line x1="4" y1="0" x2="300" y2="0" stroke="#212121" stroke-width="10" stroke-dasharray="1 34"></line>
+									</svg>
+								</div>
+
+								<br><br>
+
+								<input type="submit" value="submit" />
+
+								
+
+        					</aside>
+        					
+        					<aside class="wedget__categories sidebar--banner">
+								<img src="{% static 'images/others/banner_left.jpg' %}" alt="banner images">
+								<div class="text">
+									<h2>new products</h2>
+									<h6>save up to <br> <strong>40%</strong>off</h6>
+								</div>
+        					</aside>
+        				</div>
+        			</div>
+        			<div class="col-lg-9 col-sm col-12 order-1 order-lg-2">
+        				<div class="row drop_mobile">
+
+						
+	<div style="margin-bottom: 10px;position:relative;top:-16px;">
+							{% if study_filter_dropdown == 'booksschool' or category == 'books_school'  %}
+
+								<div class="btn-group btn-group-inline">
+
+									<div class="dropdown">
+										<button class="btn btn-secondary dropdown-toggle" style="background-color: #B4AB96;border-radius: 0px;" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											-- Standard --
+										</button>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+											<button class="dropdown-item" onclick="standard('All')"  id ="drop1" type="button">All</button>
+											<button class="dropdown-item" onclick="standard('1st')" type="button">1st</button>
+											<button class="dropdown-item" onclick="standard('2nd')" type="button">2nd</button>
+											<button class="dropdown-item" onclick="standard('3rd')" type="button">3rd</button>
+											<button class="dropdown-item" onclick="standard('4th')"  id ="drop1" type="button">4th</button>
+											<button class="dropdown-item" onclick="standard('5th')" type="button">5th</button>
+											<button class="dropdown-item" onclick="standard('6th')" type="button">6th</button>
+											<button class="dropdown-item" onclick="standard('7th')" type="button">7th</button>
+											<button class="dropdown-item" onclick="standard('8th')" type="button">8th</button>
+											<button class="dropdown-item" onclick="standard('9th')" type="button">9th</button>
+											<button class="dropdown-item" onclick="standard('10th')" type="button">10th</button>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="btn-group btn-group-inline">
+								
+									
+									<div class="dropdown">
+										<button class="btn btn-secondary dropdown-toggle" style="background-color: #B4AB96;border-radius: 0px;" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											-- Pattern --
+										</button>
+										<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+											<button class="dropdown-item" onclick="pattern('All')"  id ="drop1" type="button">All</button>
+											<button class="dropdown-item" onclick="pattern('MSBT')" type="button">MSBT</button>
+											<button class="dropdown-item" onclick="pattern('CBSC')" type="button">CBSC</button>
+										
+										</div>
+									</div>
+
+								
+						</div>
+
+						
+								
+									{% elif study_filter_dropdown == 'bookscollege' or category == 'books_college'  %}
+
+
+										<div class="btn-group btn-group-inline">
+											
+											<select id="college_standard" style="font-size: 14px;" id="value_standard" name="standard">
+												<option value="hide">-- Class --</option>
+												<option value="All" rel="icon-temperature">All</option>
+												<option value="11th" rel="icon-temperature">11th</option>	
+												<option value="12th">12th</option>
+											</select>
+
+
+										</div>
+
+
+										<div class="btn-group btn-group-inline">
+										
+											<select id="college_course" style="font-size: 14px;margin-left:20px;" id="value_cource" name="course">
+												<option value="hide">-- Course --</option>
+												<option value="all" rel="icon-temperature">All</option>
+												<option value="computerscience">Computer Science</option>
+												<option value="journalscience">Journal Science</option>
+												<option value="commerce">Commerce</option>
+												<option value="arts">Arts</option>
+												
+											</select> 	
+										
+										</div>
+
+									{% elif study_filter_dropdown == 'booksengineering' or category == 'books_engineering'  %}
+
+										<div class="btn-group btn-group-inline">
+											
+											<select id="engineering_field" style="font-size: 14px;" name="field">
+												<option value="hide">-- Field --</option>
+												<option value="all" rel="icon-temperature">All</option>
+												<option value="informationtechnology">Information Technology</option>
+												<option value="computer">Computer</option>
+												<option value="civil">Civil</option>
+												<option value="mechanical">Mechanical</option>
+												<option value="electronic">Electronic</option>
+												<option value="electrical">Electrical</option>
+
+											</select> 
+
+										</div>
+
+										<div class="btn-group btn-group-inline">
+										
+											<select id="engineering_year" style="font-size: 14px;margin-left:20px;" name="year" >
+												<option value="hide">-- Year --</option>
+												<option value="all" rel="icon-temperature">All</option>
+												<option value="1st" rel="icon-temperature">1st</option>
+												<option value="2nd">2nd</option>
+												<option value="3th">3th</option>
+												<option value="4th">4th</option>
+											</select>
+
+										
+										</div>
+
+									{% elif study_filter_dropdown == 'booksmedical' or category == 'books_medical'  %}
+
+										<div class="btn-group btn-group-inline">
+											
+										<select id="medical_field" style="font-size: 14px;" class="subject">
+											<option value="hide">-- Field --</option>
+											<option value="all" rel="icon-temperature">All</option>
+											<option value="MBBS">MBBS</option>
+											<option value="farmacy">Farmacy</option>
+											<option value="BDS">BDS</option>
+											<option value="veterinary">Veterinary</option>
+										</select>
+
+										</div>
+
+										<div class="btn-group btn-group-inline">
+										
+											<select id="medical_year" style="font-size: 14px;margin-left:20px;" name="class">
+												<option value="hide">-- Year --</option>
+												<option value="all" rel="icon-temperature">All</option>
+												<option value="1st" rel="icon-temperature">1st</option>
+												<option value="2nd">2nd</option>
+												<option value="3th">3th</option>
+												<option value="4th">4th</option>
+											</select>
+										
+										</div>
+
+									{% endif %}
+
+							</div>
+        					<div class="col-lg-12" style="position:relative;top:-16px;height:52px;">
+								<div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap" style="justify-content:space-around;">
+									<div class="shop__list nav justify-content-center" role="tablist">
+			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
+			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
+			                        </div>
+
+									
+
+									<div class="orderby__wrapper" style="position:absolute;right:0;">
+									<div class="btn-group btn-group-inline">
+										<span>Sort By</span>
+									</div>
+									<div class="btn-group btn-group-inline">
+										<div class="dropdown">
+											<button class="btn btn-secondary dropdown-toggle" style="background-color: #B4AB96;border-radius: 0px;" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												Relevant
+											</button>
+											<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+												<button class="dropdown-item" onclick="sortby('?')"  id ="drop1" type="button">Relevant</button>
+												<button class="dropdown-item" onclick="sortby('-id')" type="button">Newest</button>
+												<button class="dropdown-item" onclick="sortby('price')" type="button">Price low to high</button>
+												<button class="dropdown-item" onclick="sortby('-price')" type="button">Price high to low</button>
+											</div>
+										</div>
+										
+										
+
+			                        </div>
+									
+								</form>
+		                        </div>
+        					</div>
+        				</div>
+        				<div class="tab__container">
+	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
+	        					<div class="row">
+
+									<!-- view for search result start -->
+								
+<div class="col-12">
+									<input type="checkbox" id="select_all" onclick="checkbox_selectall();" style="height: 16px;width: 16px;" name="vehicle1" checked>
+									<label style="font-size: 14px;">Select all</label>
+									</div><br><br>
+									{% if grid_data %}
+								    {% for post in grid_data %}
+	        						<!-- Start Single Product -->
+		        					<div class="col-lg-4 col-md-4 col-sm-6 col-6">
+									<input type="checkbox" id="checkbox{{ forloop.counter }}" onclick="checkbox_click();" value="{{ post.book_name.id }}" style="display: inline-block;float: left;margin-right: 10px;height: 16px;width: 16px;" Checked>
+
+			        					<div class="product">
+			        						<div class="product__thumb">
+			        							<a class="first__img" href=""><img src="{{ post.book_name.bookfront_cover.url }}" alt="product image"></a>
+			        							<a class="second__img animation1" href=""><img src="{{ post.bookback_cover.url }}" alt="product image"></a>
+			        							<div class="new__box">
+			        								<span class="new-label">Hot</span>
+			        							</div>
+			        							<ul class="prize position__right__bottom d-flex">
+			        								<li> {{ post.book_name.price }} ₹</li>
+			        								<li class="old_prize">$55.00</li>
+			        							</ul>
+			        							<div class="action">
+			        								<div class="actions_inner">
+			        									<ul class="add_to_links">
+													
+															<li><a class="cart" href="cart.html"></a></li>
+															<li><a class="wishlist" href="wishlist.html"></a></li>
+															<li><a class="compare" href="compare.html"></a></li>
+															<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"></a></li>
+														</ul>
+			        								</div>
+			        							</div>
+			        						</div>
+			        						<div class="product__content">
+			        							<h4><a href="">{{ post.book_name.name }}</a></h4>
+			        							<ul class="rating d-flex">
+			        								<li class="on"><i class="fa fa-star-o"></i></li>
+			        								<li class="on"><i class="fa fa-star-o"></i></li>
+			        								<li class="on"><i class="fa fa-star-o"></i></li>
+			        								<li><i class="fa fa-star-o"></i></li>
+			        								<li><i class="fa fa-star-o"></i></li>
+			        							</ul>
+			        						</div>
+			        					</div>
+		        					</div>
+
+									{% endfor %}
+
+									{% else %}
+
+
+										<p style="line-height:5;align:center;">  your search. you can try our filters to find the book you want </p>
+
+									{% endif %}
+
+
+									<!-- view for normal gried result end -->
+
+
+	        					</div>
+
+
+								<ul class="wn__pagination">
+									{% load mytemplatetags %}
+                                    {% if posts.has_previous %}
+                                    
+										<a href="?{% url_replace request 'page' posts.previous_page_number %}"> < </a>
+
+									{% endif %}
+
+									{% for num in posts.paginator.page_range %}
+
+										{% if posts.num == num %}
+
+											<strong> {{ num }} </strong>
+
+									
+
+										{% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+
+											{% if books_count > 10 %}
+
+												<li><a href="?page={{ num }}">{{ num }}</a></li>
+
+											{% endif %}
+											
+										{% endif %}
+
+									{% endfor %}
+
+										{% if posts.has_next %}
+
+											<li><a href="?{% url_replace request 'page' posts.next_page_number %}"> <i class="zmdi zmdi-chevron-right"></i> </a></li>
+
+										{% endif %}
+
+
+
+
+								</ul>
+
+
+	
+    
+	        					
+	        				</div>
+	        				<div class="shop-grid tab-pane fade" id="nav-list" role="tabpanel">
+	        					<div class="list__view__wrapper">
+	        						<!-- Start Single Product -->
+									 {% for post in grid_data %}
+	        						<div class="list__view mt--40">
+	        							<div class="thumb">
+	        								<a class="first__img" href=""><img src="{{ post.bookfront_cover.url }}" alt="product images"></a>
+	        								<a class="second__img animation1" href=""><img src="{{ post.bookback_cover.url }}" alt="product images"></a>
+	        							</div>
+	        							<div class="content">
+	        								<h2><a href="">{{ post.name }}</a></h2>
+	        								<ul class="rating d-flex">
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li class="on"><i class="fa fa-star-o"></i></li>
+	        									<li><i class="fa fa-star-o"></i></li>
+	        									<li><i class="fa fa-star-o"></i></li>
+	        								</ul>
+	        								<ul class="prize__box">
+	        									<li>{{ post.price }}</li>
+	        									<li class="old__prize">$220.00</li>
+	        								</ul>
+	        								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+	        								<ul class="cart__action d-flex">
+	        									<li class="cart"><a href="addcart{{ post.id }}">Add to cart</a></li>
+	        									<li class="wishlist"><a href="cart.html"></a></li>
+	        									<li class="compare"><a href="cart.html"></a></li>
+	        								</ul>
+
+	        							</div>
+	        						</div>
+									{% endfor %}
+	        						<!-- End Single Product -->
+	        						
+	        						<!-- End Single Product -->
+	        					</div><br><br>
+
+
+								<ul class="wn__pagination">
+									{% load mytemplatetags %}
+                                    {% if posts.has_previous %}
+                                    
+										<a href="?{% url_replace request 'page' posts.previous_page_number %}"> < </a>
+
+									{% endif %}
+
+									{% for num in posts.paginator.page_range %}
+
+										{% if posts.num == num %}
+
+											<strong> {{ num }} </strong>
+
+									
+
+										{% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+
+											<li><a href="?page={{ num }}">{{ num }}</a></li>
+
+										{% endif %}
+
+									{% endfor %}
+
+										{% if posts.has_next %}
+
+											<li><a href="?{% url_replace request 'page' posts.next_page_number %}"> <i class="zmdi zmdi-chevron-right"></i> </a></li>
+
+										{% endif %}
+
+
+
+
+								</ul>
+								 
+								
+
+								
+							</div>
+
+
+							
+								<button style="background: #2e2e2e url({% static 'images/icons/cart4.png' %}) no-repeat scroll -30px 		center;
+								border: 0 none;
+								border-radius: 25px;
+								color: #fff;
+								font-size: 12px;
+								font-weight: 700;
+								float: right;
+								height: 40px;
+								line-height: 40px;
+								padding: 0 20px 0 45px;
+								text-transform: uppercase;display:block;" type="submit" onclick="click_school_submit_cart();" id="add_to_cart">Add to Cart</button>
+								
+
+
+
+
+
+						</div>
+					</div>
+
+
+				</div>
+
+
+
+        	</div>
+        </div>
+
+<script>
+
+function checkbox_click(){
+
+
+    var a = parseInt("{{ books_count }}")
+
+	var te = 0
+	a = a + 1
+
+                                                                                                                        
+	for (i = 1; i < a; i++) {
+
+
+
+		var v = 'checkbox'+[i]
+
+
+
+
+		if (document.getElementById(v).checked) {
+		te = te + 1
+        } 
+		
+
+
+	}
+
+	if (te>=1){
+
+
+		document.getElementById("add_to_cart").style.display = "block";
+		document.getElementById("add_to_cart").style.background = "#2e2e2e url(/static/images/icons/cart4.png) no-repeat scroll -30px center";
+		document.getElementById("add_to_cart").disabled = false;
+
+
+	}
+	else{
+
+
+		document.getElementById("add_to_cart").style.background = "grey url(/static/images/icons/cart4.png) no-repeat scroll -30px center";
+		document.getElementById("add_to_cart").disabled = true;
+
+	}
+
+
+}
+
+
+function checkbox_selectall(){
+
+	var a = parseInt("{{ books_count }}")
+
+	var te = 0
+	a = a + 1
+
+	if (document.getElementById('select_all').checked) {
+		
+		
+
+																															
+		for (i = 1; i < a; i++) {
+
+
+
+			var v = 'checkbox'+[i]
+
+
+
+
+			document.getElementById(v).checked = true;
+			
+
+
+		}
+
+    } 
+	else{
+
+		for (i = 1; i < a; i++) {
+
+
+
+			var v = 'checkbox'+[i]
+
+
+
+
+			document.getElementById(v).checked = false;
+			
+
+
+		}
+	}
+
+}
+
+
+
+function click_school_submit_cart() {
+
+    var url_to = "http://127.0.0.1:8000/cart/Cart_add_product_get"
+
+	alert('here')
+
+
+    var a = parseInt("{{ books_count }}")
+
+	alert(a)
+
+	var url_to2=a+'?';
+
+	var run_code = 0
+
+	a = a + 1
+
+	for (i = 1; i < a; i++) {
+
+		var v = 'checkbox'+[i]
+
+
+
+		if (document.getElementById(v).checked) {
+			var z = document.getElementById(v).value;
+
+			url_to2 = url_to2 + '&name' + [i] + '=' + z
+			
+			run_code = run_code + 1
+			alert("checked");
+        } else {
+            alert("not checked");
+        }
+		
+
+
+	}
+	
+	if (run_code>=1){
+
+	a = url_to + url_to2;
+	alert(a)
+    location.href = url_to + url_to2;
+
+	}
+
+}
+
+
+function sortby(sortby)
+{
+
+	var currentLocation = window.location;
+
+	var queryParams = new URLSearchParams(window.location.search);
+	
+	// Set new or modify existing parameter value. 
+	queryParams.set("sortby", sortby);
+	
+	// Replace current querystring with the new one.
+	history.replaceState(null, null, "?"+queryParams.toString());
+	location. reload()
+		
+	
+	
+}
+
+
+
+function standard(standard)
+{
+
+	var queryParams = new URLSearchParams(window.location.search);
+	
+	// Set new or modify existing parameter value. 
+	queryParams.set("std", standard);
+	
+	// Replace current querystring with the new one.
+	history.replaceState(null, null, "?"+queryParams.toString());
+	location. reload()
+		
+	
+	
+}
+
+
+function pattern(pattern)
+{
+
+	var queryParams = new URLSearchParams(window.location.search);
+	
+	// Set new or modify existing parameter value. 
+	queryParams.set("pat", pattern);
+	
+	// Replace current querystring with the new one.
+	history.replaceState(null, null, "?"+queryParams.toString());
+	location. reload()
+		
+	
+	
+}
+
+
+
+
+</script>
+		</body>
+        <!-- End Shop Page -->
+		
+{% endblock %}

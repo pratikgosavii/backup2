@@ -1,0 +1,488 @@
+<H1> ENTER OTP</H1>{% load static %}
+<html>
+<head>
+  <title>Simple login form with social login buttons using HTML and CSS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=4C0DoAxrf23i3a0YY6ayTS83WUZ55xEs4vqRI2zNcMkKjGVGyP_-ElJdAalHcrNqvJixAp07inBBe8b-64OBFlXsQOJWOyQjxVzIWz6L3R8USLNBAXbnvxHi11GZtUV-M-eaFumGqYV-WljD5yz_XvR8CeU8XyryisQ_UmYMSjo" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly93d3cubWFya3VwdGFnLmNvbS9kb3dubG9hZC9zaW1wbGUtbG9naW4tZm9ybS13aXRoLXNvY2lhbC1sb2dpbi1idXR0b25zLXVzaW5nLWh0bWwtYW5kLWNzcy5odG1s"/><style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+.google-btn {
+  width: 184px;
+  height: 42px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.google-btn .google-icon-wrapper {
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #fff;
+}
+.google-btn .google-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: 11px;
+  width: 18px;
+  height: 18px;
+}
+.google-btn .btn-text {
+  float: left;
+  margin: 11px 11px 0 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+  
+}
+.google-btn:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+.google-btn:active {
+  background: #1669F2;
+}
+
+body {
+  background: #C0C0C0;
+  font-family: arial;
+}
+.login-form h1 {
+  font-size: 36px;
+  text-align: center;
+  color: #45aba6;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+.login-form .social-icon {
+    width: 100%;
+    font-size: 20px;
+    padding-top: 20px;
+    color: #fff;
+    
+    float: right;
+}
+.login-form {
+    background: #fff;
+    width: 450px;
+    border-radius: 6px;
+    margin: 0 auto;
+    display: table;
+    padding: 15px 30px 30px;
+    box-sizing: border-box;
+    height: 100%;
+}
+.form-group {
+  float: left;
+  width: 100%;
+  margin: 0 0 15px;
+  position: relative;
+}
+.login-form input {
+    width: 100%;
+    padding: 5px;
+    height: 50px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 15px;
+    padding-left: 35px;
+}
+.login-form .form-group .input-icon {
+    font-size: 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    height: 100%;
+    padding-left: 35px;
+    color: #666;
+}
+.login-form .login-btn {
+  background: #e59285;;
+  padding: 11px 50px;
+  border-color: #e59285;;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  border: 1px solid #e59285;;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+}
+.login-form .reset-psw {
+  float: left;
+  width: 100%;
+  text-decoration: none;
+  color: #45aba6;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 11px;
+}
+.login-form .social-icon button {
+    font-size: 20px;
+    color: white;
+    height: 50px;
+    width: 50px;
+    background: #45aba6;
+    border-radius: 60%;
+    margin: 0px 10px;
+    border: none;
+    cursor: pointer;
+}
+.login-form button:hover{
+  opacity: 0.9;
+}
+.login-form .seperator {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  margin: 50px 0 0;
+}
+.login-form .seperator b {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -22px;
+  z-index: 1;
+}
+.login-form p {
+  float: left;
+  width: 100%;
+  text-align: right;
+  font-size: 18px;
+  margin: 0 0 10px;
+  
+}
+@media screen and (max-width:767px) {
+.login-form {
+    width: 90%;
+    padding: 15px 15px 30px;
+    height: 100%;
+}
+}
+
+
+#input-wrapper * {
+  position: absolute;
+}
+
+#input-wrapper label {
+  z-index: 99;
+  padding: 2px;
+  margin-left: 5px;
+  padding: 14px;
+}
+
+#input-wrapper input {
+ 
+  text-indent: 35px;
+}
+
+.center1 {
+  
+  margin: 0;
+  position: absolute;
+  left: 42%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+ 
+}
+
+</style>
+</head>
+<body onload="myFunction1212()">
+
+
+
+<div class="login-form">
+  <img style="margin:0 0 0 0;" src="https://images.unsplash.com/photo-1607083206203-821b1f96c7f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1091&q=80"  alt="Trulli" width="100%" style="max-height:600PX;"  > <br><Br><bR><br>
+
+    <div id="logreg-forms">
+      <form class="form-signin" accept="#">
+          <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+          <div class="social-login">
+              
+              <button class="btn google-btn social-btn" type="button" id="googleLogin"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+          </div>
+          
+
+          <input type="hidden" class="btn btn-success btn-block" id="loginbtn" type="button">
+
+          
+
+
+          <hr>
+          <!-- <p>Don't have an account!</p>  -->
+      </form>
+
+    </div>
+
+
+  <div id="logreg-forms">
+    <form class="form-signin" accept="#">
+        
+        
+
+        <input type="hidden" class="btn btn-success btn-block" id="loginbtn" type="button">
+
+        
+
+
+        <hr>
+        <!-- <p>Don't have an account!</p>  -->
+    
+    </div>
+		
+    <section class="my_account_area pt--80 pb--55 bg--white" style="padding-top: 0px;">
+			<div class="container">
+				<div class="row">
+					
+          <div class="col-lg-6 col-12">
+						<div class="my__account__wrapper" >
+							<h3 class="account__title">Login</h3>
+							
+								<div class="account__form" style="display:none;">
+									<div class="input__box">
+										<label>Email address <span>*</span></label>
+										<input type="email" id="inputEmail" placeholder="Email address"  required="" autofocus="">
+									</div>
+									<div class="input__box">
+										<label>Password<span>*</span></label>
+										<input type="password" id="inputPassword" placeholder="Password"  required="" >
+									</div>
+									<div class="form__btn">
+										<button>Register</button>
+									</div>
+								</div>
+
+                                    
+                <input type="text" id="inputPhone" name="mobilenumber" class="form-control" placeholder="PHONE" required="" autofocus="">
+                <div id="recaptcha-container"></div>
+                <button   class="login-btn" data-sitekey="AIzaSyCywNPkHwl4_6YSFhKhheVVUHqPqKQE4mI" data-callback='createurl'  type="button" id="phoneloginbtn"><i class="fas fa-sign-in-alt"></i> SEND OTP</button>
+               
+<input type="otp" id="inputOtp" class="form-control" placeholder="OTP" required="">
+            <button class="btn btn-success btn-block" type="button" id="verifyotp"><i class="fas fa-sign-in-alt"></i> VERIFY OTP</button>
+							
+							</form>
+						</div>
+					</div>
+
+                    
+            
+
+                    <div class="col-lg-6 col-12">
+						<div class="my__account__wrapper" style="display:none;">
+							<h3 class="account__title">Register</h3>
+							<form action="#" class="form-signup">
+							    {% csrf_token %}
+								<div class="account__form">
+									
+									<div class="customer_details">
+										<div class="customar__field">
+											<div class="margin_between">
+												<div class="input_box space_between">
+													<label style="font-size:12px;">First name <span>*</span></label>
+													<input type="text">
+												</div>
+												<div class="input_box space_between">
+													<label style="font-size:12px;">last name <span>*</span></label>
+													<input type="text">
+												</div>
+											</div>
+										</div>
+									</div>
+										
+									
+									<div class="input__box">
+										<label>Email address <span>*</span></label>
+										<input  type="email" id="useremail">
+									</div>
+									<div class="input__box">
+										<label>Password<span>*</span></label>
+										<input type="password" id="userpass">
+									</div>
+									<div class="input__box">
+										<label>Confirm Password<span>*</span></label>
+										<input name="password2" id="password2" type="password">
+									</div>
+									<div class="form__btn">
+										 <button class="btn btn-primary btn-block" type="button" id="signupbtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+									</div><br>
+									
+								</div>
+							</form>
+						</div>
+					</div>
+
+                </div>
+            </div>
+		</section>
+			
+	
+
+    <script>
+function toggleResetPswd(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle() // display:block or none
+    $('#logreg-forms .form-reset').toggle() // display:block or none
+}
+
+function toggleSignUp(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle(); // display:block or none
+    $('#logreg-forms .form-signup').toggle(); // display:block or none
+}
+
+$(()=>{
+    // Login Register Form
+    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+    $('#logreg-forms #btn-signup').click(toggleSignUp);
+    $('#logreg-forms #cancel_signup').click(toggleSignUp);
+});
+
+</script>
+
+    </p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+     apiKey: "AIzaSyCywNPkHwl4_6YSFhKhheVVUHqPqKQE4mI",
+        authDomain: "demobohocompany-1e963.firebaseapp.com",
+        databaseURL: "https://demobohocompany-1e963.firebaseio.com",
+        projectId: "demobohocompany-1e963",
+        storageBucket: "demobohocompany-1e963.appspot.com",
+        messagingSenderId: "352737904067",
+        appId: "1:352737904067:web:9dd4b317d44fe830cbe976",
+        measurementId: "G-X0H3PYPFYH"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+
+
+  function sendDatatoServerPhp(email,provider,token,username){
+
+        var xhr = new XMLHttpRequest();
+        //xhr.withCredentials = true;
+
+
+        xhr.addEventListener("readystatechange", function() {
+        if(this.readyState === 4) {
+            console.log(this.responseText);
+            if(this.responseText=="login_success"){
+                alert("Login Successfull");
+                location='home';
+            }
+            else if(this.responseText=="Please Verify Your Email to Get Login"){
+                alert("Please Verify Your Email to Login")
+            }
+            else{
+                alert("Error in Login");
+            }
+        }
+        });
+
+        alert("email="+email);
+
+
+        xhr.open("POST", "http://127.0.0.1:8000/accounts/firebase_login_save",true);
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xhr.send("email="+email+"&provider="+provider+"&username="+username+"&token="+token);
+
+
+   }
+   //===========================End Saving Details in My Server=======================
+   //=========================Login With Phone==========================
+   var loginphone=document.getElementById("phoneloginbtn");
+   var phoneinput=document.getElementById("inputPhone");
+   var otpinput=document.getElementById("inputOtp");
+   var verifyotp=document.getElementById("verifyotp");
+
+   function myFunction1212(){
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        'size': 'normal',
+        'callback': function(response) {
+            // reCAPTCHA solved, allow signInWithPhoneNumber.
+            // ...
+        },
+        'expired-callback': function() {
+            // Response expired. Ask user to solve reCAPTCHA again.
+            // ...
+        }
+        });
+
+        var cverify=True;
+
+       
+
+        firebase.auth().signInWithPhoneNumber(phoneinput.value,cverify).then(function(response){
+            console.log(response);
+            window.confirmationResult=response;
+        }).catch(function(error){
+            console.log(error);
+        })
+   }
+
+    verifyotp.onclick=function(){
+       confirmationResult.confirm(otpinput.value).then(function(response){
+           console.log(response);
+            var userobj=response.user;
+            var token=userobj.xa;
+            var provider="phone";
+            var email=phoneinput.value;
+           
+            admin.auth().getUserByPhoneNumber(phoneinput.value)
+            .then(function(userRecord) {
+                // User found.
+                alert("user found");
+            })
+            .catch(function(error) {
+                alert("user not found");
+            })
+            
+            if(token!=null && token!=undefined && token!=""){
+            sendDatatoServerPhp(email,provider,token,email);
+            }
+       })
+       .catch(function(error){
+           console.log(error);
+       })
+   }
+   //=================End Login With Phone=========================
+</script>
+  
+</body>
+</html>
+

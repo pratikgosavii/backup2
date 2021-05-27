@@ -1,0 +1,617 @@
+﻿<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+
+    #input-wrapper * {
+  position: absolute;
+}
+
+#input-wrapper label {
+  z-index: 99;
+  line-height: 19px;
+  padding: 10px;
+  margin-left: 5px;
+}
+
+#input-wrapper input {
+  height: 38px;
+  text-indent: 7px;
+}
+
+body {
+  background: #607D8B;
+ 
+}
+.login-form h1 {
+  font-size: 36px;
+  text-align: center;
+  color: #45aba6;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+.login-form .social-icon {
+    width: 100%;
+    font-size: 20px;
+    padding-top: 20px;
+    color: #fff;
+    text-align: center;
+    float: left;
+}
+.login-form {
+    background: #fff;
+    width: 446px;
+    HEIGHT: 462PX;
+    margin: 0 auto;
+    display: table;
+    box-sizing: border-box;
+}
+.form-group {
+  float: left;
+  width: 100%;
+  margin: 0 0 15px;
+  position: relative;
+}
+.login-form input {
+    width: 100%;
+    padding: 5px;
+    height: 38px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 15px;
+    padding-left: 61px;
+}
+.login-form .form-group .input-icon {
+    font-size: 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    padding-left: 35px;
+    color: #666;
+}
+.login-form .login-btn {
+  background: #45aba6;
+  padding: 11px 50px;
+  border-color: #45aba6;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  border: 1px solid #45aba6;
+  width: 100%;
+  height: 56px;
+  cursor: pointer;
+}
+.login-form .reset-psw {
+  float: left;
+  width: 100%;
+  text-decoration: none;
+  color: #45aba6;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 11px;
+}
+.login-form .social-icon button {
+    font-size: 20px;
+    color: white;
+    height: 50px;
+    width: 50px;
+    background: #45aba6;
+    border-radius: 60%;
+    margin: 0px 10px;
+    border: none;
+    cursor: pointer;
+}
+.login-form button:hover{
+  opacity: 0.9;
+}
+.login-form .seperator {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  margin: 50px 0 0;
+}
+.login-form .seperator b {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -22px;
+  z-index: 1;
+}
+.login-form p {
+  float: left;
+  text-align: center;
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+@media screen and (max-width:767px) {
+.login-form {
+    width: 90%;
+    padding: 15px 15px 30px;
+}
+}
+
+
+
+
+
+
+
+
+
+    </style>
+    <title>Bootstrap 4 Login/Register Form</title>
+</head>
+<body><br><br>
+
+<div class="login-form">
+
+    <div id="div1" style="display:block;">
+
+
+        <img style="height: 200px;width:450px" src="data:image/jpeg;base64,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" alt="Girl in a jacket" width="500" height="600">
+    </div> 
+    <div id="logreg-forms">
+        <form class="form-signin" accept="#">
+            <div id="div2" style="display:none;"><br>
+
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center; color: black;"> Login or Sign up</h1><br>
+                <div class="social-login">
+                    <button class="btn facebook-btn social-btn" type="button" id="facebooklogin"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
+                    <button class="btn google-btn social-btn" type="button" id="googleLogin"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+                </div><br>
+            </div>
+        
+
+            <input type="hidden" class="btn btn-success btn-block" id="loginbtn" type="button">
+
+            
+    
+
+            <hr>
+        <!-- <p>Don't have an account!</p>  -->
+        
+
+    </div>
+		
+    <section class="my_account_area pt--80 pb--55 bg--white" style="padding-top: 0px;">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12">
+                    <div class="my__account__wrapper">
+                        <h3 class="account__title"></h3>
+                        
+                            <div class="account__form" style="display:none;">
+                                <div class="input__box">
+                                    <label>Email address <span>*</span></label>
+                                    <input type="email" id="inputEmail" placeholder="Email address"  required="" autofocus="">
+                                </div>
+                                <div class="input__box">
+                                    <label>Password<span>*</span></label>
+                                    <input type="password" id="inputPassword" placeholder="Password"  required="" >
+                                </div>
+                                <div class="form__btn">
+                                    <button>Register</button>
+                                </div>
+                            </div>
+
+                            <div id="div3" style="display: block;">
+                                <div class="form-group">
+                                    <div id="input-wrapper">
+                                        <label for="number" style="font-size: 14px;">+91 |</label>        
+                                        <input id="inputPhone" placeholder="Enter your 10 digit phone number" {% if a %} value="{{ a }}" {% else %} value="" {% endif %} style="font-size: 14px;" maxlength="10"  type="text">        <br><br>  
+                                    </div>
+
+                                    <br>
+
+                                    <p> By continuing, I agree to the <bold>Terms of Use </bold> & <bold> Privacy Policy </bold> </p>
+                                </div>
+                                <div id="recaptcha-container"></div>
+                                <button class="btn btn-success btn-block js-open-button" style="cursor: pointer;
+    background-color: #EFEFEF;
+    text-align: center;
+    height: 38px;
+    padding: 12px;
+    color: BLACK;
+    font-weight: 492;
+    font-size: 14px;
+    line-height: 16px;
+    border: none;
+    display:block;width:100%" type="button" id="phoneloginbtn">CONTINUE</button>
+                                
+
+                            </div>
+                    </div>
+
+                    <div  id="div4" style="display:none;">  
+
+                        <input type="otp" id="inputOtp" style="font-size: 19px;margin-bottom: 26px;" class="form-control" placeholder="OTP" required="">
+                        <button class="btn btn-success btn-block" style="background-color: #EFEFEF;border:none;color:black;font-weight: 492;padding-left: 22px; " type="button" id="verifyotp"><i class="fas fa-sign-in-alt"></i> VERIFY OTP</button>
+
+                    </div>
+                </div>
+
+                </form>
+            </div>
+        </div>
+
+                
+        
+
+        <div class="col-lg-6 col-12">
+            <div class="my__account__wrapper" style="display:none;">
+                <h3 class="account__title">Register</h3>
+                <form action="#" class="form-signup">
+                    {% csrf_token %}
+                    <div class="account__form">
+                        
+                        <div class="customer_details">
+                            <div class="customar__field">
+                                <div class="margin_between">
+                                    <div class="input_box space_between">
+                                        <label style="font-size:12px;">First name <span>*</span></label>
+                                        <input type="text">
+                                    </div>
+                                    <div class="input_box space_between">
+                                        <label style="font-size:12px;">last name <span>*</span></label>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                        
+                        <div class="input__box">
+                            <label>Email address <span>*</span></label>
+                            <input  type="email" id="useremail">
+                        </div>
+                        <div class="input__box">
+                            <label>Password<span>*</span></label>
+                            <input type="password" id="userpass">
+                        </div>
+                        <div class="input__box">
+                            <label>Confirm Password<span>*</span></label>
+                            <input name="password2" id="password2" type="password">
+                        </div>
+                        <div class="form__btn">
+                                <button class="btn btn-primary btn-block" type="button" id="signupbtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+                        </div><br>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+       
+</div>
+		
+			
+		<!-- End My Account Area -->
+
+
+
+
+   
+    <script>
+function toggleResetPswd(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle() // display:block or none
+    $('#logreg-forms .form-reset').toggle() // display:block or none
+}
+
+function toggleSignUp(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin')<.toggle(); // display:block or none
+    $('#logreg-forms .form-signup').toggle(); // display:block or none
+}
+
+$(()=>{
+    // Login Register Form
+    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+    $('#logreg-forms #btn-signup').click(toggleSignUp);
+    $('#logreg-forms #cancel_signup').click(toggleSignUp);
+});
+
+</script>
+
+    </p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+     apiKey: "AIzaSyCywNPkHwl4_6YSFhKhheVVUHqPqKQE4mI",
+        authDomain: "demobohocompany-1e963.firebaseapp.com",
+        databaseURL: "https://demobohocompany-1e963.firebaseio.com",
+        projectId: "demobohocompany-1e963",
+        storageBucket: "demobohocompany-1e963.appspot.com",
+        messagingSenderId: "352737904067",
+        appId: "1:352737904067:web:9dd4b317d44fe830cbe976",
+        measurementId: "G-X0H3PYPFYH"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  var signupbtn=document.getElementById("signupbtn");
+  var emailsignup=document.getElementById("useremail");
+  var passswordsignup=document.getElementById("userpass");
+
+
+  //================Signup With Email and Password==========================
+  signupbtn.onclick=function(){
+      signupbtn.disabled=true;
+      signupbtn.textContent="Registering Your Account! Please Wait";
+      firebase.auth().createUserWithEmailAndPassword(emailsignup.value,passswordsignup.value).then(function(response){
+        sendingVerifyEmail(signupbtn);
+            console.log(response);
+      })
+      .catch(function(error){
+        signupbtn.disabled=false;
+        signupbtn.textContent="Sign Up";
+          console.log(error);
+      })
+
+
+  };
+
+  function sendingVerifyEmail(button){
+     firebase.auth().currentUser.sendEmailVerification().then(function(response){
+                signupbtn.disabled=false;
+        signupbtn.textContent="Sign Up S";
+
+        console.log(response);
+     })
+     .catch(function(error){
+                signupbtn.disabled=false;
+        signupbtn.textContent="Sign Up S";
+
+         console.log(error);
+     })
+  }
+  //================End Signup With Email and Password======================
+
+  //==========================Sign in With Email and Password============================
+
+   var loginemail=document.getElementById("inputEmail");
+   var loginpassword=document.getElementById("inputPassword");
+   var loginbtn=document.getElementById("loginbtn");
+
+
+   loginbtn.onclick=function(){
+    loginbtn.disabled=true;
+    loginbtn.textContent="Logging In Please Wait..";
+       firebase.auth().signInWithEmailAndPassword(loginemail.value,loginpassword.value).then(function(response){
+           console.log(response);
+           loginbtn.disabled=false;
+    loginbtn.textContent="Sign In"
+            var userobj=response.user;
+            var token=userobj.xa;
+            var provider="email";
+            var email=loginemail.value;
+            if(token!=null && token!=undefined && token!=""){
+            sendDatatoServerPhp(email,provider,token,email);
+            }
+       })
+       .catch(function(error){
+           console.log(error);
+           loginbtn.disabled=false;
+        loginbtn.textContent="Sign In"
+
+       })
+   }
+  //======================Sign With Email and Password
+
+
+   //===================Saving Login Details in My Server Using AJAX================
+   function sendDatatoServerPhp(email,provider,token, mobile_login){
+
+        var xhr = new XMLHttpRequest();
+        //xhr.withCredentials = true;
+
+
+        xhr.addEventListener("readystatechange", function() {
+        if(this.readyState === 4) {
+            console.log(this.responseText);
+            if(this.responseText=="login_success"){
+                alert("Login Successfull");
+                location='home';
+            }
+            else if(this.responseText=="with new"){
+                alert("ess with new");
+
+
+                location='xxsdbwerg';
+            }
+            else if(this.responseText=="Please Verify Your Email to Get Login"){
+                alert("Please Verify Your Email to Login")
+            }
+            else{
+                alert("Error in Login");
+            }
+        }
+        });
+
+        alert("email="+email);
+
+
+        xhr.open("POST", "http://127.0.0.1:8000/accounts/firebase_login_save",true);
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xhr.send("email="+email+"&provider="+provider+"&token="+token+"&mobile_login="+mobile_login);
+        
+
+
+   }
+   //===========================End Saving Details in My Server=======================
+   //=========================Login With Phone==========================
+   var loginphone=document.getElementById("phoneloginbtn");
+   var phoneinput=document.getElementById("inputPhone");
+   var otpinput=document.getElementById("inputOtp");
+   var verifyotp=document.getElementById("verifyotp");
+
+   loginphone.onclick=function(){
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        'size': 'invisible',
+        'callback': function(response) {
+            // reCAPTCHA solved, allow signInWithPhoneNumber.
+            // ...
+        },
+        'expired-callback': function() {
+            // Response expired. Ask user to solve reCAPTCHA again.
+            // ...
+        }
+        });
+
+        var cverify=window.recaptchaVerifier;
+        alert(phoneinput.value)
+
+
+        loginphone_value = '+91'+phoneinput.value
+
+        alert(loginphone_value)
+        firebase.auth().signInWithPhoneNumber(loginphone_value,cverify).then(function(response){
+            console.log(response);
+            window.confirmationResult=response;
+
+
+            document.getElementById("div3").style.display = "none";
+            document.getElementById("div4").style.display = "block";
+            document.getElementById("div2").style.display = "none";
+            
+
+
+        }).catch(function(error){
+            console.log(error);
+            alert('something went wrong')
+        })
+   }
+
+       
+
+        
+    verifyotp.onclick=function(){
+        alert(otpinput.value)
+       confirmationResult.confirm(otpinput.value).then(function(response){
+           
+           console.log(response);
+            var userobj=response.user;
+            var token=userobj.xa;
+            var provider="phone";
+            var email=loginphone_value;
+           
+            alert(token)
+            
+            if(token!=null && token!=undefined && token!=""){
+            var mobile_login = 'yes'
+            sendDatatoServerPhp(email,provider,token,mobile_login);
+            alert('here')
+            }
+       })
+       .catch(function(error){
+           console.log(error);
+           alert('heretoo')
+       })
+   }
+   //=================End Login With Phone=========================
+
+   ///=================Login With google===========================
+   var googleLogin=document.getElementById("googleLogin");
+
+    googleLogin.onclick=function(){
+       alert('1')
+
+       var provider=new firebase.auth.GoogleAuthProvider();
+       alert('2')
+
+        provider.addScope('profile');
+        provider.addScope('email');
+
+       firebase.auth().signInWithPopup(provider).then(function(response){
+       alert('3')
+
+            var userobj=response.user;
+            var token=userobj.xa;
+            var provider="google";
+            var email=userobj.email;
+            if(token!=null && token!=undefined && token!=""){
+            var mobile_login = 'no'
+            sendDatatoServerPhp(email,provider,token,userobj.displayName,mobile_login);
+            }
+
+           console.log(response);
+       })
+       .catch(function(error){
+           console.log(error);
+       })
+
+
+   }
+   //=======================End Login With Google==================
+   //======================Login With Facebook==========================
+   var facebooklogin=document.getElementById("facebooklogin");
+   facebooklogin.onclick=function(){
+    var provider=new firebase.auth.FacebookAuthProvider();
+
+firebase.auth().signInWithPopup(provider).then(function(response){
+    var userobj=response.user;
+     var token=userobj.xa;
+     var provider="facebook";
+     var email=userobj.email;
+     if(token!=null && token!=undefined && token!=""){
+        var mobile_login = 'no'
+        
+     sendDatatoServerPhp(email,provider,token,userobj.displayName, mobile_login);
+     }
+
+    console.log(response);
+})
+.catch(function(error){
+    console.log(error);
+})
+
+
+   }
+   //======================End Login With Facebook==========================
+
+
+
+</script>
+</body>
+</html>

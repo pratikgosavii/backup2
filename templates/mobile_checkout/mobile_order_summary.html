@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+
+
+
+
+
+{% load static %}
+
+	{% block title %}Home | Bookshop Responsive Bootstrap4 Template{% endblock %}
+
+    {% block content %}
+
+ <head>
+  </head>
+  <body> 
+  
+  <div style=" display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="container11" style="">
+      
+      <div class="progress-bar">
+        <div class="step">
+          <p>Address</p>
+          <div class="bullet active" >
+            <span>1</span>
+          </div>
+          <div class="check active fas fa-check"></div>
+        </div>
+        <div class="step">
+          <p>Orders</p>
+          <div class="bullet">
+            <span>2</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+          <p>Payment</p>
+          <div class="bullet">
+            <span>3</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        
+      </div>
+
+      <div class="form-outer">
+       
+          <div class="page slide-page">
+            
+              <form action="#" style="display: inline;">
+								{% if dests_checkout_products %}
+
+                  {% for dest in dests_checkout_products %}
+									
+									<div class="card mb-3">
+										<div class="card-horizontal">
+											<div style="float:left;">
+												<img class="imageincart" width="50px" style="margin-left:10px;"
+													src="{{ dest.product_id.bookfront_cover.url }}" alt="Card image cap">
+											</div>
+											<div class="card-body">
+												<h4 class="card-title">{{ dest.product_id.name }}</h4>
+												<p class="card-text">
+													<!-- {{price}} --> {{ dest.product_id.standard }}
+													{{ dests.product_id.pattern }}</p>
+												<p class="card-text">
+													<!-- {{price}} -->{{ dest.product_id.price }} ₹</p><br>
+											</div>
+										</div>
+										<div class="my-3">
+											<div class="btn mx-2 btn-primary">save for latter</div>
+											<div class="btn mx-2 btn-danger">remove</div>
+										</div>
+									</div>
+
+                  {% endfor %}
+
+                {% endif %}
+              
+              </form>
+
+              <form action="{% url 'mobile_payment' %}" method="post">
+
+              {% csrf_token %}
+
+              <div class="field">
+                <input type="submit" value="Next" >
+              </div>
+
+              </form>
+
+           
+
+          </div>
+       
+
+      </div>    
+         
+												
+		</div>					
+
+  </div>
+    <script src="{% static 'mobile_script.js' %}"></script>
+
+
+  </body><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+	{% endblock %}
+
+

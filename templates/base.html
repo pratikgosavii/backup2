@@ -1,0 +1,1097 @@
+{% load static %}
+{% static 'images' as baseUrl %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<!-- Mirrored from demo.devitems.com/boighor-v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Jun 2020 08:38:00 GMT -->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>{% block title %} {% endblock %}</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+	<link rel="apple-touch-icon" href="{% static 'images/icon.png' %}">
+
+	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/mobile.css' %}">
+
+	<!-- Cusom css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+
+	<!-- Modernizer js -->
+	<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+	{% block styles %}{% endblock %}
+	<style>
+
+
+
+	
+	
+.header12 {
+  padding: 0px 0px;
+  background: #c7c6c6;;
+  color: #f1f1f1;
+  height:80px;
+}
+
+
+.sticky12 {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.three_bu{
+
+		max-height:80px;
+		position: absolute;
+    	right: 0px;
+	}
+
+
+
+.mainsearch {
+    width: 50%;
+    margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	height : 80px;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+
+
+.modal-open {
+	overflow: hidden;
+}
+
+.modal-open .modal {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1050;
+	display: none;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	outline: 0;
+}
+
+.modal-dialog {
+	position: relative;
+	width: auto;
+	margin: 0.5rem;
+	pointer-events: none;
+}
+
+.modal.fade .modal-dialog {
+	-webkit-transition: -webkit-transform 0.3s ease-out;
+	transition: -webkit-transform 0.3s ease-out;
+	-o-transition: transform 0.3s ease-out;
+	transition: transform 0.3s ease-out;
+	transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+	-webkit-transform: translate(0, -50px);
+	-ms-transform: translate(0, -50px);
+	transform: translate(0, -50px);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.modal.fade .modal-dialog {
+		-webkit-transition: none;
+		-o-transition: none;
+		transition: none;
+	}
+}
+
+.modal.show .modal-dialog {
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+
+.modal-dialog-centered {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	min-height: calc(100% - (0.5rem * 2));
+}
+
+.modal-dialog-centered::before {
+	display: block;
+	height: calc(100vh - (0.5rem * 2));
+	content: "";
+}
+
+.modal-content {
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	width: 100%;
+	pointer-events: auto;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 0.3rem;
+	outline: 0;
+}
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1040;
+	width: 100vw;
+	height: 100vh;
+	background-color: #000;
+}
+
+.modal-backdrop.fade {
+	opacity: 0;
+}
+
+.modal-backdrop.show {
+	opacity: 0.5;
+}
+
+.modal-header {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding: 1rem 1rem;
+	border-bottom: 1px solid #e9ecef;
+	border-top-left-radius: 0.3rem;
+	border-top-right-radius: 0.3rem;
+}
+
+.modal-header .close {
+	padding: 1rem 1rem;
+	margin: -1rem -1rem -1rem auto;
+}
+
+.modal-title {
+	margin-bottom: 0;
+	line-height: 1.5;
+}
+
+.modal-body {
+	position: relative;
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	padding: 1rem;
+}
+
+.modal-footer {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	padding: 1rem;
+	border-top: 1px solid #e9ecef;
+	border-bottom-right-radius: 0.3rem;
+	border-bottom-left-radius: 0.3rem;
+}
+
+.modal-footer> :not(:first-child) {
+	margin-left: .25rem;
+}
+
+.modal-footer> :not(:last-child) {
+	margin-right: .25rem;
+}
+
+.modal-scrollbar-measure {
+	position: absolute;
+	top: -9999px;
+	width: 50px;
+	height: 50px;
+	overflow: scroll;
+}
+
+@media (min-width: 576px) {
+	.modal-dialog {
+		max-width: 500px;
+		margin: 1.75rem auto;
+	}
+
+	.modal-dialog-centered {
+		min-height: calc(100% - (1.75rem * 2));
+	}
+
+	.modal-dialog-centered::before {
+		height: calc(100vh - (1.75rem * 2));
+	}
+
+	.modal-sm {
+		max-width: 300px;
+	}
+}
+
+@media (min-width: 992px) {
+
+	.modal-lg,
+	.modal-xl {
+		max-width: 800px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.modal-xl {
+		max-width: 1140px;
+	}
+}
+
+
+.select {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	font-size: 16px;
+	color: #fff;
+	width: 220px;
+	height: 40px;
+}
+
+.select-styled {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #B4AB96;
+	padding: 8px 15px;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.select-styled:after {
+	content: "";
+	width: 0;
+	height: 0;
+	border: 7px solid transparent;
+	border-color: #fff transparent transparent transparent;
+	position: absolute;
+	top: 16px;
+	right: 10px;
+}
+
+.select-styled:hover {
+	background-color: #B4AB96;
+}
+
+.select-styled:active,
+.select-styled.active {
+	background-color: #95adbe;
+}
+
+.select-styled:active:after,
+.select-styled.active:after {
+	top: 9px;
+	border-color: transparent transparent #fff transparent;
+}
+
+.select-options {
+	display: none;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	left: 0;
+	z-index: 999;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	background-color: #B4AB96;
+}
+
+.select-options li {
+	margin: 0;
+	padding: 12px 0;
+	text-indent: 15px;
+	border-top: 1px solid #B4AB96;
+	-moz-transition: all 0.15s ease-in;
+	-o-transition: all 0.15s ease-in;
+	-webkit-transition: all 0.15s ease-in;
+	transition: all 0.15s ease-in;
+}
+
+.select-options li:hover {
+	color: #B4AB96;
+	background: #fff;
+}
+
+.select-options li[rel="hide"] {
+	display: none;
+}
+
+.downme {
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
+.arrowme {
+	border: solid black;
+	border-width: 0 2px 2px 0;
+	display: inline-block;
+	padding: 2px;
+}
+
+.card-horizontal {
+	display: flex;
+	flex: 1 1 auto;
+}
+
+.card-body {
+
+	padding: 0.50rem;
+}
+
+.imageincart {
+	margin: 10px 20px;
+	height: 160px;
+	width: 120px;
+}
+
+
+.removebutton {
+	display: inline-block;
+	text-transform: uppercase;
+	box-shadow: none;
+	outline: 0;
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+	margin-right: 25px;
+}
+
+@media (max-width: 1000px) {
+
+	.imageincart {
+		margin: 10px 20px;
+		height: 130px;
+		width: 110px;
+	}
+
+
+	.removebutton {
+		/* float:left; */
+		display: inline-block;
+		text-transform: uppercase;
+		box-shadow: none;
+		outline: 0;
+		font-size: 14px;
+		font-weight: 500;
+		cursor: pointer;
+		margin-right: 0px;
+	}
+
+	.card-title {
+		font-size: 14px;
+	}
+
+}
+
+.sidenav {
+	/* height: 100%; */
+	width: 250px;
+	position: absolute;
+	/* z-index: 1; */
+	border-right: 1px solid #ccc;
+	overflow-x: hidden;
+	padding-top: 20px;
+	margin-top: 3em;
+	transition: all .3s ease;
+}
+
+.sidenav a {
+	line-height: 2em;
+	margin: 5px;
+	padding: 6px 6px 6px 32px;
+	text-decoration: none;
+	display: block;
+}
+
+.sidenav a:hover {
+	color: #333;
+	background-color: #f2f2f2;
+}
+
+.main {
+	margin-left: 266px;
+	padding-right: 1em;
+	/* Same as the width of the sidenav */
+}
+
+.sidenav-active {
+	transform: translateX(-250px);
+}
+
+@media screen and (max-width: 768px) {
+.sidenav {
+	padding-top: 15px;
+
+	background-color: #fff;
+	transform: translateX(-250px);
+}
+
+.sidenav.sidenav-active {
+	position: fixed;
+	height: 100vh;
+	top: 0;
+	bottom: 0;
+	z-index: 999;
+	border-right: none;
+	width: 100vw;
+	transform: translateX(0px);
+	box-sizing: 3px 5px 2px 2px #333;
+}
+
+.main {
+	margin-left: 16px;
+	/* Same as the width of the sidenav */
+}
+
+
+
+.sidenav a {
+		font-size: 18px;
+	}
+}
+
+
+
+@media (max-width:600px)   {
+  
+
+  
+	
+	.three_bu{
+
+		min-height:30px;
+		position: absolute;
+    	right: 0px;
+	}
+
+	.mainsearch{
+
+		height:3px;
+		width: 97%
+
+	}
+
+	
+
+	
+
+
+}
+
+
+/* Styles for wrapping the search box */
+
+
+
+		
+	</style>
+
+	
+
+</head>
+
+
+<body>
+	<!--[if lte IE 9]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	<![endif]-->
+	<!-- Main wrapper -->
+	<div class="wrapper" id="wrapper">
+		<!-- Header -->
+
+		<header id="wn__header" class="header__area header__absolute">
+			
+
+			<div class="container-fluid" style="padding: 0px 0px;">
+ 
+				<div class="header12" id="myHeader" style="padding: 0px 0px;">
+					<div class="row" >
+						
+					
+						<div class="mainsearch">
+	
+							<!-- Actual search box -->
+							
+							
+							<!-- Another variation with a button -->
+							<div class="input-group">
+								<input type="text" name="search_value" id= "search_value" class="form-control" placeholder="Search this blog" style="border:none;border-radius: 0px;">
+								<div class="input-group-append">
+									<button class="btn btn-secondary"   style="background: #fff;border: none;color: #e59285;border-radius: 0px;" type="button" onclick="searched()">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+
+								
+
+							</div>
+							
+							
+						</div>
+
+						<div>
+							
+						<ul class="header__sidebar__right d-flex justify-content-end align-items-center three_bu" style="position:absolute;right:0;">
+							
+							<li class="wishlist"><a href="{% url 'user_wishlist' %}"></a></li>
+							<li class="shopcart"><a class="cartbox_active"><span
+										class="product_qun">{% if cart_count_home is not None %}{{ cart_count_home }}{% else %}0{% endif %}</span></a>
+								{% if user.is_authenticated %}
+
+								{% if dests_usercart_home %}
+
+								<!-- Start Shopping Cart -->
+								<div class="block-minicart minicart__active">
+									<div class="minicart-content-wrapper">
+										<div class="micart__close">
+											<span>close</span>
+										</div>
+
+
+
+										<div class="items-total d-flex justify-content-between">
+											<span>{{ cart_count_home }} items</span>
+											<span>Cart Subtotal</span>
+										</div>
+										<div class="total_amount text-right">
+											<span>{{ totalprice }}</span>
+										</div>
+										<div class="mini_action checkout">
+											<a class="checkout__btn" href="{% url 'checkout' %}">Go to Checkout</a>
+										</div>
+										<div class="single__items">
+											<div class="miniproduct"
+												style="margin-top:-10px;height:253px;overflow-y:scroll;">
+
+												{% for dest_usercart in dests_usercart_home %}
+
+												<div class="item01 d-flex mt--20">
+													<div class="thumb">
+														<a href="{% url 'single-product' dest_usercart.id %}"><img src="{{ dest_usercart.product_id.bookfront_cover.url }}" alt="product images"></a>
+													</div>
+													<div class="content">
+														<h6><a
+																href="{% url 'single-product' dest_usercart.id %}">{{ dest_usercart.product_id.name }}</a>
+														</h6>
+														<span class="prize">{{ dest_usercart.product_id.price }}</span>
+														<div class="product_prize d-flex justify-content-between">
+															<span class="qun">Qty: 03</span>
+															<ul class="d-flex justify-content-end" style="margin-right:10px;">
+																<li><a href="{% url 'remove_cartbook_byid' dest_usercart.id %}"><i class="zmdi zmdi-delete"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+
+												{% endfor %}
+
+
+											</div>
+										</div>
+										<div class="mini_action cart">
+											<a class="cart__btn" href="{% url 'user_cart' %}">View and edit cart</a>
+										</div>
+
+
+
+
+										{% else %}
+
+										<div class="block-minicart minicart__active">
+											<div class="minicart-content-wrapper">
+												<div class="micart__close">
+													<span>close</span>
+												</div>
+
+												<div class="items-total d-flex justify-content-center"
+													style="line-height: 50px;border: 3px solid #e59285;">
+													<span>oo ho !! you didnt add anything</span>
+												</div>
+
+												{% endif %}
+
+												{% else %}
+
+												<div class="block-minicart minicart__active">
+													<div class="minicart-content-wrapper">
+
+														<div class="mini_action cart">
+															<a class="cart__btn" href="{% url 'login_signup_home' %}">Login to View
+																your cart</a>
+														</div>
+
+												{% endif %}
+								
+
+									</div>
+								</div>
+												<!-- End Shopping Cart -->
+							</li>
+							<li class="setting__bar__icon"><a class="setting__active" href="#"></a>
+								<div class="searchbar__content setting__block">
+									<div class="content-inner">
+										<div class="switcher-currency">
+											<strong class="label switcher-label">
+												<span>Hello
+													<!-- user.firstname --></span>
+											</strong>
+											<div class="switcher-options">
+												<div class="switcher-currency-trigger">
+													<div class="setting__menu">
+														<!-- <span><a href="#">User.Mobilenumber</a></span> -->
+
+														<span><a href="{% url 'my-account' %}">My Account</a></span>
+														<span><a href="#">My Wishlist</a></span>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="switcher-currency">
+											<strong class="label switcher-label">
+
+											</strong>
+											<div class="switcher-options">
+												<div class="switcher-currency-trigger">
+													<span class="currency-trigger"><strong class="label switcher-label">
+															<span>Language &nbsp;&nbsp;&nbsp;&nbsp;<i
+																	class="arrowme downme"></i></span>
+														</strong></span>
+													<ul class="switcher-dropdown">
+														<li>Marathi</li>
+														<li>Hindi</li>
+														<li>English</li>
+														<li>Urdhu</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+
+										<div class="switcher-currency">
+
+											<div class="switcher-options">
+												<div class="switcher-currency-trigger">
+													<div class="setting__menu">
+														<!-- <span><a href="#">User.Mobilenumber</a></span> -->
+
+														{% if user.is_authenticated %}
+														<span><a href="{% url 'logout' %}">Logout</a></span>
+														{% else %}
+														<span><a href="{% url 'login_signup_home' %}">Login In</a></span>
+														{% endif %}
+														<span><a href="{% url 'login_signup_home' %}">Create An
+																Account</a></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							
+						</ul>
+						 
+						</div>
+					</div>
+				</div>
+				<!-- Start Mobile Menu -->
+				<div class="row d-none">
+					<div class="col-lg-12 d-none">
+						<nav class="mobilemenu__nav">
+							<ul class="meninmenu">
+								<li><a href="{% url 'index' %}">Home</a>
+									<ul>
+										<li><a href="index.html">Home Style Default</a></li>
+										<li><a href="index-2.html">Home Style Two</a></li>
+										<li><a href="index-box.html">Home Box Style</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Pages</a>
+									<ul>
+										<li><a href="about.html">About Page</a></li>
+										<li><a href="portfolio.html">Portfolio</a>
+											<ul>
+												<li><a href="portfolio.html">Portfolio</a></li>
+												<li><a href="portfolio-three-column.html">Portfolio 3 Column</a></li>
+												<li><a href="portfolio-details.html">Portfolio Details</a></li>
+											</ul>
+										</li>
+										<li><a href="my-account.html">My Account</a></li>
+										<li><a href="cart.html">Cart Page</a></li>
+										<li><a href="checkout.html">Checkout Page</a></li>
+										<li><a href="wishlist.html">Wishlist Page</a></li>
+										<li><a href="error404.html">404 Page</a></li>
+										<li><a href="faq.html">Faq Page</a></li>
+										<li><a href="team.html">Team Page</a></li>
+									</ul>
+								</li>
+								<li><a href="shop-grid.html">Shop</a>
+									<ul>
+										<li><a href="shop-grid.html">Shop Grid</a></li>
+										<li><a href="shop-list.html">Shop List</a></li>
+										<li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+										<li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+										<li><a href="shop-no-sidebar.html">Shop No sidebar</a></li>
+										<li><a href="single-product.html">Single Product</a></li>
+									</ul>
+								</li>
+								<li><a href="blog.html">Blog</a>
+									<ul>
+										<li><a href="blog.html">Blog Page</a></li>
+										<li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+										<li><a href="blog-no-sidebar.html">Blog No Sidebar</a></li>
+										<li><a href="blog-details.html">Blog Details</a></li>
+									</ul>
+								</li>
+								<li><a href="{% url 'contact' %}">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!-- End Mobile Menu -->
+				<div class="mobile-menu d-block d-lg-none">
+				</div>
+				<!-- Mobile Menu -->
+			</div>
+
+
+
+			<div classs="row checkoutnone">
+				<div class="col-12 d-none d-lg-block" style="float:right;padding:10px 0px;box-shadow: rgb(0 0 0 / 8%) 0px 2px 3px, rgb(0 0 0 / 14%) 0px 2px 2px;">
+					<nav class="mainmenu__nav" style="height:unset">
+						<ul class="meninmenu d-flex justify-content-start" style="max-height: 43px;margin-left: 10%;">
+							<li class="drop"><a href="shop-grid.html">Categories  <i class="arrow down"></i></a>
+								<div class="megamenu mega04">
+									<ul class="item item03">
+										<li class="title">Study Books</li>
+										<li><a href="{% url 'categorybooks' 'schoobooks_school' %}">School</a></li>
+										<li><a href="{% url 'categorybooks' 'books_college' %}">College</a></li>
+										<li><a href="{% url 'categorybooks' 'engineering' %}">Engineering</a></li>
+										<li><a href="{% url 'categorybooks' 'medical' %}">Medical</a></li>
+										<li><a href="{% url 'categorybooks' 'pharmacy' %}">Pharmacy</a></li>
+										<li><a href="{% url 'categorybooks' 'commerace' %}">Commerace</a></li>
+									</ul>
+									<ul class="item item03">
+										<li class="title">Categories </li>
+										<li><a href="{% url 'categorybooks' 'biography' %}">Biography </a></li>
+										<li><a href="{% url 'categorybooks' 'bussiness' %}">Business </a></li>
+										<li><a href="{% url 'categorybooks' 'cookbooks' %}">Cookbooks </a></li>
+										<li><a href="{% url 'categorybooks' 'health&fitness' %}">Health & Fitness </a></li>
+										<li><a href="{% url 'categorybooks' 'history' %}">History </a></li>
+									</ul>
+									<ul class="item item03">
+										<li class="title">Customer Favourite</li>
+										<li><a href="{% url 'categorybooks' 'mystery' %}">Mystery</a></li>
+										<li><a href="{% url 'categorybooks' 'religion and inspiration' %}">Religion & Inspiration</a></li>
+										<li><a href="{% url 'categorybooks' 'fictionfantasy' %}">Fiction/Fantasy</a></li>
+										<li><a href="{% url 'categorybooks' 'general knowledege' %}">General Knowledege</a></li>
+									</ul>
+									<ul class="item item03">
+										<li class="title">Collections</li>
+										<li><a href="{% url 'categorybooks' 'science' %}">Science </a></li>
+										<li><a href="{% url 'categorybooks' 'imaginaions' %}">Imaginations</a></li>
+										<li><a href="{% url 'categorybooks' 'self-improvemen' %}">Self-Improvemen</a></li>
+										<li><a href="{% url 'categorybooks' 'home and garden' %}">Home & Garden</a></li>
+										<li><a href="{% url 'categorybooks' 'humor books' %}">Humor Books</a></li>
+									</ul>
+									
+								</div>
+							</li>
+							
+							
+							<li class="drop"><a href="shop-grid.html">Kids</a>
+								<div class="megamenu mega02">
+									<ul class="item item02">
+										<li class="title">Top Collections</li>
+										<li><a href="shop-grid.html">Dora the Explorer</a></li>
+										<li><a href="shop-grid.html">Diary Wimpy Kid</a></li>
+										<li><a href="shop-grid.html">Finding Dory</a></li>
+										<li><a href="shop-grid.html">Harry Potter</a></li>
+										<li><a href="shop-grid.html">Land of Stories</a></li>
+									</ul>
+									<ul class="item item02">
+										<li class="title">More For Kids</li>
+										<li><a href="shop-grid.html">B&N Educators</a></li>
+										<li><a href="shop-grid.html">B&N Kids' Club</a></li>
+										<li><a href="shop-grid.html">Kids' Music</a></li>
+										<li><a href="shop-grid.html">Toys & Games</a></li>
+										<li><a href="shop-grid.html">Hoodies</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="drop"><a href="{% url 'about' %}">About</a></li>
+							
+							<li><a href="{% url 'contact' %}">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="loader">
+    	<img src="{% static 'images/demo.gif' %}" alt="Loading..." />
+	</div>
+		</header>
+
+		<!-- //Header -->
+		<!-- Start Search Popup -->
+		
+
+		<section class="wn__product__area brown--color pt--80  pb--30">
+			{% block content %}
+			{% endblock %}
+		</section>
+
+		<!-- Footer Area -->
+		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
+			<div class="footer-static-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="footer__widget footer__menu">
+								<div class="ft__logo">
+									<a href="index.html">
+										<img src="{% static 'images/logo/3.png' %}" alt="logo">
+									</a>
+									<p>Books are the source of Knowledege, it can be use to enpower future or destory  it. It's depand upon you, want to develope or destory the world :- Pratik Gosavi</p>
+								</div>
+								<div class="footer__content">
+									<ul class="social__net social__net--2 d-flex justify-content-center">
+										<li><a href="#"><i class="bi bi-facebook"></i></a></li>
+										<li><a href="#"><i class="bi bi-google"></i></a></li>
+										<li><a href="#"><i class="bi bi-twitter"></i></a></li>
+										<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
+									</ul>
+									<ul class="mainmenu d-flex justify-content-center">
+										<li><a href="{% url 'trending' %}">Trending</a></li>
+										<li><a href="{% url 'bestseller' %}">Best Seller</a></li>
+										<li><a href="{% url 'allproducts' %}">All Product</a></li>
+										<li><a href="{% url 'user_wishlist' %}">Wishlist</a></li>
+										<li><a href="index.html">Blog</a></li>
+										<li><a href="{% url 'contact' %}">Contact</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="copyright__wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-12">
+							<div class="copyright">
+								<div class="copy__right__inner text-left">
+									<p>Copyright <i class="fa fa-copyright"></i> <a href="#">Boighor.</a> All Rights
+										Reserved</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12">
+							<div class="payment text-right">
+								<img src="{% static 'images/icons/payment.png' %}" alt="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- //Footer Area -->
+		<!-- QUICKVIEW PRODUCT -->
+		<div id="quickview-wrapper">
+			<!-- Modal -->
+
+			{% for dest in dests_categoryall %}
+
+			<div class="modal fade" id="productmodal{{ dest.id }}" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal__container" role="document">
+					<div class="modal-content">
+						<div class="modal-header modal__header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+									aria-hidden="true">&times;</span></button>
+						</div>
+						<div class="modal-body">
+							<div class="modal-product">
+								<!-- Start product images -->
+								<div class="product-images">
+									<div class="main-image images">
+										<img alt="big images" src="{{ dest.bookfront_cover.url }}">
+									</div>
+								</div>
+								<!-- end product images -->
+								<div class="product-info">
+									<h1>{{ dest.name }}</h1>
+									<div class="rating__and__review">
+										<ul class="rating">
+											<li><span class="ti-star"></span></li>
+											<li><span class="ti-star"></span></li>
+											<li><span class="ti-star"></span></li>
+											<li><span class="ti-star"></span></li>
+											<li><span class="ti-star"></span></li>
+										</ul>
+										<div class="review">
+											<a href="#">4 customer reviews</a>
+										</div>
+									</div>
+									<div class="price-box-3">
+										<div class="s-price-box">
+											<span class="new-price">{{ dest.price }}</span>
+											<span class="old-price">$45.00</span>
+										</div>
+									</div>
+									<div class="quick-desc">
+										Designed for simplicity and made from high quality materials. Its sleek geometry
+										and material combinations creates a modern look.
+									</div>
+
+									<div class="social-sharing">
+										<div class="widget widget_socialsharing_widget">
+											<h3 class="widget-title-modal">Share this product</h3>
+											<ul class="social__net social__net--2 d-flex justify-content-start">
+												<li class="facebook"><a href="#" class="rss social-icon"><i
+															class="zmdi zmdi-rss"></i></a></li>
+												<li class="linkedin"><a href="#" class="linkedin social-icon"><i
+															class="zmdi zmdi-linkedin"></i></a></li>
+												<li class="pinterest"><a href="#" class="pinterest social-icon"><i
+															class="zmdi zmdi-pinterest"></i></a></li>
+												<li class="tumblr"><a href="#" class="tumblr social-icon"><i
+															class="zmdi zmdi-tumblr"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="box-tocart d-flex">
+										<form action="{% url 'user_cart_addproduct' %}" method="post">
+											{% csrf_token %}
+											<div class="addtocart__actions">
+												<input id="prodId" name="bookid" type="hidden" value="{{ dest.id }}">
+												<button class="tocartbtn"
+													style="background: #333 none repeat scroll 0 0;color: #fff;display: inline-block;font-size: 18px;height: 50px;line-height: 50px;padding: 0 45px;text-transform: capitalize;transition: all 0.5s ease 0s;border:none;margin-top:75px;"
+													type="submit" title="Add to Cart">Add to Cart</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% endfor %}
+
+		<!-- END QUICKVIEW PRODUCT -->
+	</div>
+	<!-- //Main wrapper -->
+
+<script>
+function myFunction12121212() {
+  alert("I am an alert box!");
+}
+
+function searched (){
+
+		var value1212 = document.getElementById("search_value").value;
+
+		window.location.href = "search?search=" + value1212;
+
+		
+
+}
+
+</script>
+	<!-- JS Files -->
+	<script src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/plugins.js' %}"></script>
+	<script src="{% static 'js/active.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+	<script>
+
+
+
+
+</script>
+
+	{% block script %}
+	{% endblock %}
+
+</body>
+
+<!-- Mirrored from demo.devitems.com/boighor-v3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Jun 2020 08:38:58 GMT -->
+
+</html>

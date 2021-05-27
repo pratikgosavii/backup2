@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+	
+ {% block content %}
+
+<head>
+
+    <style>
+
+        /* -- quantity box -- */
+
+        .quantity {
+        display: inline-block; }
+
+        .quantity .input-text.qty {
+        width: 35px;
+        height: 39px;
+        padding: 0 5px;
+        text-align: center;
+        background-color: transparent;
+        border: 1px solid #efefef;
+        }
+
+        .quantity.buttons_added {
+        text-align: left;
+        position: relative;
+        white-space: nowrap;
+        vertical-align: top; }
+
+        .quantity.buttons_added input {
+        display: inline-block;
+        margin: 0;
+        vertical-align: top;
+        box-shadow: none;
+        }
+
+        .quantity.buttons_added .minus,
+        .quantity.buttons_added .plus {
+        padding: 7px 10px 8px;
+        height: 41px;
+        background-color: #ffffff;
+        border: 1px solid #efefef;
+        cursor:pointer;}
+
+        .quantity.buttons_added .minus {
+        border-right: 0; }
+
+        .quantity.buttons_added .plus {
+        border-left: 0; }
+
+        .quantity.buttons_added .minus:hover,
+        .quantity.buttons_added .plus:hover {
+        background: #eeeeee; }
+
+        .quantity input::-webkit-outer-spin-button,
+        .quantity input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        margin: 0; }
+        
+        .quantity.buttons_added .minus:focus,
+        .quantity.buttons_added .plus:focus {
+        outline: none; }
+
+
+
+
+    </style>
+
+    <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+        <!-- Start Bradcaump area -->
+        <div class="ht__bradcaump__area bg-image--3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bradcaump__inner text-center">
+                        	<h2 class="bradcaump-title">Shopping Cart</h2>
+                            <nav class="bradcaump-content">
+                              <a class="breadcrumb_item" href="index.html">Home</a>
+                              <span class="brd-separetor">/</span>
+                              <span class="breadcrumb_item active">Shopping Cart</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Bradcaump area -->
+        <!-- cart-main-area start -->
+        <div class="cart-main-area section-padding--lg bg--white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 ol-lg-12">
+                                     
+                            <div class="table-content wnro__table table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr class="title-top">
+                                            <th class="product-thumbnail">Image</th>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-price">Price</th>
+                                            <th class="product-quantity">Quantity</th>
+                                            <th class="product-subtotal">Total</th>
+                                            <th class="product-remove">Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    
+				                        
+									{% for dest in dests %}
+
+                                        <tr>
+                                            <td class="product-thumbnail"><a href="#"><img src="{{ dest.product_id.bookfront_cover.url }}" alt="product img"></a></td>
+                                            <td class="product-name"><a href="#">{{ dest.product_id.name }}</a></td>
+                                            <td class="product-price"><span class="amount">{{ dest.product_id.price }}</span></td>
+                                            <td class="product-quantity">
+                                            
+                                                <form action="{% url 'user_cart_addproduct'%}" method="post">
+
+                                                    {% csrf_token %}
+
+
+
+                                                    <input type="hidden" name="bookid" value="{{ dest.product_id.id }}">
+                                                        
+                                                        <div class="quantity buttons_added"><p>  {{ dest.quantity }} </p>
+                                                            <input type="button" value="-" class="minus">
+                                                            <input type="number" name="quantity" step="1" min="1" max="10" name="quantity" value="{{ dest.quantity }}" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="">
+                                                            <input type="button" value="+" class="plus">
+                                                        </div>
+
+                                                        <input type="submit" value="submit">
+
+                                                </form>
+
+                                            </td>
+                                            
+                                            <td class="product-subtotal">$165.00</td>
+                                            <td class="product-remove"><a href="{% url 'remove_cartbook_byid' dest.id %}">X</a></td>
+                                        </tr>
+										
+									{% endfor %}
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                        
+                        <div class="cartbox__btn">
+                            <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
+                                <li><a href="#">Coupon Code</a></li>
+                                <li><a href="#">Apply Code</a></li>
+                                <li><a href="#">Update Cart</a></li>
+                                <li><a href="{% static 'checkout' %}">Check Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-6">
+                        <div class="cartbox__total__area">
+                            <div class="cartbox-total d-flex justify-content-between">
+                                <ul class="cart__total__list">
+                                    <li>Cart total</li>
+									<li>Delivery Fee</li>
+                                    <li>Sub Total</li>
+                                </ul>
+                                <ul class="cart__total__tk">
+                                    <li>{{ totalprice }} ₹</li>
+                                    <li>70 ₹</li>
+									<li>$70 ₹</li>
+                                </ul>
+                            </div>
+                            <div class="cart__total__amount">
+                                <span>Grand Total</span>
+                                <span>140 ₹</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        <!-- cart-main-area end -->
+
+
+      
+
+
+	{% endblock %}

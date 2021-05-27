@@ -1,0 +1,449 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+
+{% block content %}
+
+<!-- Start Search Popup -->
+
+<!-- End Search Popup -->
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bg-image--4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="bradcaump__inner text-center">
+					<h2 class="bradcaump-title">Checkout</h2>
+					<nav class="bradcaump-content">
+						<a class="breadcrumb_item" href="index.html">Home</a>
+						<span class="brd-separetor">/</span>
+						<span class="breadcrumb_item active">Checkout</span>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	{% if messages %}
+		{% for message in messages %}
+			
+			<div class="alert_wrapper">
+				<div class="alert_backdrop"></div>
+				<div class="alert_inner">
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+						<div class="alert_item alert_info">
+							<div class="icon data_icon">
+								<i class="fas fa-info-circle"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Info:</span>
+									User action pending
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
+						</div>
+
+					{% endif %}
+
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+
+						<div class="alert_item alert_warning">
+							<div class="icon data_icon">
+								<i class="fas fa-exclamation-triangle"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Warning:</span>
+									User action warning
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
+						</div>
+
+					{% endif %}
+
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+
+						<div class="alert_item alert_error">
+							<div class="icon data_icon">
+								<i class="fas fa-bomb"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Error:</span>
+									User action error
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
+						</div>
+
+					{% endif %}
+
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+						<div class="alert_item alert_success">
+							<div class="icon data_icon">
+								<i class="fas fa-check-circle"></i>
+							</div>
+							<div class="data">
+								<p class="title"><span>Success:</span>
+									User action success
+								</p>
+								<p class="sub">  {{ message }}</p>
+							</div>
+							<div class="icon close">
+								<i class="fas fa-times"></i>
+							</div>
+
+					{% endif %}
+
+					</div>
+				</div>
+			</div>
+
+			
+    	{% endfor %}
+    {% endif %}
+<!-- End Bradcaump area -->
+<!-- Start Checkout Area -->
+<section class="wn__checkout__area section-padding--lg bg__white">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="wn_checkout_wrap">
+					<div class="checkout_info">
+						{% if user.is_authenticated %}
+
+						<span>Want to switch or edit account?</span>
+						<a class="showlogin" href="#">Click here</a>
+
+						{% endif %}
+
+					</div>
+					<div class="checkout_login">
+						<form class="wn__checkout__form" action="#">
+
+							<p>You Login as <span>&nbsp;&nbsp;</span> <span style="color: #e59285;">{{ user.username }}
+									<!-- {{ user.number }} --></span></p>
+
+							<p>Login here</p>
+
+							<div class="input__box">
+								<label>Username or email <span>*</span></label>
+								<input type="text">
+							</div>
+
+							<div class="input__box">
+								<label>password <span>*</span></label>
+								<input type="password">
+							</div>
+							<div class="form__btn">
+								<button>Login</button>
+								<label class="label-for-checkbox">
+									<input id="rememberme" name="rememberme" value="forever" type="checkbox">
+									<span>Remember me</span>
+								</label><br><br>
+								<a href="#">Lost your password?</a>
+							</div>
+
+
+						</form>
+					</div>
+					<div class="checkout_info">
+						<span>Have a coupon? </span>
+						<a class="showcoupon" href="#">Click here</a>
+					</div>
+					<div class="checkout_coupon">
+						<div class="form__coupon">
+						
+							<form action="{% url 'checkout_single' productid  %}" method="post">
+								{% csrf_token %}
+								<input type="text" name="couponcheck" placeholder="Coupon code">
+								<input id="bookid" name="bookid" type="hidden" value="0">
+								<input type="submit" id="submit" name="submit" value="Apply coupon"
+									style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class=""> -->
+		<form action="{% url 'place_order' %}" method="POST"  class="p-3 p-md-none row" id="billing-form">
+			{% csrf_token %}
+
+			<div class="col-lg-6 col-12" style="padding-left: 0px;">
+			
+			<!--  saved address code       -->
+			<div>
+				<div class="checkout_info">
+					<span>Delivery address. </span>
+					<a class="showaddress"  href="#">Click here</a>
+				</div>
+				
+				<div class="checkout_address" style="border:0px;">
+					<div class="saved_address" style="margin: 0 0;">
+
+						<div class="form__coupon">
+							<!-- code inside -->
+							
+							<div class="margin_between">
+							<div class="container-fluid" >
+								<div class="row">
+									<div class="col-12 mt-3" style="padding: 0px 0px;border:0px;">
+										{% if saved_user_address %}
+											{% for dest in saved_user_address %}
+												<div class="card mb-3" style="border:0px;">
+													<div class="card-horizontal">
+														<div>
+															<input type="radio" class="radio_button" name="address_number1" value="{{ dest.id }}">
+														</div>
+														<div class="card-body">
+															<h4 class="card-title">{{ dest.name }} {{ dest.mobilenumber }} </h4>
+															<p class="card-text">
+																<!-- {{price}} --> {{ dest.address_full }}, Akola
+																{{ dest.pincode }}</p>
+														
+														</div>
+													</div>
+													<div class="my-3" style="margin-left:37px;">
+														<a class="showaddress" style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;" href="#">Deliver here</a>
+													</div>
+												</div>
+												<hr>
+											{% endfor %}
+										{% else %}
+
+										<h1>dgsudgsgdugsd</h1>
+
+										{% endif %}
+									</div>
+								</div>
+							</div>
+							</div>
+
+							<!-- code inside close -->
+
+						</div>
+
+					</div>
+
+					<!-- add new address code  -->
+
+					<div class="checkout_info" style="margin-top:20px;">
+						<span>Add new address. </span>
+						<a class="showaddaddress"  href="#">Click here</a>
+					</div>
+
+					<!-- code inside add address -->
+					<div class="checkout_addaddress">
+						
+						<div class="form__coupon">
+							
+							<div class="customer_details">
+
+					
+								<div class="customar__field">
+									<div class="row">
+										<div class="input_box col-6">
+
+											<input type="text" name="name" placeholder="Name">
+										</div>
+										<div class="input_box col-6">
+
+											<input type="text" name="mobilenumber" placeholder="Mobile number">
+										</div>
+									</div>
+									<div class="row">
+										<div class="input_box col-6">
+
+											<input type="text" name="pincode" placeholder="Pincode">
+										</div>
+										<div class="input_box col-6">
+
+											<input type="text" value="Akola" readonly>
+										</div>
+									</div>
+
+									<div class="input_box d-flex">
+
+										Full address<textarea rows="3" cols="50" placeholder="sdsd" style="border: 1px solid #e1e1e1;"
+											name="address_full" placeholder="Address (Area and Street)"> </textarea>
+									</div>
+
+									<div class="row">
+
+										<div class="input_box col-6">
+											<input type="text" name="landmark" placeholder="Landmark (optional)">
+										</div>
+
+
+										<div class="input_box col-6">
+											<input type="text" name="addresstype" placeholder="addres type">
+										</div>
+
+										<div class="my-3" style="margin-left:37px;">
+											<a class="showaddress showaddaddress" style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;" href="#">Deliver here</a>
+										</div>
+										
+									</div>
+
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<!-- code inside add address close -->
+
+				</div>
+			</div>
+
+			<!-- saved address code close-->
+		
+				
+				<div class="margin_between">
+					<div class="container-fluid" >
+						<div class="row">
+							<div class="col-12 mt-3" style="padding: 0px 0px;">
+								{% if productid %}
+									
+									<div class="card mb-3">
+										<div class="card-horizontal">
+											<div style="float:left;">
+												<img class="imageincart" width="50px" style="margin-left:10px;"
+													src="{{ dests_checkout_products.bookfront_cover.url }}" alt="Card image cap">
+											</div>
+											<div class="card-body">
+												<h4 class="card-title">{{ dests_checkout_products.name }}</h4>
+												<p class="card-text">
+													<!-- {{price}} --> {{ dests_checkout_products.standard }}
+													{{ dests_checkout_products.pattern }}</p>
+												<p class="card-text">
+													<!-- {{price}} -->{{dests_checkout_products.price }} ₹</p><br>
+											</div>
+										</div>
+										<div class="my-3">
+											<div class="btn mx-2 btn-primary">save for latter</div>
+											<div class="btn mx-2 btn-danger">remove</div>
+										</div>
+									</div>
+
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
+
+				<div class="wn__order__box">
+					<h3 class="onder__title">Price Details</h3>
+
+					<ul class="order_product">
+
+
+
+						<li> Price ( {% if cart_count %} {{ cart_count }} {% else %} 1 {% endif %} Items) <span> {{ cart_total }} </span></li>
+						<!-- if coupen apply -->
+						<li>Coupon {% if coupon_name %} Applied {{ coupon_name }} {% endif %} <span>
+								{% if discount_amount %} - {{ discount_amount }} {% else %} - 00 {% endif %} </span>
+						</li>
+						<li>Delivery Charges <span> 00 </span></li>
+
+
+
+					</ul>
+
+					<ul class="total__amount">
+						<li>Total Amount <span>{{ cart_total_afterdiscount }}</span></li>
+					</ul>
+				</div>
+				<div id="accordion" class="checkout_accordion mt--30" role="tablist">
+					<div class="payment">
+						<div class="che__header" role="tab" id="headingOne">
+							<a class="checkout__title" data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+								aria-controls="collapseOne">
+								<span>Online Payment</span>
+							</a>
+						</div>
+						<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
+							data-parent="#accordion">
+							<div class="payment-body">Make your payment directly into our PhonePay/GooglePay account. Please Make payment when the delivery guy came for delivery.
+								
+							</div>
+						</div>
+					</div>
+					<div class="payment">
+						<div class="che__header" role="tab" id="headingTwo">
+							<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseTwo"
+								aria-expanded="false" aria-controls="collapseTwo">
+								<span>Cheque Payment</span>
+							</a>
+						</div>
+						<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+							data-parent="#accordion">
+							<div class="payment-body">
+								You can write check and hand it over to our delivey boy.
+							</div>
+						</div>
+					</div>
+					<div class="payment">
+						<div class="che__header" role="tab" id="headingThree">
+							<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseThree"
+								aria-expanded="false" aria-controls="collapseThree">
+								<span>Cash on Delivery</span>
+							</a>
+						</div>
+						<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
+							data-parent="#accordion">
+							<div class="payment-body">Pay with cash upon delivery.</div>
+						</div>
+					</div>
+					<div class="payment">
+						<div class="che__header" role="tab" id="headingFour">
+							<a class="collapsed checkout__title" data-toggle="collapse" href="#collapseFour"
+								aria-expanded="false" aria-controls="collapseFour">
+								<span>PayPal <img src="{% static 'images/icons/payment.png' %}" alt="payment images">
+								</span>
+							</a>
+						</div>
+						<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
+							data-parent="#accordion">
+							<div class="payment-body">Pay with cash upon delivery.</div>
+						</div>
+					</div>
+				</div><br><br><br><br>
+
+				{% if productid %}
+
+					<input id="bookid" name="bookid" type="hidden" value="{{ productid }}">
+
+
+				    <input type="submit" id="submit" name="submit" value="checkout"
+					style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
+                {% endif %}
+			</div>
+		</form>
+		<!-- </div> -->
+	</div>
+</section>
+<!-- End Checkout Area -->
+
+
+{% endblock %}

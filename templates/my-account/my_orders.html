@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+{% block title %}MANAGE YOUR ACCOUNT{% endblock %}
+{% block styles %}
+<style>
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link {
+        border: none;
+        transition: none;
+        /* border-bottom: 2px solid #333; */
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        border: none;
+        border-bottom: 2px solid #20c997;
+    }
+
+    .card-img {
+        height: 150px;
+        background: #ccc;
+    }
+
+    .nav {
+        border-right: 1px solid #ccc;
+    }
+    .nav-pills .nav-link.active {
+        background: #333;
+    }
+   
+    .events li {
+        display: flex;
+    }
+
+    .events time {
+        position: relative;
+        color: #ccc;
+        padding: 0 1.5em;
+    }
+
+    .events time::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        right: 0;
+        top: 0;
+        transform: translateX(50%);
+        border-radius: 50%;
+        background: #fff;
+        border: 1px #ccc solid;
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .events time.completed::after {
+        background: green;
+    }
+
+    .events span {
+        padding: 0 1.5em 1.5em 2em;
+        position: relative;
+    }
+
+    .events span::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        height: 100%;
+        border-left: 2px #ccc dashed;
+    }
+
+    .events span.completed::before {
+        border-left: 2px green solid;
+    }
+
+    .events strong {
+        display: block;
+        font-weight: bolder;
+    }
+
+    .events {
+        margin: 1em;
+        width: 50%;
+    }
+
+    .events,
+    .events *::before,
+    .events *::after {
+        box-sizing: border-box;
+        font-family: arial;
+    }
+
+
+
+    @media (max-width:480px)   {
+   .nav-link{
+
+        width: fit-content;
+    }
+
+    .h4{
+
+        font-size: 16px;
+    }
+    
+}
+
+</style>
+{% endblock %}
+{% block content %}<br><br><br><br><br>
+<div class="container">
+    <div class="row pt-4">
+        <div class="nav col-3 flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link" id="v-pills-accounts-tab" data-toggle="pill" href="#v-pills-accounts" role="tab"
+                aria-controls="v-pills-accounts" onclick="window.location.replace('http://127.0.0.1:8000/accounts/');" aria-selected="true">My Acoount</a>
+            <a class="nav-link active" id="v-pills-myorders-tab" data-toggle="pill" href="#v-pills-myorders" role="tab"
+                aria-controls="v-pills-myorders"  aria-selected="true">My Orders</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                aria-controls="v-pills-messages" onclick="window.location.replace('http://127.0.0.1:8000/accounts/myaddress');" aria-selected="false">Manange Address</a>
+            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                aria-controls="v-pills-settings" aria-selected="false">Logout</a>
+        </div>
+        <div class="tab-content col-9" id="v-pills-tabContent">
+        <div class="tab-pane fade active show" id="v-pills-myorders" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div class="h2">Your Orders</div>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                <a class="nav-item nav-link active" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                        role="tab" aria-controls="nav-contact" aria-selected="true">All Orders</a>
+
+                    <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                        role="tab" aria-controls="nav-home" aria-selected="false">Open Orders</a>
+
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                        role="tab" aria-controls="nav-profile" aria-selected="false">Cancle Orders</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                    {% for dest in user_orders_open %}
+
+                    <div class="card my-3">
+                        <div class="card-header" style="float:left;">
+                            <div class="row px-2">
+                                <div class="col-3 col-md-3 col-sm-3">
+                                    <small>
+                                        ORDER PLACED
+                                    </small><br>
+                                    {{ dest.date_time }}
+                                </div>
+
+                                <div class="col-3 col-md-6 col-sm-4">
+                                    <small>
+                                        TOTAL
+                                    </small><br>
+                                    5,000
+                                </div>
+
+                                <div class="col-6 col-3 col-md-3 col-sm-4">
+                                    <small>
+                                        ORDER # 2131244234
+                                    </small><br>
+                                    <a href="#">Details</a> | <a href="#">Invoice</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="card-body row" >
+                            <div style="float:left;">
+                                <div class="col-6 offset-right-2">
+
+                            
+                                    <img  style="width: 100%; max-width: 250px;height: auto;" src="{{ dest.placedorder_book.bookfront_cover.url }}">
+                                </div>
+                            </div>
+                            <div class="col-12 offset-right-2">
+                                <div style="float:left;">
+                                    <h4 class=""> {{ dest.placedorder_book.name }} </h4><br>
+                                    <p class="card-text mb-6"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
+                                    <p class="card-text mb-6"> {{ dest.placedorder_book.price }} </p>
+                                    <p class="card-text mb-6"> quantity </p>
+                                </div>
+                            
+                                <div style="float:right;">
+                                    <div class="btn-group-vertical ">
+                                        <button class="buttoncustom" style="margin:5px 5px;">Buy Again</button>
+                                        <button class="buttoncustom" ata-toggle="modal" data-target=".bd-example-modal-lg" style="margin:5px 5px;">Track</button>
+                                        <button class="buttoncustom" style="margin:5px 5px;">Cancel order</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    {% endfor %}
+
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                        {% for dest in user_orders_cancled %}
+
+                    <div class="card my-3">
+                        <div class="card-header">
+                            <div class="row px-2">
+                                <div class="col-3 col-md-3 col-sm-3">
+                                    <small>
+                                        ORDER PLACED
+                                    </small><br>
+                                    {{ dest.date_time }}
+                                </div>
+
+                                <div class="col-3 col-md-6 col-sm-4">
+                                    <small>
+                                        TOTAL
+                                    </small><br>
+                                    5,000
+                                </div>
+
+                                <div class="col-6 col-3 col-md-3 col-sm-4">
+                                    <small>
+                                        ORDER # 2131244234
+                                    </small><br>
+                                    <a href="#">Details</a> | <a href="#">Invoice</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="card-body row">
+                                <div style="float:left;">
+                                <div class="col-6 offset-right-2">
+
+                            
+                                    <img  style="width: 100%; max-width: 250px;height: auto;" src="{{ dest.placedorder_book.bookfront_cover.url }}">
+                                </div>
+                            </div>
+                            <div class="col-7 offset-right-2">
+                                <div style="float:left;">
+                                    <h4 class=""> {{ dest.placedorder_book.name }} </h4><br>
+                                    <p class="card-text mb-6"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
+                                    <p class="card-text mb-6"> {{ dest.placedorder_book.price }} </p>
+                                    <p class="card-text mb-6"> quantity </p>
+                                </div>
+                            
+                                <div style="float:right;">
+                                    <div class="btn-group-vertical ">
+                                        <button class="buttoncustom" style="margin:5px 5px;">Buy Again</button>
+                                        <button class="buttoncustom" ata-toggle="modal" data-target=".bd-example-modal-lg" style="margin:5px 5px;">Track</button>
+                                        <button class="buttoncustom" style="margin:5px 5px;">Cancel order</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    {% endfor %}
+
+                </div>
+                <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                        {% for dest in user_orders_all %}
+
+                    <div class="card my-3">
+                        <div class="card-header">
+                            <div class="row px-2">
+                                <div class="col-12">
+                                   <bold> <small>
+                                        ORDER PLACED:-
+                                    </small> </bold>
+                                    {{ dest.date_time }}
+                                </div>
+
+                                <div class="col-12">
+                                    <small>
+                                        TOTAL
+                                    </small>
+                                    5,000
+                                </div>
+
+                                <div class="col-12">
+                                    <small>
+                                        ORDER # 2131244234
+                                    </small>
+                                    <a href="#">Details</a> | <a href="#">Invoice</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="card-body row">
+                            <div style="float:left;">
+                                <div class="col-6 offset-right-2">
+
+                            
+                                    <img  style="width: 100%; max-width: 250px;height: auto;" src="{{ dest.placedorder_book.bookfront_cover.url }}">
+                                </div>
+                            </div>
+                            <div class="col-7 offset-right-2">
+                                <div style="float:left;">
+                                    <h4 class=""> {{ dest.placedorder_book.name }} </h4><br>
+                                    <p class="card-text mb-6"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
+                                    <p class="card-text mb-6"> {{ dest.placedorder_book.price }} </p>
+                                    <p class="card-text mb-6"> quantity </p>
+                                </div>
+                            
+                                <div style="float:right;">
+                                    <div class="btn-group-vertical ">
+                                        <button class="buttoncustom" style="margin:5px 5px;">Buy Again</button>
+                                        <button class="buttoncustom" ata-toggle="modal" data-target=".bd-example-modal-lg" style="margin:5px 5px;">Track</button>
+                                        <button class="buttoncustom" style="margin:5px 5px;">Cancel order</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+                    <hr>
+                    {% endfor %}
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

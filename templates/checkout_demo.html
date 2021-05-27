@@ -1,0 +1,128 @@
+{% load static %}
+
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/mobile.css' %}">
+
+	<!-- Cusom css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+
+	<!-- Modernizer js -->
+	<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+<style>
+
+hr{
+  display:flex;
+}
+
+
+ .checkout-steps {
+    
+    width: 40%;
+    color: #696B79;
+    padding: 0;
+    display: inline-block;
+    line-height: 20px;
+}
+
+ .divider {
+    display: inline-block;
+    border-top: 1px dashed #696B79;
+    height: 4px;
+    width: 10%;
+}
+
+.active {
+    color: #20BD99;
+    border-bottom: 2px solid #20BD99;
+}
+
+li {
+    display:inline;
+    text-align: -webkit-match-parent;
+}
+
+
+
+</style>
+  
+
+</head>
+
+<body>
+  <div clas="row">
+    <div class="col-12 d-none d-lg-block" style="float:right;padding:10px 0px;box-shadow: rgb(0 0 0 / 8%) 0px 2px 3px, rgb(0 0 0 / 14%) 0px 2px 2px;">
+      <div class="headerpro" style="text-align: center;">
+        <ol class="checkout-steps"> 
+          <li class="step step1 active">BAG</li> 
+          <li class="divider"></li>
+          <li class="step step2">ADDRESS</li>
+          <li class="divider"></li>
+          <li class="step step3">PAYMENT</li> 
+        
+        </ol>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="" style="width:80%;height:80%;border:  3px solid green;"> 
+
+
+    
+        
+        <div class="" style="border: 3px solid green;position:absolute;right:0;">
+          <div class="card-horizontal">
+            <div>
+              <input type="radio" class="radio_button" name="address_number1" value="{{ dest.id }}">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">{{ dest.name }} {{ dest.mobilenumber }} </h4>
+              <p class="card-text">
+                <!-- {{price}} --> {{ dest.address_full }}, Akola
+                {{ dest.pincode }}</p>
+            
+            </div>
+          </div>
+          <div class="my-3" style="margin-left:37px;">
+            <a class="showaddress" style="background: #2e2e2e none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;" href="#">Deliver here</a>
+          </div>
+        </div>
+        <hr>
+     
+
+
+  </div>
+
+
+
+
+</body>
+</script>
+	<!-- JS Files -->
+	<script src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/plugins.js' %}"></script>
+	<script src="{% static 'js/active.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+	<script>
+
+
+
+
+</script>
+<script>
+</script>
+
+</html>

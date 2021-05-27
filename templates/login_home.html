@@ -1,0 +1,266 @@
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+
+
+body {
+  background: #607D8B;
+ 
+}
+
+{% comment %} css for social icon {% endcomment %}
+.login-form h1 {
+  font-size: 36px;
+  text-align: center;
+  color: #45aba6;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+.login-form .social-icon {
+    width: 100%;
+    font-size: 20px;
+    padding-top: 20px;
+    color: #fff;
+    text-align: center;
+    float: left;
+}
+.login-form {
+    background: #fff;
+    width: 450px;
+    margin: 0 auto;
+    display: table;
+    padding: 15px 30px 30px;
+    box-sizing: border-box;
+}
+.form-group {
+  float: left;
+  width: 100%;
+  margin: 0 0 15px;
+  position: relative;
+}
+.login-form input {
+    width: 100%;
+    padding: 5px;
+    height: 38px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 15px;
+    padding-left: 15px;
+}
+.login-form .form-group .input-icon {
+    font-size: 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    padding-left: 35px;
+    color: #666;
+}
+.login-form .login-btn {
+  background: #45aba6;
+  padding: 11px 50px;
+  border-color: #45aba6;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  border: 1px solid #45aba6;
+  width: 100%;
+  height: 56px;
+  cursor: pointer;
+}
+.login-form .reset-psw {
+  float: left;
+  width: 100%;
+  text-decoration: none;
+  color: #45aba6;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 11px;
+}
+.login-form .social-icon button {
+    font-size: 20px;
+    color: white;
+    height: 50px;
+    width: 50px;
+    background: #45aba6;
+    border-radius: 60%;
+    margin: 0px 10px;
+    border: none;
+    cursor: pointer;
+}
+.login-form button:hover{
+  opacity: 0.9;
+}
+.login-form .seperator {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  margin: 50px 0 0;
+}
+.login-form .seperator b {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -22px;
+  z-index: 1;
+}
+.login-form p {
+  float: left;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+{% comment %} css for social icon over {% endcomment %}
+
+
+h2 {
+   width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid #000; 
+   line-height: 0.1em;
+   margin: 10px 0 20px; 
+   color:grey;
+} 
+
+h2 span { 
+    background:#fff; 
+    padding:0 10px; 
+}
+
+.maincontainer{
+
+    display: unset;
+}
+
+@media screen and (max-width:767px) {
+.login-form {
+    width: 90%;
+    padding: 15px 15px 30px;
+}
+}
+
+
+@media screen and (max-width:480px) {
+  .maincontainer{
+
+      display: block;
+  }
+}
+
+
+    </style>
+    <title>Bootstrap 4 Login/Register Form</title>
+</head>
+<body><br><br>
+
+<div class="login-form">
+
+   
+    <section class="my_account_area pt--80 pb--55 bg--white" style="padding-top: 0px;">
+       
+              
+        
+
+        <div class="col-lg-6 col-12 maincontainer">
+            <div class="my__account__wrapper" style="display:block;">
+                <h3 class="account__title">Sign In</h3>
+                <form action="{% url 'loginn' %}" method="POST" class="form-signup">
+                    {% csrf_token %}
+                    <div class="account__form">
+                        
+                        <div class="customer_details">
+                          <div class="customar__field">
+                              <div class="margin_between">
+                                  <div class="input_box space_between" style="margin-bottom:20px;margin-top:20px;">
+                                      <input type="text" name="email" id="email" placeholder="Email or mobile phone number">
+                                  </div>
+                                    <div class="input_box space_between">
+                                        <input type="text" name="password" id="password" placeholder="Password">
+                                    </div>
+
+                                      <a><p style="text-align: right;font-size: 11px;">forgot password?</p></a>
+
+                                    <input type="submit" value="Submit" style="margin-top:20px;" > 
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                            
+                        <h2><span style="font-size: 13px;color:grey;">OR</span></h2><br>
+
+                         <input type="button" value="Request OTP"  onclick="phoneno()" style="" > 
+                       
+                       
+                    </div><br>
+                    <a href="{% url 'login_signup_home' %}"><p> create an account ?</p></a>
+                </form>
+            </div>
+        </div>
+
+    </section>
+       
+</div>
+<script>
+		
+  function phoneno() {
+
+    a = document.getElementById('email').value
+    
+    
+
+    a_len = a.length;
+    
+    
+
+
+    if(a.match(/^[0-9]+$/) != null){
+      
+       window.location.href = "http://127.0.0.1:8000/accounts/login_signup_home?mobile_no=" + a;
+    }
+    else{
+    
+      window.location.href = "http://127.0.0.1:8000/accounts/login_signup_home"
+
+      
+    }
+
+  
+        
+
+
+    
+}
+   
+
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}MY ORDERs{% endblock %}
+{% block styles %}
+<style>
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link {
+        border: none;
+        transition: none;
+        /* border-bottom: 2px solid #333; */
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        border: none;
+        border-bottom: 2px solid #20c997;
+    }
+
+    .card-img {
+        height: 150px;
+        background: #ccc;
+    }
+</style>
+{% endblock %}
+
+{% block sidenav-content %}
+    <div class="main">
+        <div class="h2 my-3">Your Orders</div>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                    aria-controls="nav-home" aria-selected="true">Orders</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                    aria-controls="nav-profile" aria-selected="false">Open Orders</a>
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                    aria-controls="nav-contact" aria-selected="false">Cancel Orders</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="card my-3">
+                    <div class="card-header">
+                        <div class="row px-2">
+                            <div class="col-3 col-md-3 col-sm-3">
+                                <small>
+                                    ORDER PLACED
+                                </small><br>
+                                5 Aug 2020
+                            </div>
+
+                            <div class="col-3 col-md-6 col-sm-4">
+                                <small>
+                                    TOTAL
+                                </small><br>
+                                5,000
+                            </div>
+
+                            <div class="col-6 col-3 col-md-3 col-sm-4">
+                                <small>
+                                    ORDER # 2131244234
+                                </small><br>
+                                <a href="#">Details</a> | <a href="#">Invoice</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body row">
+                        <div class="mx-4 col-3 card-img"></div>
+                        <div class="col-7 offset-right-2">
+                            <h4 class="">Special title treatment</h4>
+                            <p class="card-text mb-3">With supporting text below as a natural lead-in to additional
+                                content.</p>
+                            <a href="#" class="btn-sm btn-primary mt-2">Buy Again</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            
+            <h1>orders open</h1>
+            
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            
+            <h1>cancled orders</h1>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+order_status_oprtions = (
+
+        #step 1 status
+
+        ("1", "order is open "),
+        ("2", "order is accepted"),
+        ("3", "order packing"),
+        ("4", "out for delivery"),
+        ("5", "delivered"),
+
+        #step 2 status
+
+        ("6", "order cancled"),
+        ("7", "complaint raise"),
+        ("8", "raise return"),
+        ("9", "return in progress"),
+        ("10", "return accepted"),
+        ("11", "return pickedup"),
+        ("12", "return order recevied"),
+        ("13", "return product quality check in progress"),
+        ("14", "return payment in progress"),
+        ("15", "return payment complete"),
+   
+    )      
+
+
+CATEGORIES
+
+    all_books = models.BooleanField(default= False)
+    books_school = models.BooleanField(default= False)
+    books_college = models.BooleanField(default= False)
+    biographic = models.BooleanField(default= False)
+    adventure = models.BooleanField(default= False)
+    childern = models.BooleanField(default= False)
+    cook = models.BooleanField(default= False)
+    treding = models.BooleanField(default= False)
+    other = models.BooleanField(default= False)

@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: pratikgosavi654@gmail.com
+Date: Wed, 13 Jan 2021 07:48:20 -0000
+Message-ID: <161052410087.19008.2337956681166860319@LAPTOP-C1CIN63K>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/MTA/5n9-f0162be93eade209c0fc/
+
+Your username, in case you’ve forgotten: Pratik Gosavi
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

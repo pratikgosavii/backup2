@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+	
+
+ {% block content %}
+
+
+<style>
+
+
+
+
+.rating{
+    
+    display: inline-flex;
+
+}
+
+
+.imageincart {
+    margin: 10px 0px;
+    
+}
+
+.cross{
+
+    float: right;
+    background: transparent;
+    margin-left: 100%;
+    margin-right: 12%;
+
+   
+}
+
+.adjust{
+
+    margin:10%;
+
+}
+
+.align_text{
+
+    text-align: center!important;
+    margin-left: 10px;
+
+}
+
+@media (max-width:480px)   {
+
+
+    .align_text{
+
+        text-align: center!important;
+        margin-left: 0px;
+
+    }
+
+    .adjust{
+
+        margin:0%; 
+
+    }
+
+
+   .cross{
+
+   
+        margin-right: 0%;
+
+   
+    }
+    
+  
+}
+
+
+
+.ee {
+  text-align: center;
+
+  margin: auto;
+  width: 60%;
+  
+  padding: 10px;
+}
+
+
+</style>
+
+
+ 
+ 
+<div>
+<div class="row adjust" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;" wfd-id="1485">
+
+    {% if dests %}
+
+    {% for dest in dests %}
+
+    <!-- Grid column -->
+    <div class="col-lg-3 col-md-4 col-6" wfd-id="1513">
+
+        <!-- Card -->
+        <div class="align_text" wfd-id="1514">
+        
+            <div class="view zoom overlay z-depth-2 rounded" wfd-id="1522">
+
+                <div style="">
+                   <a href="{% url 'remove_wishlistbook_byid' dest.id %}"> <button type="button" style="width:1px;" class="btn btn-elegant btn-sm px-3 mb-0 material-tooltip-main cross" data-toggle="tooltip" data-placement="top" title="Remove from wishlist"><i class="fas fa-times"></i></button></a>
+                    <img class="imageincart" width="50px" style="margin: 0px;"
+                    src="{{ dest.product_id.bookfront_cover.url }}"  alt="product img">
+                </div>
+                <a href="#!"> </a>
+            </div>
+
+            <div class="align_text pt-1" wfd-id="1515">
+
+                <h5>{{ dest.product_id.name }}</h5>
+
+                
+                {% comment %} <ul class="rating" wfd-id="1516">
+                <li wfd-id="1521">
+                    <i class="fas fa-star fa-sm text-primary"></i>
+                </li>
+                <li wfd-id="1520">
+                    <i class="fas fa-star fa-sm text-primary"></i>
+                </li>
+                <li wfd-id="1519">
+                    <i class="fas fa-star fa-sm text-primary"></i>
+                </li>
+                <li wfd-id="1518">
+                    <i class="fas fa-star fa-sm text-primary"></i>
+                </li>
+                <li wfd-id="1517">
+                    <i class="fas fa-star fa-sm text-primary"></i>
+                </li>
+
+                </ul> {% endcomment %}
+
+                <p class="mb-1 text-muted text-uppercase small">10th - MSBT</p>
+                <p class="mb-0"><span><strong>{{ dest.product_id.price }} ₹</strong></span></p>
+
+                <a href="{% url 'add_Cart_from_wishlist' dest.product_id.id %}" class="mb-1" > <button type="button"style="background: #ce7852;border-radius: 0px;border: none;" class="btn btn-primary btn-sm mr-1 mb-2"><i class="fas fa-shopping-cart pr-2"></i>Add to cart</button> </a>
+
+                
+
+                <hr>
+               
+            </div>
+
+        </div>
+            <!-- Card -->
+
+    </div>
+    <!-- Grid column -->
+
+    {% endfor %}
+
+    {% else %}
+
+<div class="ee">
+
+    <h3 style="color:grey;" class="mb-4 mt-4"> Your wishlist is empty </h3>
+
+    <p class="mb-5"> Add item that you have wish to buy in future </p>
+
+    <div>
+
+        <button type="button" class="btn btn-outline-info">Continoue Shopping</button>
+
+    </div>
+</div>
+
+
+    {% endif %}
+    
+
+    
+</div>
+
+
+</div>
+
+
+    <!-- Grid column -->
+
+	{% endblock %}

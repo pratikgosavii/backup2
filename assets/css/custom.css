@@ -1,0 +1,437 @@
+/*********************************************************************************
+
+	Template Name: Boighor Bookshop Responsive Bootstrap4 Template  
+	Description: Template description
+	Version: 1.0
+	Note: This is custom css. All custom styles (user styles) declare here.
+
+**********************************************************************************/
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: absolute;
+    z-index: 1;
+    border-right: 2px solid #333;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: all .3s ease;
+}
+
+.sidenav a {
+    line-height: 2em;
+    margin: 5px;
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #333;
+    background-color: #f2f2f2;
+}
+
+.main {
+    margin-left: 266px;
+    /* Same as the width of the sidenav */
+}
+
+.sidenav-active {
+    transform: translateX(-250px);
+}
+
+@media screen and (max-width: 768px) {
+    .sidenav {
+        padding-top: 15px;
+        background-color: #fff;
+        transform: translateX(-250px);
+    }
+    .sidenav.sidenav-active {
+        position: fixed;
+        height: 100vh;
+        top: 0;
+        bottom: 0;
+        z-index: 999;
+        border-right: none;
+        width: 100vw;
+        transform: translateX(0px);
+        box-sizing: 3px 5px 2px 2px #333;
+    }
+    .main {
+        margin-left: 16px;
+        /* Same as the width of the sidenav */
+    }
+    /* .main.sidenav-active {
+		background: yellow;
+		Same as the width of the sidenav
+	} */
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.buttoncustom {
+    background: #2e2e2e none repeat scroll 0 0;
+    border-radius: 0;
+    color: #fff;
+    margin-left: 6px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 34px;
+    padding: 2px 20px 0;
+    text-transform: uppercase;
+    transition: all 0.4s ease 0s;
+    border: 0 none;
+}
+
+.loader {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader>img {
+    width: 100px;
+}
+
+.loader.hidden {
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.thumb {
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.price-slider {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    height: 6em;
+}
+
+.price-slider svg,
+.price-slider input[type=range] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+input[type=number] {
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 1.2em;
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number]:invalid,
+input[type=number]:out-of-range {
+    border: 2px solid #e60023;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #1da1f2;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #1da1f2;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #1da1f2;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: #1da1f2;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #1da1f2;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #a1d0ff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: #1da1f2;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+
+input[type=range]::-moz-range-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #1da1f2;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #a1d0ff;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower,
+input[type=range]::-ms-fill-upper {
+    background: #1da1f2;
+    border-radius: 1px;
+    box-shadow: none;
+    border: 0;
+}
+
+input[type=range]::-ms-thumb {
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 0px 0px #000;
+    border: 1px solid #1da1f2;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #a1d0ff;
+    cursor: pointer;
+}
+
+.Click-here {
+    cursor: pointer;
+    color: #e59285;
+    width: 180px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.custom-model-main {
+    text-align: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* z-index: 1050; */
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear, z-index 0.15;
+    -o-transition: opacity 0.15s linear, z-index 0.15;
+    transition: opacity 0.15s linear, z-index 0.15;
+    z-index: -1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.model-open {
+    z-index: 99999;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.custom-model-inner {
+    -webkit-transform: translate(0, -25%);
+    -ms-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out;
+    transition: -webkit-transform 0.3s ease-out;
+    -o-transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    display: inline-block;
+    vertical-align: middle;
+    width: 600px;
+    margin: 30px auto;
+    max-width: 97%;
+}
+
+.custom-model-wrap {
+    display: inline-table;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    outline: 0;
+    text-align: left;
+    padding: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+
+.model-open .custom-model-inner {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    position: relative;
+    z-index: 999;
+}
+
+.model-open .bg-overlay {
+    background: rgb(27, 1, 1);
+    z-index: 99;
+}
+
+.bg-overlay {
+    background: rgba(0, 0, 0, 0);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-transition: background 0.15s linear;
+    -o-transition: background 0.15s linear;
+    transition: background 0.15s linear;
+}
+
+.close-btn {
+    position: absolute;
+    right: 0;
+    top: -30px;
+    cursor: pointer;
+    z-index: 99;
+    font-size: 30px;
+    color: rgb(15, 0, 0);
+}
+
+@media screen and (min-width:800px) {
+    .custom-model-main:before {
+        content: "";
+        display: inline-block;
+        height: auto;
+        vertical-align: middle;
+        margin-right: -0px;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width:799px) {
+    .custom-model-inner {
+        margin-top: 45px;
+    }
+}
+
+.column1 {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px;
+    /* Should be removed. Only for demonstration */
+}
+
+
+/* Clear floats after the columns */
+
+.row:after1 {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.box {
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    /* for demo purpose  */
+}
+
+.stack-top {
+    z-index: 9;
+    margin: 20px;
+    /* for demo purpose  */
+}
+
+.input1 {
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    width: 15%;
+}
+
+.button11 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+canvas {
+    /*prevent interaction with the canvas*/
+    pointer-events: none;
+}
