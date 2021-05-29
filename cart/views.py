@@ -67,8 +67,7 @@ def user_cart_addproduct_byid(request, bookid):
 
         if producte:
     
-            producte = books.objects.get(id = bookid)
-            print('1')
+           
             try:
                 data = cart.objects.get(product_id = producte, buyer = request.user)
                 print('2')
@@ -112,20 +111,36 @@ def add_Cart_from_wishlist(request, bookid):
         except books.DoesNotExist:
             producte = None
 
+        
+
         if producte:
-    
+
             try:
-                data2 = wishlist.objects.get(product_id = producte, buyer = request.user).delete()
+                data = cart.objects.get(product_id = producte, buyer = request.user)
                 print('2')
 
             except wishlist.DoesNotExist:
-                data2 = None
+                data = None
 
+            if data:
+
+                data.quantity = data.quantity + 1
+                data.save()
+                print('3')
             
-            obj = cart.objects.create(product_id = producte, buyer = request.user)
-            print('4')
+            else:
 
-            obj.save()
+                obj = cart.objects.create(product_id = producte, buyer = request.user)
+                print('4')
+
+                obj.save()
+
+            try:
+                data = wishlist.objects.get(product_id = producte, buyer = request.user).delete()
+                print('2')
+
+            except wishlist.DoesNotExist:
+                data = None
 
 
             return HttpResponseRedirect(reverse('user_cart'))

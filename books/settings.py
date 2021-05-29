@@ -28,6 +28,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+
+
+AUTHENTICATION_BACKENDS = [
+    'accounts.auth.EmailOrUsernameModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+AUTH_USER_MODEL = 'accounts.User'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -180,5 +189,3 @@ EMAIL_HOST_USER = 'pratikgosavinetflix2@gmail.com'
 EMAIL_HOST_PASSWORD = 'pratikgosavi@12'
 EMAIL_USE_TLS = True
 
-
-AUTH_USER_MODEL = 'accounts.User'

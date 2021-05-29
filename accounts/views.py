@@ -34,14 +34,9 @@ def login(request):
         print(password)
 
 
-        if '@' in email:
-            user = auth.authenticate(email = email, password = password)
-            print('contains @')
-            print(user)
-            
-        else:
-            print('mobilee contains')
-            user = auth.authenticate(mobile_number = email, password = password)
+    
+       
+        user = auth.authenticate(username = email, password = password)
 
 
         if user is not None:
@@ -218,10 +213,12 @@ def proceedToLogin(request,email, mobile_number):
 
         User.objects.create_user(email=None, mobile_number=email, password=settings.SECRET_KEY)
         user_one=User.objects.get(mobile_number=email)
+      
         user_one.backend='django.contrib.auth.backends.ModelBackend'
         auth.login(request,user_one)
         request.session['mobile_no'] = email
-
+        a = request.session['mobile_no']
+     
         
         return "with new"
 
@@ -232,6 +229,7 @@ def set_password_html(request):
 def set_password_view(request):
     
     mob_data = request.session.get('mobile_no')
+    
     password = request.POST.get('pasword')
     if mob_data:
         mob_data = str(mob_data)
@@ -246,7 +244,7 @@ def set_password_view(request):
         use.save()
         auth.login(request,use)
 
-        del request.session['mobile_no']
+        
 
         return HttpResponseRedirect(reverse('index'))
 
