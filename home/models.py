@@ -42,8 +42,6 @@ class books(models.Model):
 
 
 
-    def __str__(self):
-        return self.name
 
 
 
@@ -54,9 +52,6 @@ class school_list(models.Model):
     school_image = models.ImageField(upload_to='pics',default='picc')
 
 
-
-    def __str__(self):
-        return self.name
 
 
 

@@ -1,0 +1,372 @@
+{% load static %}
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/plugins.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/mobile.css' %}">
+
+  <!-- Cusom css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+
+  <!-- Modernizer js -->
+  <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    nav {
+      line-height: 78px;
+      box-shadow: 0px 0px 1px 1px #ccc;
+      min-height: 78px;
+    }
+
+    hr {
+      display: flex;
+    }
+
+    .checkout-steps {
+
+      width: 40%;
+      color: #696B79;
+      padding: 0;
+      display: inline-block;
+      line-height: 20px;
+    }
+
+    .divider {
+      display: inline-block;
+      border-top: 1px dashed #696B79;
+      height: 4px;
+      width: 10%;
+    }
+
+    .active {
+      color: #20BD99;
+      border-bottom: 2px solid #20BD99;
+    }
+
+    .li {
+      display: inline;
+      text-align: -webkit-match-parent;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <nav class="d-flex justify-content-between align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="Logo">
+        <h3>Myntra</h3>
+      </div>
+
+      <ol class="checkout-steps d-none d-lg-block">
+        <li class="step step1 active li">BAG</li>
+        <li class="divider"></li>
+        <li class="step step2 li">ADDRESS</li>
+        <li class="divider"></li>
+        <li class="step step3 li">PAYMENT</li>
+      </ol>
+
+      <div class="trust">
+        <img src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png" height="28" widhth="26"
+          alt="img">
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 offset-lg-1 col-md-6">
+        
+
+        <!-- Offers -->
+        <div class="card m-3 p-3">
+          <p class="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+              class="offersV2-base-discountIcon">
+              <g fill="#000" fill-rule="evenodd">
+                <path
+                  d="M15.292 10.687v.001c-.198.742.076 1.454.296 2.026l.045.12-.137.021c-.602.094-1.352.211-1.892.75-.538.54-.655 1.288-.748 1.89l-.022.138a22.096 22.096 0 0 1-.12-.045c-.443-.171-.946-.364-1.49-.364-.185 0-.366.023-.536.068-.728.194-1.198.78-1.577 1.249-.032.04-.07.088-.111.137l-.112-.138c-.378-.47-.848-1.054-1.575-1.248a2.092 2.092 0 0 0-.537-.068c-.543 0-1.046.193-1.49.364l-.12.045-.022-.138c-.093-.602-.21-1.35-.749-1.89-.539-.539-1.289-.656-1.891-.75l-.137-.022a15 15 0 0 1 .045-.118c.22-.573.494-1.286.296-2.027-.194-.728-.78-1.199-1.25-1.577L1.323 9l.137-.11c.47-.38 1.055-.85 1.249-1.577.198-.742-.076-1.455-.296-2.028l-.045-.118.137-.022c.602-.094 1.352-.211 1.891-.75.54-.539.656-1.289.75-1.891l.022-.137.119.045c.443.171.947.365 1.49.365.186 0 .367-.024.537-.07.727-.193 1.198-.778 1.576-1.248L9 1.322l.111.137c.379.47.85 1.055 1.576 1.249.17.045.352.069.537.069.544 0 1.047-.194 1.491-.365l.119-.045.022.137c.094.602.21 1.353.75 1.891.538.539 1.288.656 1.89.75l.138.022-.046.119c-.22.572-.494 1.285-.295 2.026.194.728.778 1.199 1.248 1.577.04.033.088.07.137.111l-.137.11c-.47.38-1.054.85-1.249 1.577M18 9c0-.744-1.459-1.286-1.642-1.972-.19-.71.797-1.907.437-2.529-.364-.63-1.898-.372-2.41-.884-.511-.511-.253-2.045-.883-2.41a.647.647 0 0 0-.33-.08c-.585 0-1.403.542-1.998.542a.778.778 0 0 1-.201-.025C10.286 1.46 9.743 0 9 0c-.744 0-1.286 1.459-1.972 1.642a.78.78 0 0 1-.2.025c-.596 0-1.414-.542-2-.542a.647.647 0 0 0-.33.08c-.63.365-.37 1.898-.883 2.41-.512.512-2.046.254-2.41.884-.36.62.627 1.819.437 2.529C1.46 7.714 0 8.256 0 9s1.459 1.286 1.642 1.972c.19.71-.797 1.908-.437 2.53.364.63 1.898.371 2.41.883.511.512.253 2.045.884 2.41.097.056.208.08.33.08.585 0 1.403-.542 1.998-.542a.78.78 0 0 1 .201.025C7.714 16.54 8.256 18 9 18s1.286-1.46 1.973-1.642a.774.774 0 0 1 .2-.025c.595 0 1.413.542 1.998.542a.647.647 0 0 0 .33-.08c.631-.365.373-1.898.884-2.41.512-.512 2.046-.254 2.41-.884.36-.62-.627-1.819-.437-2.529C16.54 10.286 18 9.744 18 9">
+                </path>
+                <path
+                  d="M10.897 6.34l-4.553 4.562a.536.536 0 0 0 .76.758l4.552-4.562a.536.536 0 0 0-.76-.758M6.75 7.875a1.126 1.126 0 0 0 0-2.25 1.126 1.126 0 0 0 0 2.25M11.25 10.125a1.126 1.126 0 0 0 0 2.25 1.126 1.126 0 0 0 0-2.25">
+                </path>
+              </g>
+            </svg>
+            <b class="mx-2">Available Offers</b>
+          </p>
+
+          <div class="wrapper">
+            <ul class="list" style="list-style-type: disc; margin: 1em 0em; padding: 0em 1.5em">
+              <li>20% Cashback on slice card up to Rs 500 on a min spend of Rs 699. TCA</li>
+              <li>20% Cashback on slice card up to Rs 500 on a min spend of Rs 699. TCA</li>
+              <li>20% Cashback on slice card up to Rs 500 on a min spend of Rs 699. TCA</li>
+              <li>20% Cashback on slice card up to Rs 500 on a min spend of Rs 699. TCA</li>
+              <li>20% Cashback on slice card up to Rs 500 on a min spend of Rs 699. TCA</li>
+            </ul>
+            <div id="next" class="next text-secondary font-weight-bold" style="cursor: pointer;">+ Show More</div>
+            <div id="less" class="less text-secondary font-weight-bold" style="cursor: pointer;">- Show Less</div>
+          </div>
+        </div>
+        <!-- Offers  -->
+
+        <!-- My shoping bag -->
+        <div class="container d-flex justify-content-between align-items-center px-3">
+          <h5 style="font-weight:600;">My Shopping Bag ({{ summary_count }} item)</h5>
+          <h5 style="font-weight:600;">Total: {{ summary_total }}</h5>
+        </div>
+        <!-- My shoping bag -->
+
+
+        {% for dest in summary %}
+
+        <div class="card m-3 p-2">
+          <div class="row">
+            <div class="col-3 m-0">
+              <img
+                src="{{ dest.product_id.bookfront_cover.url }}"
+                alt="photo">
+            </div>
+
+            <div class="col-8 m-0 px-0">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="font-weight-bold mb-2">{{ dest.product_id.name }}</p>
+                  <p class="font-weight-light" style="line-height: 1;">{{ dest.product_id.pattern }}</p>
+                  <small class="text-muted font-weight-light mt-0">Sold by: Truenet Commerce</small>
+                </div>
+                <div>
+                  <h5 class="float-right">${{ dest.product_id.price }}</h5>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <hr class="my-2" />
+          <div class="row">
+            <div class="col-3">
+              <button type="button" class="btn btn-sm btn-light font-weight-bold text-secondary">REMOVE</button>
+            </div>
+            <div class="col-9">
+              <button type="button" class="btn btn-sm btn-light font-weight-bold text-secondary">MOVE TO
+                WISHLIST</button>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+
+      <!-- right colum -->
+        <div class="col-12 col-md-4 d-flex flex-column mt-3">
+
+            <div class="card p-2">
+            <small class="text-muted font-weight-bold">Offers & Coupons</small>
+            <div style="display:flex;">
+                <div>
+                    <p>Apply Coupon</p>
+
+                </div>
+                <div>
+
+                    <div class="Click-here" style="width:fit-content;flaot:rightfloat: right;right: 23px;border: 1px solid #db8173;border-radius: 3px;position:absolute;right:12px;padding: 1px 16px;">Apply</div>        
+           
+            <br>
+                    <div class="custom-model-main">
+                        <div class="custom-model-inner"> 
+                            <div>       
+                                <div class="close-btn">×</div>
+                            </div>
+                        <div class="custom-model-wrap">
+                            <div class="pop-up-content-wrap">
+
+                        
+
+                                <div class="label">Contact Details</div>
+                                <table>
+                                <tr>
+                                    <td >
+                                        <div class="formfield" id="firstnamefield">
+                                            <input type="text"  name="name" id="name" required>
+                                            <label for="name" placeholder="firstname" >Full Name</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="formfield" id="firstnamefield">
+                                            <input type="text" name="mobilenumber" id="mobilenumber" required>
+                                            <label alt="Prénom" for="mobilenumber" placeholder="mobile no" >Mobile no</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                        
+                            </table>    
+                                    
+                            <div class="label">Address details</div>
+                        
+
+                            <table>
+
+                            <tr>
+                                <td>
+                                    <div class="formfield" id="firstnamefield">
+                                        <input type="text" style="border: 1px solid lightgrey;width: 90%;height: 100%;" class="number" name="pincode" value="njbn" id="pincode" required>
+                                        <label alt="Prénom" for="Pincode"  value="njbn">Pincode</label>
+                                        </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="formfield" id="firstnamefield">
+                                    
+                                        <input type="text" name="address_full" id="address_full" required>
+                                        <label alt="Prénom" for="address_full" >Full Address</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="formfield" id="firstnamefield">
+                                    <input type="text" name="locality" id="locality" required>
+                                    <label alt="Prénom" for="locality" >locality/Town</label>
+                                    </div>
+                                </td>    
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="formfield" id="firstnamefield">
+                                        <input type="text" name="district" id="district" value="Akola" required>
+                                        <label alt="Prénom" for="district" >District</label>
+                                    </div>
+                                </td>    
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="formfield" id="firstnamefield">
+                                        <input type="text" name="addresstype" id="address_type"  required>
+                                        <label alt="Prénom" for="address_type" >Address Type</label>
+                                    </div>
+                                </td>    
+                            </tr>
+
+                        </table>
+                        
+
+
+                        <div class="field">
+                        <input type="submit" style="height:37px;" value="Next" >
+                        </div>
+                        
+                    </div>
+                    </div>  
+                </div>  
+            </div> 
+                <br>
+            </div>
+
+            </div>
+
+            <hr>
+            <small class="text-muted font-weight-bold">Price details</small><br>
+
+            <div>
+
+                <div style="float:left;">
+                    <p> Total MRP</p>
+                    <p> Coupon Discount</p>
+                    <p> Deliery Fee</p>
+                </div>
+
+                <div style="float:right;text-align: end;">
+                    <p> {{ summary_total }} </p>
+                    <p> {% if discount_total %}- {{ discount_total }}  {% else %} <button style="background: none;border:none;color:#db8173;padding:0px 0px;"> Apply Coupon</button> {% endif %} </p>
+                    <p> 0</p>
+                </div>
+            
+            </div>
+
+          
+
+
+        </div>
+          <input type="submit" value="place order" id="submit" name="submit"
+					style="background: #2e2e2e none repeat scroll 0 0;margin-top: 10px;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
+
+
+      </div>
+      <!-- right column  -->
+
+    </div>
+  </div>
+
+</body>
+
+<!-- JS Files -->
+<script src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/active.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+<script>
+  $(document).ready(function () {
+
+    var numToShow = 1;
+    $(".list li").hide();
+    $('.wrapper ul').each(function () {
+      var list = $(this).children("li");
+      var button = $(this).siblings(".next");
+      var less = $(this).siblings('.less');
+      var numInList = list.length;
+      if (numInList > numToShow) {
+        button.show();
+        less.hide();
+      }
+      //$(this).children("li:lt('+ numToShow +')").show();
+      list.slice(0, numToShow).show();
+    });
+
+    $('div.next').click(function () {
+      var list = $(this).siblings(".list").children("li");
+      // var numInList = list.length
+      // var showing = list.filter(':visible').length;
+      // list.slice(showing - 1, showing + numToShow).fadeIn();
+      // var nowShowing = list.filter(':visible').length;
+      // if (nowShowing >= numInList) {
+      list.fadeIn();
+      $(this).hide();
+      $(this).next('div.less').show();
+
+    });
+
+    $('div.less').click(function () {
+      $(this).siblings(".list").children("li").not(':lt(1)').hide();
+      $(this).siblings('div.next').show();
+      $(this).hide();
+    });
+
+  });
+</script>
+
+</html>

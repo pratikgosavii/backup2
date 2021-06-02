@@ -17,10 +17,7 @@ class feedback(models.Model):
     feedback = models.CharField(max_length=200)
     
    
-    
-    def __str__(self):
-        return self.feedback_book
-
+   
 
 class question(models.Model):
 
@@ -31,18 +28,11 @@ class question(models.Model):
     
    
     
-    def __str__(self):
-        return self.question_book
-
-
 class feedback_reply(models.Model):
 
     buyer = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='replyxx', on_delete=models.CASCADE, default=1)
     feedback = models.ForeignKey(feedback, related_name='feedbadfdfck', on_delete=models.CASCADE, default=1)
     feedback_reply = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.feedback_book
 
 
 class question_reply(models.Model):
@@ -50,6 +40,3 @@ class question_reply(models.Model):
     buyer = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='replydfdq', on_delete=models.CASCADE, default=1)
     question = models.ForeignKey(question, related_name='qudfdfestion', on_delete=models.CASCADE, default=1)
     question_reply = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.question_book

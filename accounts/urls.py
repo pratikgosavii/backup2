@@ -30,29 +30,12 @@ urlpatterns = [
     path('login_firebase', views.login_firebase, name='login_firebase'),
     path('firebase_login_save', views.firebase_login_save, name='firebase_login_save'),
     path('change_password', views.change_password, name='change_password'),
-
-
     path('xxsdbwerg', views.set_password_html, name='set_password_html'),
     path('cdadhevgetgaeu', views.set_password_view, name='set_password_view'),
 
 
 
     
-    path('reset_password/',
-     auth_views.PasswordResetView.as_view(template_name="accounts/password_reset.html"),
-     name="reset_password"),
-
-    path('reset_password_sent/', 
-        auth_views.PasswordResetDoneView.as_view(template_name="accounts/password_reset_sent.html"), 
-        name="password_reset_done"),
-
-    path('reset/<uidb64>/<token>/',
-     auth_views.PasswordResetConfirmView.as_view(template_name="accounts/password_reset_form.html"), 
-     name="password_reset_confirm"),
-
-    path('reset_password_complete/', 
-        auth_views.PasswordResetCompleteView.as_view(template_name="accounts/password_reset_done.html"), 
-        name="password_reset_complete"),
 
 
     path('', views.myaccount, name="my-account"),
@@ -61,7 +44,7 @@ urlpatterns = [
     path('subscribe', views.subscibers_view, name='subscibers_view'),
     path('edit_user_info', views.edit_user_info, name='edit_user_info'),
     
-    path('edit_user_info', views.edit_user_info, name='edit_user_info'),
+    path('order_detials/<order_id>', views.order_detials, name='order_detials'),
    
    
     # path('', include('myorders.urls')),

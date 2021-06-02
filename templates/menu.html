@@ -1,0 +1,333 @@
+<header id="wn__header" class="header__area header__absolute">
+			
+
+			<div class="container-fluid" style="padding: 0px 0px;">
+ 
+				<div class="header12" id="myHeader" style="padding: 0px 0px;">
+					<div class="row" >
+						
+					
+						<div class="mainsearch">
+	
+							<!-- Actual search box -->
+							
+							
+							<!-- Another variation with a button -->
+							<div class="input-group">
+								<input type="text" name="search_value" id= "search_value" class="form-control" placeholder="Search this blog" style="border:none;border-radius: 0px;">
+								<div class="input-group-append">
+									<button class="btn btn-secondary"   style="background: #fff;border: none;color: #e59285;border-radius: 0px;" type="button" onclick="searched()">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+
+								
+
+							</div>
+							
+							
+						</div>
+
+						<div>
+							
+						<ul class="header__sidebar__right d-flex justify-content-end align-items-center three_bu" style="position:absolute;right:0;">
+							
+							<li class="wishlist"><a href="{% url 'user_wishlist' %}"></a></li>
+							<li class="shopcart"><a class="cartbox_active"><span
+										class="product_qun">{% if cart_count_home is not None %}{{ cart_count_home }}{% else %}0{% endif %}</span></a>
+								{% if user.is_authenticated %}
+
+								{% if dests_usercart_home %}
+
+								<!-- Start Shopping Cart -->
+								<div class="block-minicart minicart__active">
+									<div class="minicart-content-wrapper">
+										<div class="micart__close">
+											<span>close</span>
+										</div>
+
+
+
+										<div class="items-total d-flex justify-content-between">
+											<span>{{ cart_count_home }} items</span>
+											<span>Cart Subtotal</span>
+										</div>
+										<div class="total_amount text-right">
+											<span>{{ totalprice }}</span>
+										</div>
+										<div class="mini_action checkout">
+											<a class="checkout__btn" href="{% url 'checkout' %}">Go to Checkout</a>
+										</div>
+										<div class="single__items">
+											<div class="miniproduct"
+												style="margin-top:-10px;height:253px;overflow-y:scroll;">
+
+												{% for dest_usercart in dests_usercart_home %}
+
+												<div class="item01 d-flex mt--20">
+													<div class="thumb">
+														<a href="{% url 'single-product' dest_usercart.id %}"><img src="{{ dest_usercart.product_id.bookfront_cover.url }}" alt="product images"></a>
+													</div>
+													<div class="content">
+														<h6><a
+																href="{% url 'single-product' dest_usercart.id %}">{{ dest_usercart.product_id.name }}</a>
+														</h6>
+														<span class="prize">{{ dest_usercart.product_id.price }}</span>
+														<div class="product_prize d-flex justify-content-between">
+															<span class="qun">Qty: 03</span>
+															<ul class="d-flex justify-content-end" style="margin-right:10px;">
+																<li><a href="{% url 'remove_cartbook_byid' dest_usercart.id %}"><i class="zmdi zmdi-delete"></i></a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+
+												{% endfor %}
+
+
+											</div>
+										</div>
+										<div class="mini_action cart">
+											<a class="cart__btn" href="{% url 'user_cart' %}">View and edit cart</a>
+										</div>
+
+
+
+
+										{% else %}
+
+										<div class="block-minicart minicart__active">
+											<div class="minicart-content-wrapper">
+												<div class="micart__close">
+													<span>close</span>
+												</div>
+
+												<div class="items-total d-flex justify-content-center"
+													style="line-height: 50px;border: 3px solid #e59285;">
+													<span>oo ho !! you didnt add anything</span>
+												</div>
+
+												{% endif %}
+
+												{% else %}
+
+												<div class="block-minicart minicart__active">
+													<div class="minicart-content-wrapper">
+
+														<div class="mini_action cart">
+															<a class="cart__btn" href="{% url 'login_signup_home' %}">Login to View
+																your cart</a>
+														</div>
+
+												{% endif %}
+								
+
+									</div>
+								</div>
+												<!-- End Shopping Cart -->
+							</li>
+							<li class="setting__bar__icon"><a class="setting__active" href="#"></a>
+								<div class="searchbar__content setting__block">
+									<div class="content-inner">
+										<div class="switcher-currency">
+											<strong class="label switcher-label">
+												<span>Hello
+													<!-- user.firstname --></span>
+											</strong>
+											<div class="switcher-options">
+												<div class="switcher-currency-trigger">
+													<div class="setting__menu">
+														<!-- <span><a href="#">User.Mobilenumber</a></span> -->
+
+														<span><a href="{% url 'my-account' %}">My Account</a></span>
+														<span><a href="#">My Wishlist</a></span>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="switcher-currency">
+											<strong class="label switcher-label">
+
+											</strong>
+											<div class="switcher-options">
+												<div class="switcher-currency-trigger">
+													<span class="currency-trigger"><strong class="label switcher-label">
+															<span>Language &nbsp;&nbsp;&nbsp;&nbsp;<i
+																	class="arrowme downme"></i></span>
+														</strong></span>
+													<ul class="switcher-dropdown">
+														<li>Marathi</li>
+														<li>Hindi</li>
+														<li>English</li>
+														<li>Urdhu</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+
+										<div class="switcher-currency">
+
+											<div class="switcher-options">
+												<div class="switcher-currency-trigger">
+													<div class="setting__menu">
+														<!-- <span><a href="#">User.Mobilenumber</a></span> -->
+
+														{% if user.is_authenticated %}
+														<span><a href="{% url 'logout' %}">Logout</a></span>
+														{% else %}
+														<span><a href="{% url 'login_signup_home' %}">Login In</a></span>
+														{% endif %}
+														<span><a href="{% url 'login_signup_home' %}">Create An
+																Account</a></span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							
+						</ul>
+						 
+						</div>
+					</div>
+				</div>
+				<!-- Start Mobile Menu -->
+				<div class="row d-none">
+					<div class="col-lg-12 d-none">
+						<nav class="mobilemenu__nav">
+							<ul class="meninmenu">
+								<li><a href="{% url 'index' %}">Home</a>
+									<ul>
+										<li><a href="index.html">Home Style Default</a></li>
+										<li><a href="index-2.html">Home Style Two</a></li>
+										<li><a href="index-box.html">Home Box Style</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Pages</a>
+									<ul>
+										<li><a href="about.html">About Page</a></li>
+										<li><a href="portfolio.html">Portfolio</a>
+											<ul>
+												<li><a href="portfolio.html">Portfolio</a></li>
+												<li><a href="portfolio-three-column.html">Portfolio 3 Column</a></li>
+												<li><a href="portfolio-details.html">Portfolio Details</a></li>
+											</ul>
+										</li>
+										<li><a href="my-account.html">My Account</a></li>
+										<li><a href="cart.html">Cart Page</a></li>
+										<li><a href="checkout.html">Checkout Page</a></li>
+										<li><a href="wishlist.html">Wishlist Page</a></li>
+										<li><a href="error404.html">404 Page</a></li>
+										<li><a href="faq.html">Faq Page</a></li>
+										<li><a href="team.html">Team Page</a></li>
+									</ul>
+								</li>
+								<li><a href="shop-grid.html">Shop</a>
+									<ul>
+										<li><a href="shop-grid.html">Shop Grid</a></li>
+										<li><a href="shop-list.html">Shop List</a></li>
+										<li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+										<li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+										<li><a href="shop-no-sidebar.html">Shop No sidebar</a></li>
+										<li><a href="single-product.html">Single Product</a></li>
+									</ul>
+								</li>
+								<li><a href="blog.html">Blog</a>
+									<ul>
+										<li><a href="blog.html">Blog Page</a></li>
+										<li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+										<li><a href="blog-no-sidebar.html">Blog No Sidebar</a></li>
+										<li><a href="blog-details.html">Blog Details</a></li>
+									</ul>
+								</li>
+								<li><a href="{% url 'contact' %}">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!-- End Mobile Menu -->
+				<div class="mobile-menu d-block d-lg-none">
+				</div>
+				<!-- Mobile Menu -->
+			</div>
+
+
+
+			<div classs="row checkoutnone">
+				<div class="col-12 d-none d-lg-block" style="float:right;padding:10px 0px;box-shadow: rgb(0 0 0 / 8%) 0px 2px 3px, rgb(0 0 0 / 14%) 0px 2px 2px;">
+					<nav class="mainmenu__nav" style="height:unset">
+						<ul class="meninmenu d-flex justify-content-start" style="max-height: 43px;margin-left: 10%;">
+							<li class="drop"><a href="shop-grid.html">Categories  <i class="arrow down"></i></a>
+								<div class="megamenu mega04">
+									<ul class="item item03">
+										<li class="title">Study Books</li>
+										<li><a href="{% url 'categorybooks' 'schoobooks_school' %}">School</a></li>
+										<li><a href="{% url 'categorybooks' 'books_college' %}">College</a></li>
+										<li><a href="{% url 'categorybooks' 'engineering' %}">Engineering</a></li>
+										<li><a href="{% url 'categorybooks' 'medical' %}">Medical</a></li>
+										<li><a href="{% url 'categorybooks' 'pharmacy' %}">Pharmacy</a></li>
+										<li><a href="{% url 'categorybooks' 'commerace' %}">Commerace</a></li>
+									</ul>
+									<ul class="item item03">
+										<li class="title">Categories </li>
+										<li><a href="{% url 'categorybooks' 'biography' %}">Biography </a></li>
+										<li><a href="{% url 'categorybooks' 'bussiness' %}">Business </a></li>
+										<li><a href="{% url 'categorybooks' 'cookbooks' %}">Cookbooks </a></li>
+										<li><a href="{% url 'categorybooks' 'health&fitness' %}">Health & Fitness </a></li>
+										<li><a href="{% url 'categorybooks' 'history' %}">History </a></li>
+									</ul>
+									<ul class="item item03">
+										<li class="title">Customer Favourite</li>
+										<li><a href="{% url 'categorybooks' 'mystery' %}">Mystery</a></li>
+										<li><a href="{% url 'categorybooks' 'religion and inspiration' %}">Religion & Inspiration</a></li>
+										<li><a href="{% url 'categorybooks' 'fictionfantasy' %}">Fiction/Fantasy</a></li>
+										<li><a href="{% url 'categorybooks' 'general knowledege' %}">General Knowledege</a></li>
+									</ul>
+									<ul class="item item03">
+										<li class="title">Collections</li>
+										<li><a href="{% url 'categorybooks' 'science' %}">Science </a></li>
+										<li><a href="{% url 'categorybooks' 'imaginaions' %}">Imaginations</a></li>
+										<li><a href="{% url 'categorybooks' 'self-improvemen' %}">Self-Improvemen</a></li>
+										<li><a href="{% url 'categorybooks' 'home and garden' %}">Home & Garden</a></li>
+										<li><a href="{% url 'categorybooks' 'humor books' %}">Humor Books</a></li>
+									</ul>
+									
+								</div>
+							</li>
+							
+							
+							<li class="drop"><a href="shop-grid.html">Kids</a>
+								<div class="megamenu mega02">
+									<ul class="item item02">
+										<li class="title">Top Collections</li>
+										<li><a href="shop-grid.html">Dora the Explorer</a></li>
+										<li><a href="shop-grid.html">Diary Wimpy Kid</a></li>
+										<li><a href="shop-grid.html">Finding Dory</a></li>
+										<li><a href="shop-grid.html">Harry Potter</a></li>
+										<li><a href="shop-grid.html">Land of Stories</a></li>
+									</ul>
+									<ul class="item item02">
+										<li class="title">More For Kids</li>
+										<li><a href="shop-grid.html">B&N Educators</a></li>
+										<li><a href="shop-grid.html">B&N Kids' Club</a></li>
+										<li><a href="shop-grid.html">Kids' Music</a></li>
+										<li><a href="shop-grid.html">Toys & Games</a></li>
+										<li><a href="shop-grid.html">Hoodies</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="drop"><a href="{% url 'about' %}">About</a></li>
+							
+							<li><a href="{% url 'contact' %}">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="loader">
+    	<img src="{% static 'images/demo.gif' %}" alt="Loading..." />
+	</div>
+		</header>

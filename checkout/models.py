@@ -22,8 +22,6 @@ class user_address_detail(models.Model):
     addresstype = models.CharField(max_length=200, default="Home")
    
     
-    def __str__(self):
-        return self.name
 
 
 class coupon_here(models.Model):
@@ -33,7 +31,4 @@ class coupon_here(models.Model):
     valid_to = models.DateTimeField()
     discount = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
     active = models.BooleanField()    
-
-    def __str__(self):
-        return self.code
 

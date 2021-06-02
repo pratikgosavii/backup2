@@ -8,6 +8,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.db.models.fields import IntegerField
+
 from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
@@ -78,3 +79,12 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
  
     objects = UserManager()
+
+    ordering = ('mobile_number',)
+
+    def __str__(self):  
+        return self.mobile_number or ''
+
+        
+
+

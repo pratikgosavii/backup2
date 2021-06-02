@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
@@ -14,6 +15,7 @@ from .models import subscibers
 from home.models import books
 from django.contrib.auth.models import User
 import json
+
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -444,5 +446,34 @@ def check_user_mobile(request):
 
     
     return render(request, 'login_with_password.html')
-       
+     
+
+
+def order_detials(request, order_id):
+
+    order_data = placedorder_book.objects.get(id = order_id)
+
+    
+    data = User.objects.filter()
+    saved_user_addresses = user_address_detail.objects.filter(buyer= request.user)
+    user_orders_open = placedorder_book.objects.filter(buyer = request.user, order_status = 2)
+    user_orders_cancled = placedorder_book.objects.filter(buyer = request.user, order_status = 7).order_by('date_time')
+    user_orders_all = placedorder_book.objects.filter(buyer = request.user).order_by('date_time')
+    
+    
+
+    
+
+    context= {
+        
+        'saved_user_addresses' : saved_user_addresses,
+        'user_orders_open': user_orders_open,
+        'user_orders_cancled': user_orders_cancled,
+        'user_orders_all': user_orders_all,
+        'order_data' : order_data,
+    }
+
+
+    return render(request, 'my-account/order_details.html', context)
+    
 

@@ -318,7 +318,10 @@ html{
 
       </div>
 
-          <button type="button" style="float: right;" class="our_button">go to checkout</button>
+        <form action="{% url 'checkout' %}" method="post">
+        {% csrf_token %}
+          <input  type="submit" style="float: right;" class="our_button" value="go to checkout">
+        </form>
 
       <!-- Card -->
 

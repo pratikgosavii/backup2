@@ -24,11 +24,13 @@ import pyrebase
 # Create your views here.
 
 
-def checkout_page(request):
+def checkout_pagedsd(request):
 
     user_agent = get_user_agent(request)
 
     if user_agent.is_mobile:
+
+        print('is mobile')
 
         return HttpResponseRedirect(reverse('mobile_address'))
 
@@ -175,6 +177,64 @@ def checkout_page(request):
             messages.warning(request, "please login first!.")
             return HttpResponseRedirect(reverse('login_signup_home'))
 
+
+
+def checkout_page(request):
+
+    if request.user.is_authenticated:
+
+        summary = cart.objects.filter(buyer = request.user)
+        summary_count = summary.count()
+
+        if summary:
+
+            summary_total = 0
+            for dest in summary:
+                summary_total =  summary_total + int(dest.product_id.price)
+                
+
+            #coupon code
+            if request.method == 'POST':
+                try :
+                    now = timezone.now()
+
+                    applycoupon_code = request.POST.get('couponcheck')
+                    coupon =  coupon_here.objects.filter(code__iexact=applycoupon_code, valid_from__lte=now, valid_to__gte=now, active=True)
+                    discount_calculate = (summary_total / 100) * coupon.discount
+                    discount_total = summary_total - discount_calculate
+                    #applycoupon_code.min_cart_value >= summary_total
+                
+                except coupon_here.DoesNotExist:
+                    coupon = None
+                    applycoupon_code = None
+                    discount_total = None
+
+            else:
+                applycoupon_code = None
+                coupon = None
+                discount_total = None
+
+            #coupon code end
+            
+
+            context= {
+
+                'summary' : summary,
+                'summary_count' : summary_count,
+                'summary_total' : summary_total,
+                'applycoupon_code' : applycoupon_code,
+                'coupon' : coupon,
+                'discount_total' : discount_total,
+               
+                }
+
+            return render(request, 'checkout/summary.html', context)
+
+        
+        else:
+
+            print('something went wrong')
+            return HttpResponseRedirect(reverse('index'))
 
 
 
